@@ -1,0 +1,6 @@
+﻿holisticai.bias.metrics.weighed\_statistical\_parity\_auc
+=========================================================
+
+.. currentmodule:: holisticai.bias.metrics
+
+.. autofunction:: weighed_statistical_parity_auc

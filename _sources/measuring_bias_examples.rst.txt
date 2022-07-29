@@ -1,0 +1,23 @@
+.. currentmodule:: holisticai.bias
+
+.. measuring_bias_examples:
+
+Measuring Bias Examples
+=======================
+
+General bias metrics examples
+-----------------------------
+
+.. toctree::
+    :maxdepth: 2
+
+    examples/bias_metrics_examples
+
+Bias Plot Examples
+------------------
+
+.. toctree::
+    :maxdepth: 2
+
+    examples/bias_plots_examples
+

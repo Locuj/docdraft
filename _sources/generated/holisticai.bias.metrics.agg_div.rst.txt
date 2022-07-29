@@ -1,0 +1,6 @@
+﻿holisticai.bias.metrics.agg\_div
+================================
+
+.. currentmodule:: holisticai.bias.metrics
+
+.. autofunction:: agg_div

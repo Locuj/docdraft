@@ -1,0 +1,25 @@
+
+Holistic AI Metrics Library
+===========================
+
+We have set out to produce a library of metrics for auditing AI and algorithms. To do so we focus on 5 different verticals that help us in assessing AI risk - that is Bias, Efficacy, Explainability, Privacy and Robustness. For each vertical we have a set of metrics as well as classes to help compute and display these metrics in a simple and seamless way.
+
+Installation
+------------
+
+``pip install holistic``
+
+
+.. toctree::
+    :maxdepth: 2
+    :caption: API Reference:
+
+    bias
+    
+
+.. toctree::
+    :maxdepth: 2
+    :caption: Examples:
+
+    Measuring Bias Examples <measuring_bias_examples>
+

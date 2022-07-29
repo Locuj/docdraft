@@ -1,0 +1,6 @@
+﻿holisticai.bias.metrics.avg\_cluster\_ratio
+===========================================
+
+.. currentmodule:: holisticai.bias.metrics
+
+.. autofunction:: avg_cluster_ratio
