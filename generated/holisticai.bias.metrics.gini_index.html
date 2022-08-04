@@ -22,7 +22,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="holisticai.bias.metrics.exposure_entropy" href="holisticai.bias.metrics.exposure_entropy.html" />
-    <link rel="prev" title="holisticai.bias.metrics.agg_div" href="holisticai.bias.metrics.agg_div.html" /> 
+    <link rel="prev" title="holisticai.bias.metrics.regression_bias_metrics" href="holisticai.bias.metrics.regression_bias_metrics.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -41,16 +41,14 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../bias.html">Bias</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../bias.html#classification">Classification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../bias.html#regression">Regression</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../bias.html#recommender">Recommender</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.agg_div.html">holisticai.bias.metrics.agg_div</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">holisticai.bias.metrics.gini_index</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.exposure_entropy.html">holisticai.bias.metrics.exposure_entropy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.avg_rec_popularity.html">holisticai.bias.metrics.avg_rec_popularity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.mad_score.html">holisticai.bias.metrics.mad_score</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.exposure_l1.html">holisticai.bias.metrics.exposure_l1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.exposure_kl.html">holisticai.bias.metrics.exposure_kl</a></li>
@@ -68,7 +66,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Examples:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Tutorials:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../measuring_bias_examples.html">Measuring Bias Examples</a></li>
 </ul>
@@ -153,6 +151,23 @@ a given item is shown to user (if top is None).</p></li>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">holisticai.bias.metrics</span> <span class="kn">import</span> <span class="n">gini_index</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mat_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span>
+<span class="go">                      [0.7, 0.9, 0.1, 0.7],</span>
+<span class="go">                      [0.3, 0.2, 0.3, 0.3],</span>
+<span class="go">                      [0.2, 0.1, 0.7, 0.8],</span>
+<span class="go">                      [0.8, 0.7, 0.9, 0.1],</span>
+<span class="go">                      [1. , 0.9, 0.3, 0.6],</span>
+<span class="go">                      [0.8, 0.9, 0.1, 0.1],</span>
+<span class="go">                      [0.2, 0.3, 0.1, 0.5],</span>
+<span class="go">                      [0.1, 0.2, 0.7, 0.7],</span>
+<span class="go">                      [0.2, 0.7, 0.1, 0.2]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gini_index</span><span class="p">(</span><span class="n">mat_pred</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">0.1333333333333333</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>
@@ -161,7 +176,7 @@ a given item is shown to user (if top is None).</p></li>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="holisticai.bias.metrics.agg_div.html" class="btn btn-neutral float-left" title="holisticai.bias.metrics.agg_div" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="holisticai.bias.metrics.regression_bias_metrics.html" class="btn btn-neutral float-left" title="holisticai.bias.metrics.regression_bias_metrics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="holisticai.bias.metrics.exposure_entropy.html" class="btn btn-neutral float-right" title="holisticai.bias.metrics.exposure_entropy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

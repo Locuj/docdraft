@@ -41,16 +41,14 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../bias.html">Bias</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../bias.html#classification">Classification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../bias.html#regression">Regression</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../bias.html#recommender">Recommender</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.agg_div.html">holisticai.bias.metrics.agg_div</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.gini_index.html">holisticai.bias.metrics.gini_index</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.exposure_entropy.html">holisticai.bias.metrics.exposure_entropy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.avg_rec_popularity.html">holisticai.bias.metrics.avg_rec_popularity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.mad_score.html">holisticai.bias.metrics.mad_score</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.exposure_l1.html">holisticai.bias.metrics.exposure_l1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.exposure_kl.html">holisticai.bias.metrics.exposure_kl</a></li>
@@ -68,7 +66,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Examples:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Tutorials:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../measuring_bias_examples.html">Measuring Bias Examples</a></li>
 </ul>
@@ -126,7 +124,7 @@
 <h1>holisticai.bias.metrics.recommender_bias_metrics<a class="headerlink" href="#holisticai-bias-metrics-recommender-bias-metrics" title="Permalink to this heading"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="holisticai.bias.metrics.recommender_bias_metrics">
-<span class="sig-prename descclassname"><span class="pre">holisticai.bias.metrics.</span></span><span class="sig-name descname"><span class="pre">recommender_bias_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g_min</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">g_maj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat_true</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.metrics.recommender_bias_metrics" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">holisticai.bias.metrics.</span></span><span class="sig-name descname"><span class="pre">recommender_bias_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat_true</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.metrics.recommender_bias_metrics" title="Permalink to this definition"></a></dt>
 <dd><p>Recommender bias metrics batch computation.</p>
 <p class="rubric">Description</p>
 <p>This function computes all the relevant recommender bias metrics,
@@ -134,8 +132,8 @@ and displays them as a pandas dataframe.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>g_min</strong> (<em>numpy array</em>) – Minority class vector.</p></li>
-<li><p><strong>g_maj</strong> (<em>numpy array</em>) – Majority class vector.</p></li>
+<li><p><strong>group_a</strong> (<em>numpy array</em>) – Group membership vector.</p></li>
+<li><p><strong>group_b</strong> (<em>numpy array</em>) – Group membership vector.</p></li>
 <li><p><strong>mat_pred</strong> (<em>numpy ndarray</em>) – Matrix with shape (num_users, num_items). A recommender
 score (binary or soft pred) for each user,item pair.</p></li>
 <li><p><strong>mat_true</strong> (<em>numpy ndarray</em>) – Matrix with shape (num_users, num_items). A target score

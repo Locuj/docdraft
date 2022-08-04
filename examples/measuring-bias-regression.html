@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Measuring Bias in Regression Tasks &mdash; Holistic  documentation</title>
+  <title>Base imports &mdash; Holistic  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom_style.css" type="text/css" />
@@ -41,11 +41,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../bias.html">Bias</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Examples:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Tutorials:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../measuring_bias_examples.html">Measuring Bias Examples</a></li>
 </ul>
@@ -64,7 +64,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li><strong>Measuring Bias in Regression Tasks</strong></li>
+      <li>Base imports</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/examples/measuring-bias-regression.ipynb.txt" rel="nofollow"> View page source</a>
       </li>
@@ -352,549 +352,104 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<section id="Measuring-Bias-in-Regression-Tasks">
-<h1><strong>Measuring Bias in Regression Tasks</strong><a class="headerlink" href="#Measuring-Bias-in-Regression-Tasks" title="Permalink to this heading"></a></h1>
-<section id="Base-Modules">
-<h2><strong>Base Modules</strong><a class="headerlink" href="#Base-Modules" title="Permalink to this heading"></a></h2>
+<section id="Base-imports">
+<h1>Base imports<a class="headerlink" href="#Base-imports" title="Permalink to this heading"></a></h1>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[123]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!pip install scikit-learn==0.21.3</span>
-<span class="kn">import</span> <span class="nn">sklearn</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sklearn</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
-</pre></div>
-</div>
-</div>
-</section>
-<section id="Load-Data">
-<h2><strong>Load Data</strong><a class="headerlink" href="#Load-Data" title="Permalink to this heading"></a></h2>
-<p>If running in colab the dataset is obtained in the next cell with the !wget command. If running locally, download zip file from (<a class="reference external" href="https://archive.ics.uci.edu/ml/machine-learning-databases/00320/student.zip">https://archive.ics.uci.edu/ml/machine-learning-databases/00320/student.zip</a>) and unpack the dataset in the same folder as notebook.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget https://archive.ics.uci.edu/ml/machine-learning-databases/00320/student.zip
-<span class="o">!</span>unzip student.zip
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
---2022-07-26 12:53:45--  https://archive.ics.uci.edu/ml/machine-learning-databases/00320/student.zip
-Resolving archive.ics.uci.edu (archive.ics.uci.edu)... 128.195.10.252
-Connecting to archive.ics.uci.edu (archive.ics.uci.edu)|128.195.10.252|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 20478 (20K) [application/x-httpd-php]
-Saving to: ‘student.zip’
-
-student.zip         100%[===================&gt;]  20.00K   128KB/s    in 0.2s
-
-2022-07-26 12:53:46 (128 KB/s) - ‘student.zip’ saved [20478/20478]
-
-Archive:  student.zip
-  inflating: student-mat.csv
-  inflating: student-por.csv
-  inflating: student-merge.R
-  inflating: student.txt
-</pre></div></div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read dataset with pandas</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;student-mat.csv&#39;</span><span class="p">,</span><span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
-<span class="n">data</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
-</pre></div>
-</div>
-<div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>school</th>
-      <th>sex</th>
-      <th>age</th>
-      <th>address</th>
-      <th>famsize</th>
-      <th>Pstatus</th>
-      <th>Medu</th>
-      <th>Fedu</th>
-      <th>Mjob</th>
-      <th>Fjob</th>
-      <th>...</th>
-      <th>famrel</th>
-      <th>freetime</th>
-      <th>goout</th>
-      <th>Dalc</th>
-      <th>Walc</th>
-      <th>health</th>
-      <th>absences</th>
-      <th>G1</th>
-      <th>G2</th>
-      <th>G3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>GP</td>
-      <td>F</td>
-      <td>18</td>
-      <td>U</td>
-      <td>GT3</td>
-      <td>A</td>
-      <td>4</td>
-      <td>4</td>
-      <td>at_home</td>
-      <td>teacher</td>
-      <td>...</td>
-      <td>4</td>
-      <td>3</td>
-      <td>4</td>
-      <td>1</td>
-      <td>1</td>
-      <td>3</td>
-      <td>6</td>
-      <td>5</td>
-      <td>6</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>GP</td>
-      <td>F</td>
-      <td>17</td>
-      <td>U</td>
-      <td>GT3</td>
-      <td>T</td>
-      <td>1</td>
-      <td>1</td>
-      <td>at_home</td>
-      <td>other</td>
-      <td>...</td>
-      <td>5</td>
-      <td>3</td>
-      <td>3</td>
-      <td>1</td>
-      <td>1</td>
-      <td>3</td>
-      <td>4</td>
-      <td>5</td>
-      <td>5</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>GP</td>
-      <td>F</td>
-      <td>15</td>
-      <td>U</td>
-      <td>LE3</td>
-      <td>T</td>
-      <td>1</td>
-      <td>1</td>
-      <td>at_home</td>
-      <td>other</td>
-      <td>...</td>
-      <td>4</td>
-      <td>3</td>
-      <td>2</td>
-      <td>2</td>
-      <td>3</td>
-      <td>3</td>
-      <td>10</td>
-      <td>7</td>
-      <td>8</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>GP</td>
-      <td>F</td>
-      <td>15</td>
-      <td>U</td>
-      <td>GT3</td>
-      <td>T</td>
-      <td>4</td>
-      <td>2</td>
-      <td>health</td>
-      <td>services</td>
-      <td>...</td>
-      <td>3</td>
-      <td>2</td>
-      <td>2</td>
-      <td>1</td>
-      <td>1</td>
-      <td>5</td>
-      <td>2</td>
-      <td>15</td>
-      <td>14</td>
-      <td>15</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>GP</td>
-      <td>F</td>
-      <td>16</td>
-      <td>U</td>
-      <td>GT3</td>
-      <td>T</td>
-      <td>3</td>
-      <td>3</td>
-      <td>other</td>
-      <td>other</td>
-      <td>...</td>
-      <td>4</td>
-      <td>3</td>
-      <td>2</td>
-      <td>1</td>
-      <td>2</td>
-      <td>5</td>
-      <td>4</td>
-      <td>6</td>
-      <td>10</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>390</th>
-      <td>MS</td>
-      <td>M</td>
-      <td>20</td>
-      <td>U</td>
-      <td>LE3</td>
-      <td>A</td>
-      <td>2</td>
-      <td>2</td>
-      <td>services</td>
-      <td>services</td>
-      <td>...</td>
-      <td>5</td>
-      <td>5</td>
-      <td>4</td>
-      <td>4</td>
-      <td>5</td>
-      <td>4</td>
-      <td>11</td>
-      <td>9</td>
-      <td>9</td>
-      <td>9</td>
-    </tr>
-    <tr>
-      <th>391</th>
-      <td>MS</td>
-      <td>M</td>
-      <td>17</td>
-      <td>U</td>
-      <td>LE3</td>
-      <td>T</td>
-      <td>3</td>
-      <td>1</td>
-      <td>services</td>
-      <td>services</td>
-      <td>...</td>
-      <td>2</td>
-      <td>4</td>
-      <td>5</td>
-      <td>3</td>
-      <td>4</td>
-      <td>2</td>
-      <td>3</td>
-      <td>14</td>
-      <td>16</td>
-      <td>16</td>
-    </tr>
-    <tr>
-      <th>392</th>
-      <td>MS</td>
-      <td>M</td>
-      <td>21</td>
-      <td>R</td>
-      <td>GT3</td>
-      <td>T</td>
-      <td>1</td>
-      <td>1</td>
-      <td>other</td>
-      <td>other</td>
-      <td>...</td>
-      <td>5</td>
-      <td>5</td>
-      <td>3</td>
-      <td>3</td>
-      <td>3</td>
-      <td>3</td>
-      <td>3</td>
-      <td>10</td>
-      <td>8</td>
-      <td>7</td>
-    </tr>
-    <tr>
-      <th>393</th>
-      <td>MS</td>
-      <td>M</td>
-      <td>18</td>
-      <td>R</td>
-      <td>LE3</td>
-      <td>T</td>
-      <td>3</td>
-      <td>2</td>
-      <td>services</td>
-      <td>other</td>
-      <td>...</td>
-      <td>4</td>
-      <td>4</td>
-      <td>1</td>
-      <td>3</td>
-      <td>4</td>
-      <td>5</td>
-      <td>0</td>
-      <td>11</td>
-      <td>12</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <th>394</th>
-      <td>MS</td>
-      <td>M</td>
-      <td>19</td>
-      <td>U</td>
-      <td>LE3</td>
-      <td>T</td>
-      <td>1</td>
-      <td>1</td>
-      <td>other</td>
-      <td>at_home</td>
-      <td>...</td>
-      <td>3</td>
-      <td>2</td>
-      <td>3</td>
-      <td>3</td>
-      <td>3</td>
-      <td>5</td>
-      <td>5</td>
-      <td>8</td>
-      <td>9</td>
-      <td>9</td>
-    </tr>
-  </tbody>
-</table>
-<p>395 rows × 33 columns</p>
-</div></div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># check data column types</span>
-<span class="c1"># data.dtypes</span>
-</pre></div>
-</div>
-</div>
-</section>
-<section id="Preprocess-Data-and-Train-Model">
-<h2><strong>Preprocess Data and Train Model</strong><a class="headerlink" href="#Preprocess-Data-and-Train-Model" title="Permalink to this heading"></a></h2>
-<p>In the following section we will 1. Drop the grades from years 1 and 2 because of high correlation with year 3 2. Separate categorical and numerical columns 3. Create a simple preprocessing Pipeline with scikit-learn 4. Train a LGBM model with scikit-learn</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># drop grades from first and second year because high correlation with third</span>
-
-<span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;G1&#39;</span><span class="p">,</span><span class="s1">&#39;G2&#39;</span><span class="p">],</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># separate categorical and numerical data</span>
-
-<span class="n">categorical</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">numerical</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-  <span class="k">if</span> <span class="n">col</span> <span class="o">==</span> <span class="s1">&#39;G3&#39;</span><span class="p">:</span>
-    <span class="k">pass</span>
-  <span class="k">elif</span> <span class="n">col</span> <span class="o">==</span> <span class="s1">&#39;sex&#39;</span><span class="p">:</span>
-    <span class="k">pass</span>
-  <span class="k">elif</span> <span class="n">data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">object</span><span class="p">:</span>
-    <span class="n">categorical</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
-  <span class="k">else</span><span class="p">:</span>
-    <span class="n">numerical</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
-
-<span class="nb">print</span> <span class="p">(</span><span class="n">categorical</span><span class="p">)</span>
-<span class="nb">print</span> <span class="p">(</span><span class="n">numerical</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-[&#39;school&#39;, &#39;address&#39;, &#39;famsize&#39;, &#39;Pstatus&#39;, &#39;Mjob&#39;, &#39;Fjob&#39;, &#39;reason&#39;, &#39;guardian&#39;, &#39;schoolsup&#39;, &#39;famsup&#39;, &#39;paid&#39;, &#39;activities&#39;, &#39;nursery&#39;, &#39;higher&#39;, &#39;internet&#39;, &#39;romantic&#39;]
-[&#39;age&#39;, &#39;Medu&#39;, &#39;Fedu&#39;, &#39;traveltime&#39;, &#39;studytime&#39;, &#39;failures&#39;, &#39;famrel&#39;, &#39;freetime&#39;, &#39;goout&#39;, &#39;Dalc&#39;, &#39;Walc&#39;, &#39;health&#39;, &#39;absences&#39;]
-</pre></div></div>
-</div>
-<p>Below we create a simple pipeline that will one hot encode categorical columns, and standard scale numerical ones.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a pipeline</span>
-
-<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
-<span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">ColumnTransformer</span>
-
-
-<span class="n">categorical_transformer</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;onehot&#39;</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">handle_unknown</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">))])</span>
-<span class="n">numeric_transformer</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">())])</span>
-
-<span class="n">preprocessor</span> <span class="o">=</span> <span class="n">ColumnTransformer</span><span class="p">(</span>
-    <span class="n">transformers</span><span class="o">=</span><span class="p">[</span>
-        <span class="p">(</span><span class="s1">&#39;num&#39;</span><span class="p">,</span> <span class="n">numeric_transformer</span><span class="p">,</span> <span class="n">numerical</span><span class="p">),</span>
-        <span class="p">(</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="n">categorical_transformer</span><span class="p">,</span> <span class="n">categorical</span><span class="p">)</span>
-    <span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<p>Below we train test split our data with a 70/30 ratio to prepare for training. We also remove the ‘sex’ attribute because we do not want to use protected attributes in training.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># train test split 70/30</span>
 
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">Normalizer</span>
 
-<span class="n">df_train</span><span class="p">,</span> <span class="n">df_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-
-<span class="n">df_train_X</span> <span class="o">=</span> <span class="n">df_train</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;G3&#39;</span><span class="p">,</span><span class="s1">&#39;sex&#39;</span><span class="p">])</span>
-<span class="n">df_test_X</span> <span class="o">=</span> <span class="n">df_test</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;G3&#39;</span><span class="p">,</span><span class="s1">&#39;sex&#39;</span><span class="p">])</span>
-<span class="n">df_train_y</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;G3&#39;</span><span class="p">]</span>
-<span class="n">df_test_y</span> <span class="o">=</span> <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;G3&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<p>We train a LGBM regression model. It performed best of 5 regression models tested.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fit and predict.</span>
-
-<span class="kn">from</span> <span class="nn">lightgbm</span> <span class="kn">import</span> <span class="n">LGBMRegressor</span>
-
-<span class="n">lgbmr</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
-     <span class="p">(</span><span class="s1">&#39;preprocessor&#39;</span><span class="p">,</span> <span class="n">preprocessor</span><span class="p">),</span>
-     <span class="p">(</span><span class="s1">&#39;reg&#39;</span><span class="p">,</span> <span class="n">LGBMRegressor</span><span class="p">())])</span>
-
-<span class="n">lgbmr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df_train_X</span><span class="p">,</span><span class="n">df_train_y</span><span class="p">)</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">lgbmr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df_test_X</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</section>
-<section id="Display-Performance-and-Bias-Metrics">
-<h2><strong>Display Performance and Bias Metrics</strong><a class="headerlink" href="#Display-Performance-and-Bias-Metrics" title="Permalink to this heading"></a></h2>
-<p>We must define vectors containing the sex of the individuals to check for bias.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define minority and majority vectors</span>
-<span class="n">gmaj</span> <span class="o">=</span> <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;M&#39;</span>
-<span class="n">gmin</span> <span class="o">=</span> <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;F&#39;</span>
-<span class="n">gmaj</span> <span class="o">=</span> <span class="n">gmaj</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
-<span class="n">gmin</span> <span class="o">=</span> <span class="n">gmin</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
-<span class="n">yobs</span> <span class="o">=</span> <span class="n">df_test_y</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<p>We can now compute a range of accuracy and fairness metrics, displayed in the dataframe below. The first two are accuracy metrics, the remaining 11 are fairness metrics.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../../holisticai&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[124]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Holistic regression bias metrics batch computation</span>
-<span class="kn">from</span> <span class="nn">holisticai.bias.metrics</span> <span class="kn">import</span> <span class="n">regression_bias_metrics</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">load_student_data</span><span class="p">():</span>
+    <span class="kn">import</span> <span class="nn">requests</span><span class="o">,</span> <span class="nn">zipfile</span>
+    <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://archive.ics.uci.edu/ml/machine-learning-databases/00320/student.zip&#39;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="s1">&#39;./student.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zip_ref</span><span class="p">:</span>
+        <span class="n">zip_ref</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
 
-<span class="c1"># Display function documentation</span>
-<span class="o">?</span>regression_bias_metrics
+    <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;student-mat.csv&#39;</span><span class="p">,</span><span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">data</span>
+
+<span class="k">def</span> <span class="nf">preprocess_data</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+
+    <span class="n">categoricals</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">col</span> <span class="o">!=</span> <span class="s1">&#39;G3&#39;</span> <span class="ow">and</span> <span class="n">col</span><span class="o">!=</span><span class="s1">&#39;sex&#39;</span> <span class="ow">and</span> <span class="n">data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">object</span><span class="p">:</span>
+            <span class="n">categoricals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
+
+    <span class="n">cat_encoder</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">()</span>
+    <span class="n">enc</span> <span class="o">=</span> <span class="n">cat_encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">categoricals</span><span class="p">])</span>
+    <span class="n">enc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">enc</span><span class="o">.</span><span class="n">toarray</span><span class="p">())</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">data</span><span class="p">,</span><span class="n">enc</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">categoricals</span><span class="p">)</span> <span class="c1"># add encoded columns</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<section id="Measuring-bias">
+<h2>Measuring bias<a class="headerlink" href="#Measuring-bias" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+<section id="Loading">
+<h1>Loading<a class="headerlink" href="#Loading" title="Permalink to this heading"></a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[125]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load data and split for training</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">load_student_data</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">preprocess_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># G3 is the students final grade</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;G3&#39;</span><span class="p">])</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;G3&#39;</span><span class="p">])</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="s1">&#39;G3&#39;</span><span class="p">]</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">test</span><span class="p">[</span><span class="s1">&#39;G3&#39;</span><span class="p">]</span>
+
+<span class="c1"># Train a simple linear model</span>
+<span class="n">LR</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">LR</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">]),</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Predict some values</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[112]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regression_bias_metrics</span><span class="p">(</span><span class="n">gmin</span><span class="p">,</span> <span class="n">gmaj</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">yobs</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">holisticai.bias.metrics</span> <span class="kn">import</span> <span class="n">regression_bias_metrics</span>
+
+<span class="n">group_a</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;M&#39;</span>
+<span class="n">group_b</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;F&#39;</span>
+
+<span class="n">regression_bias_metrics</span><span class="p">(</span><span class="n">group_a</span><span class="p">,</span> <span class="n">group_b</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[112]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -928,88 +483,83 @@ Archive:  student.zip
   <tbody>
     <tr>
       <th>Disparate Impact Q90</th>
-      <td>0.751232</td>
-      <td>1</td>
+      <td>4.754098</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>Disparate Impact Q80</th>
-      <td>0.525862</td>
-      <td>1</td>
+      <td>1.901639</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>Disparate Impact Q50</th>
-      <td>0.983871</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>No Adverse Impact Level</th>
-      <td>15.416289</td>
-      <td>_</td>
-    </tr>
-    <tr>
-      <th>Average Score Spread</th>
-      <td>-0.706965</td>
+      <td>1.331148</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>Average Score Spread Q80</th>
-      <td>0.312707</td>
+      <th>No Disparate Impact Level</th>
+      <td>12.633841</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>Average Score Difference</th>
+      <td>1.786258</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>Z Score spread</th>
-      <td>-0.254212</td>
+      <th>Average Score Difference Q80</th>
+      <td>1.267822</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>Z Score spread Q80</th>
-      <td>0.337663</td>
+      <th>Z Score Difference</th>
+      <td>0.413114</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>Adverse Impact AUC</th>
-      <td>0.555399</td>
-      <td>0.5</td>
+      <th>Z Score Difference Q80</th>
+      <td>0.655295</td>
+      <td>0</td>
     </tr>
     <tr>
-      <th>Concurrent Validity Spread</th>
-      <td>0.141491</td>
+      <th>Max Statistical Parity</th>
+      <td>0.199830</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Statistical Parity AUC</th>
+      <td>0.106620</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Weighed Statistical Parity AUC</th>
+      <td>0.108083</td>
       <td>0</td>
     </tr>
     <tr>
       <th>RMSE Ratio</th>
-      <td>1.064280</td>
+      <td>0.709564</td>
       <td>1</td>
     </tr>
     <tr>
       <th>MAE Ratio</th>
-      <td>1.051136</td>
+      <td>0.803945</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>Concurrent Validity Spread Q80</th>
-      <td>0.558553</td>
-      <td>0</td>
-    </tr>
-    <tr>
       <th>RMSE Ratio Q80</th>
-      <td>1.087279</td>
+      <td>1.382500</td>
       <td>1</td>
     </tr>
     <tr>
       <th>MAE Ratio Q80</th>
-      <td>0.922842</td>
+      <td>1.628607</td>
       <td>1</td>
     </tr>
   </tbody>
 </table>
 </div></div>
 </div>
-</section>
-<section id="Final-Remarks">
-<h2><strong>Final Remarks</strong><a class="headerlink" href="#Final-Remarks" title="Permalink to this heading"></a></h2>
-<p>We observe through some metrics that there is a strong negative bias towards students of female sex. For instance we look at the Disparate Impact Q 80% of 0.52 (a value of 1 would be fair). This means male students are about 2 times more likely to be predicted in the top 20% of grades. We would like to avoid such prediction bias, as it might be detrimental to female students in admissions or other scenarios.</p>
-</section>
 </section>
 
 

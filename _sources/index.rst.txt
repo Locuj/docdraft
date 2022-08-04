@@ -12,14 +12,14 @@ Installation
 
 .. toctree::
     :maxdepth: 2
-    :caption: API Reference:
+    :caption: Documentation:
 
     bias
     
 
 .. toctree::
     :maxdepth: 2
-    :caption: Examples:
+    :caption: Tutorials:
 
     Measuring Bias Examples <measuring_bias_examples>
 
