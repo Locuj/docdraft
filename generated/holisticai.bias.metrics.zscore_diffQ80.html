@@ -133,8 +133,10 @@
 <dt class="sig sig-object py" id="holisticai.bias.metrics.zscore_diffQ80">
 <span class="sig-prename descclassname"><span class="pre">holisticai.bias.metrics.</span></span><span class="sig-name descname"><span class="pre">zscore_diffQ80</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.metrics.zscore_diffQ80" title="Permalink to this definition"></a></dt>
 <dd><p>ZScore Difference (Top 20%).</p>
+<p class="rubric">Description</p>
 <p>This function computes the difference in Zscores between
 group_a and group_b (for top 20% of scores).</p>
+<p class="rubric">Interpretation</p>
 <p>A value of 0 is desired. The Zscore will approximate the number
 of standard deviations away from the mean. In particular values that
 exceed 2 are statistically significant with 95% probability.</p>

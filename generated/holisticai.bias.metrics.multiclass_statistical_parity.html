@@ -125,11 +125,13 @@
 <dt class="sig sig-object py" id="holisticai.bias.metrics.multiclass_statistical_parity">
 <span class="sig-prename descclassname"><span class="pre">holisticai.bias.metrics.</span></span><span class="sig-name descname"><span class="pre">multiclass_statistical_parity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_attr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggregation_fun</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.metrics.multiclass_statistical_parity" title="Permalink to this definition"></a></dt>
 <dd><p>Multiclass statistical parity.</p>
+<p class="rubric">Description</p>
 <p>This function computes statistical parity for a classification task
 with multiple classes and a protected attribute with multiple groups.
 For each group compute the vector of success rates for entering
 each class. Compute all distances (mean absolute deviation) between
 such vectors. Then aggregate them using the mean, or max strategy.</p>
+<p class="rubric">Interpretation</p>
 <p>The accepted values and bounds for this metric are the same
 as the 1d case. A value of 0 is desired. Values below 0.1
 are considered fair.</p>

@@ -124,9 +124,11 @@
 <dt class="sig sig-object py" id="holisticai.bias.metrics.social_fairness_ratio">
 <span class="sig-prename descclassname"><span class="pre">holisticai.bias.metrics.</span></span><span class="sig-name descname"><span class="pre">social_fairness_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">centroids</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.metrics.social_fairness_ratio" title="Permalink to this definition"></a></dt>
 <dd><p>Social Fairness Ratio.</p>
+<p class="rubric">Description</p>
 <p>Given a centroid based clustering, this function compute the average
 distance to the nearest centroid for both groups. The metric is the
 ratio of the resulting distance for group_a to group_b.</p>
+<p class="rubric">Interpretation</p>
 <p>A value of 1 is desired. Lower values indicate the group_a
 is on average closer to the respective centroids. Higher
 values indicate that group_a is on average further from the

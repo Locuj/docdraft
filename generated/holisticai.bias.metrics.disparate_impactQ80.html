@@ -133,8 +133,10 @@
 <dt class="sig sig-object py" id="holisticai.bias.metrics.disparate_impactQ80">
 <span class="sig-prename descclassname"><span class="pre">holisticai.bias.metrics.</span></span><span class="sig-name descname"><span class="pre">disparate_impactQ80</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.metrics.disparate_impactQ80" title="Permalink to this definition"></a></dt>
 <dd><p>Disparate Impact top 20%.</p>
+<p class="rubric">Description</p>
 <p>This function computes the ratio of success rates between group_a and
 group_b, where sucess means predicted score is in top 20% of scores.</p>
+<p class="rubric">Interpretation</p>
 <p>A value of 1 is desired. Values below 1 are unfair towards group_a.
 Values above 1 are unfair towards group_b. The range (0.8,1.2)
 is considered acceptable.</p>

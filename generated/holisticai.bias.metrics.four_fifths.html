@@ -123,9 +123,11 @@
 <dt class="sig sig-object py" id="holisticai.bias.metrics.four_fifths">
 <span class="sig-prename descclassname"><span class="pre">holisticai.bias.metrics.</span></span><span class="sig-name descname"><span class="pre">four_fifths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.metrics.four_fifths" title="Permalink to this definition"></a></dt>
 <dd><p>Four Fifths.</p>
+<p class="rubric">Description</p>
 <p>This function computes the four fifths rule (ratio of success rates)
 between group_a and group_b. We return the minimum of the ratio
 taken both ways.</p>
+<p class="rubric">Interpretation</p>
 <p>A value of 1 is desired. Values below 1 are unfair. The range (0.8,1)
 is considered acceptable.</p>
 <dl class="field-list simple">

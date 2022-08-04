@@ -133,9 +133,11 @@
 <dt class="sig sig-object py" id="holisticai.bias.metrics.zscore_diff">
 <span class="sig-prename descclassname"><span class="pre">holisticai.bias.metrics.</span></span><span class="sig-name descname"><span class="pre">zscore_diff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.metrics.zscore_diff" title="Permalink to this definition"></a></dt>
 <dd><p>ZScore Difference.</p>
+<p class="rubric">Description</p>
 <p>This function computes the spread in Zscores between
 group_a and group_b. The Zscore is a normalised
 version of Disparate Impact.</p>
+<p class="rubric">Interpretation</p>
 <p>A value of 0 is desired. The Zscore will approximate the number
 of standard deviations away from the mean. In particular values that
 exceed 2 are statistically significant with 95% probability.</p>

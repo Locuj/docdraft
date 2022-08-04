@@ -124,8 +124,10 @@
 <dt class="sig sig-object py" id="holisticai.bias.metrics.cluster_dist_l1">
 <span class="sig-prename descclassname"><span class="pre">holisticai.bias.metrics.</span></span><span class="sig-name descname"><span class="pre">cluster_dist_l1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.metrics.cluster_dist_l1" title="Permalink to this definition"></a></dt>
 <dd><p>Cluster Distribution Total Variation.</p>
+<p class="rubric">Description</p>
 <p>This function computes the distribution of group_a and group_b across clusters.
 It then outputs the total variation distance between these distributions.</p>
+<p class="rubric">Interpretation</p>
 <p>A value of 0 is desired. That indicates that both groups are distributed
 similarly amongst the clusters. The metric ranges between 0 and 1,
 with higher values indicating the groups are distributed in very
