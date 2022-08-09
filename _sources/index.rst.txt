@@ -15,7 +15,7 @@ or on windows:
 
 ``py -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ holisticai``
 
-Coming soon: ``pip install holistic``
+Coming soon: ``pip install holisticai``
 
 
 .. toctree::
