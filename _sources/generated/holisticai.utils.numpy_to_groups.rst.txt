@@ -1,0 +1,6 @@
+﻿holisticai.utils.numpy\_to\_groups
+==================================
+
+.. currentmodule:: holisticai.utils
+
+.. autofunction:: numpy_to_groups

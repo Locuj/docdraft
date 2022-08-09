@@ -1,0 +1,6 @@
+﻿holisticai.datasets.load\_credit
+================================
+
+.. currentmodule:: holisticai.datasets
+
+.. autofunction:: load_credit

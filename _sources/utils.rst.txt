@@ -1,0 +1,49 @@
+Utils
+=====
+
+holistic.utils is a python module which contains utility functions for plotting, formatting, efficacy and validation.
+
+Formatting
+----------
+
+.. autosummary::
+    :toctree: generated/
+    
+    holisticai.utils.pandas_to_numpy
+    holisticai.utils.numpy_to_groups
+    holisticai.utils.mat_to_binary
+    holisticai.utils.normalize_tensor
+    holisticai.utils.slice_arrays_by_quantile
+    holisticai.utils.categorical_to_distribution
+    holisticai.utils.recommender_formatter
+
+Plotting
+--------
+
+.. autosummary::
+    :toctree: generated/
+
+    holisticai.utils.get_colors
+    
+Recommender Efficacy Metrics
+----------------------------
+
+.. autosummary::
+    :toctree: generated/
+
+    holisticai.utils.avg_precision
+    holisticai.utils.avg_recall
+    holisticai.utils.avg_f1
+    holisticai.utils.recommender_rmse
+    holisticai.utils.recommender_mae
+
+Validation
+----------
+.. autosummary::
+    :toctree: generated/
+
+    holisticai.utils.check_classification_inputs
+    holisticai.utils.check_regression_inputs
+    holisticai.utils.check_clustering_inputs
+    holisticai.utils.check_multiclass_inputs
+    holisticai.utils.check_recommender_inputs
