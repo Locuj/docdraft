@@ -1,7 +1,7 @@
 Bias
 ====
 
-holistic.bias is a python module meant to help in auditing the bias in algorithms. There are metrics for _classification_, _regression_, _clustering_, _recommender_ and _multiclass_ models as well as plotting functions.
+holistic.bias is a python module meant to help in auditing *bias* in algorithms. There are metrics for *classification*, *regression*, *clustering*, *recommender* and *multiclass* models as well as plotting functions.
 
 Classification
 --------------
