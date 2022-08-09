@@ -18,8 +18,6 @@
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -43,7 +41,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../bias.html">Bias</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../bias.html#classification">Classification</a></li>
@@ -60,7 +58,6 @@
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.statistical_parity_auc.html">holisticai.bias.metrics.statistical_parity_auc</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.weighed_statistical_parity_auc.html">holisticai.bias.metrics.weighed_statistical_parity_auc</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.max_statistical_parity.html">holisticai.bias.metrics.max_statistical_parity</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.correlation_diffQ.html">holisticai.bias.metrics.correlation_diffQ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.rmse_ratio.html">holisticai.bias.metrics.rmse_ratio</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.mae_ratio.html">holisticai.bias.metrics.mae_ratio</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.correlation_diffQ80.html">holisticai.bias.metrics.correlation_diffQ80</a></li>
@@ -72,12 +69,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../bias.html#recommender">Recommender</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../bias.html#clustering">Clustering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../bias.html#multiclass">Multiclass</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bias.html#plotting">Plotting</a></li>
 </ul>
 </li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Examples:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../measuring_bias_examples.html">Measuring Bias Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">Utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datasets.html">Datasets</a></li>
 </ul>
 
         </div>
@@ -133,7 +129,7 @@
 <h1>holisticai.bias.metrics.avg_score_diff<a class="headerlink" href="#holisticai-bias-metrics-avg-score-diff" title="Permalink to this heading"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="holisticai.bias.metrics.avg_score_diff">
-<span class="sig-prename descclassname"><span class="pre">holisticai.bias.metrics.</span></span><span class="sig-name descname"><span class="pre">avg_score_diff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.metrics.avg_score_diff" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">holisticai.bias.metrics.</span></span><span class="sig-name descname"><span class="pre">avg_score_diff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.metrics.avg_score_diff" title="Permalink to this definition"></a></dt>
 <dd><p>Average Score Difference.</p>
 <p class="rubric">Description</p>
 <p>This function computes the difference in average scores between
@@ -149,10 +145,11 @@ Scale is relative to task.</p>
 <li><p><strong>group_a</strong> (<em>numpy array</em>) – Group membership vector (binary)</p></li>
 <li><p><strong>group_b</strong> (<em>numpy array</em>) – Group membership vector (binary)</p></li>
 <li><p><strong>y_pred</strong> (<em>numpy array</em>) – Predictions vector (regression)</p></li>
+<li><p><strong>(</strong><strong>optional</strong><strong>)</strong> (<em>q</em>) – quantile of predictions considered</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Average Score Spread : <span class="math notranslate nohighlight">\(\texttt{AVgroup_a - AVgroup_b}\)</span></p>
+<dd class="field-even"><p>Average Score Spread : :math:`  exttt{AVgroup_a - AVgroup_b}`</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>float</p>

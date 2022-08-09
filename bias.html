@@ -22,7 +22,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="holisticai.bias.metrics.statistical_parity" href="generated/holisticai.bias.metrics.statistical_parity.html" />
-    <link rel="prev" title="Holistic AI Metrics Library" href="index.html" /> 
+    <link rel="prev" title="Holistic AI Library" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -41,7 +41,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Bias</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#classification">Classification</a><ul>
@@ -69,7 +69,6 @@
 <li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.metrics.statistical_parity_auc.html">holisticai.bias.metrics.statistical_parity_auc</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.metrics.weighed_statistical_parity_auc.html">holisticai.bias.metrics.weighed_statistical_parity_auc</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.metrics.max_statistical_parity.html">holisticai.bias.metrics.max_statistical_parity</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.metrics.correlation_diffQ.html">holisticai.bias.metrics.correlation_diffQ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.metrics.rmse_ratio.html">holisticai.bias.metrics.rmse_ratio</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.metrics.mae_ratio.html">holisticai.bias.metrics.mae_ratio</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.metrics.correlation_diffQ80.html">holisticai.bias.metrics.correlation_diffQ80</a></li>
@@ -84,12 +83,9 @@
 <li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.metrics.mad_score.html">holisticai.bias.metrics.mad_score</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.metrics.exposure_l1.html">holisticai.bias.metrics.exposure_l1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.metrics.exposure_kl.html">holisticai.bias.metrics.exposure_kl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.metrics.avg_accuracy_ratio.html">holisticai.bias.metrics.avg_accuracy_ratio</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.metrics.avg_precision_ratio.html">holisticai.bias.metrics.avg_precision_ratio</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.metrics.avg_recall_ratio.html">holisticai.bias.metrics.avg_recall_ratio</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.metrics.avg_f1_ratio.html">holisticai.bias.metrics.avg_f1_ratio</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.metrics.avg_rmse_ratio.html">holisticai.bias.metrics.avg_rmse_ratio</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.metrics.avg_mae_ratio.html">holisticai.bias.metrics.avg_mae_ratio</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.metrics.recommender_bias_metrics.html">holisticai.bias.metrics.recommender_bias_metrics</a></li>
 </ul>
 </li>
@@ -120,12 +116,30 @@
 <li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.metrics.multiclass_bias_metrics.html">holisticai.bias.metrics.multiclass_bias_metrics</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#plotting">Plotting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.plots.abroca_plot.html">holisticai.bias.plots.abroca_plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.plots.pca_scatter_plot.html">holisticai.bias.plots.pca_scatter_plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.plots.plot_group_pie.html">holisticai.bias.plots.plot_group_pie</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.plots.group_comparison_matrices.html">holisticai.bias.plots.group_comparison_matrices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.plots.success_rate_plot.html">holisticai.bias.plots.success_rate_plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.plots.statistical_parity_plot.html">holisticai.bias.plots.statistical_parity_plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.plots.disparate_impact_plot.html">holisticai.bias.plots.disparate_impact_plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.plots.success_rate_matrix_plot.html">holisticai.bias.plots.success_rate_matrix_plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.plots.accuracy_bar_plot.html">holisticai.bias.plots.accuracy_bar_plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.plots.long_tail_plot.html">holisticai.bias.plots.long_tail_plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.plots.exposure_diff_plot.html">holisticai.bias.plots.exposure_diff_plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.plots.success_rate_curve.html">holisticai.bias.plots.success_rate_curve</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.plots.statistical_parity_curve.html">holisticai.bias.plots.statistical_parity_curve</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.plots.disparate_impact_curve.html">holisticai.bias.plots.disparate_impact_curve</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.plots.success_rate_curves.html">holisticai.bias.plots.success_rate_curves</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.plots.rmse_bar_plot.html">holisticai.bias.plots.rmse_bar_plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.bias.plots.mae_bar_plot.html">holisticai.bias.plots.mae_bar_plot</a></li>
 </ul>
 </li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Examples:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="measuring_bias_examples.html">Measuring Bias Examples</a></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
 </ul>
 
         </div>
@@ -178,7 +192,7 @@
 </style>
 <section id="bias">
 <h1>Bias<a class="headerlink" href="#bias" title="Permalink to this heading"></a></h1>
-<p>holistic.bias is a python module meant to help in auditing the bias in algorithms.</p>
+<p>holistic.bias is a python module meant to help in auditing the bias in algorithms. There are metrics for _classification_, _regression_, _clustering_, _recommender_ and _multiclass_ models as well as plotting functions.</p>
 <section id="classification">
 <h2>Classification<a class="headerlink" href="#classification" title="Permalink to this heading"></a></h2>
 <table class="autosummary longtable docutils align-default">
@@ -261,25 +275,22 @@
 <tr class="row-even"><td><p><a class="reference internal" href="generated/holisticai.bias.metrics.max_statistical_parity.html#holisticai.bias.metrics.max_statistical_parity" title="holisticai.bias.metrics.max_statistical_parity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.metrics.max_statistical_parity</span></code></a>(...)</p></td>
 <td><p>Max absolute statistical parity.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/holisticai.bias.metrics.correlation_diffQ.html#holisticai.bias.metrics.correlation_diffQ" title="holisticai.bias.metrics.correlation_diffQ"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.metrics.correlation_diffQ</span></code></a>(...)</p></td>
-<td><p>Correlation difference (Regression version).</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/holisticai.bias.metrics.rmse_ratio.html#holisticai.bias.metrics.rmse_ratio" title="holisticai.bias.metrics.rmse_ratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.metrics.rmse_ratio</span></code></a>(group_a, ...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/holisticai.bias.metrics.rmse_ratio.html#holisticai.bias.metrics.rmse_ratio" title="holisticai.bias.metrics.rmse_ratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.metrics.rmse_ratio</span></code></a>(group_a, ...)</p></td>
 <td><p>RMSE ratio.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/holisticai.bias.metrics.mae_ratio.html#holisticai.bias.metrics.mae_ratio" title="holisticai.bias.metrics.mae_ratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.metrics.mae_ratio</span></code></a>(group_a, ...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/holisticai.bias.metrics.mae_ratio.html#holisticai.bias.metrics.mae_ratio" title="holisticai.bias.metrics.mae_ratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.metrics.mae_ratio</span></code></a>(group_a, ...)</p></td>
 <td><p>MAE ratio</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/holisticai.bias.metrics.correlation_diffQ80.html#holisticai.bias.metrics.correlation_diffQ80" title="holisticai.bias.metrics.correlation_diffQ80"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.metrics.correlation_diffQ80</span></code></a>(...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/holisticai.bias.metrics.correlation_diffQ80.html#holisticai.bias.metrics.correlation_diffQ80" title="holisticai.bias.metrics.correlation_diffQ80"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.metrics.correlation_diffQ80</span></code></a>(...)</p></td>
 <td><p>Correlation difference (top 20%).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/holisticai.bias.metrics.rmse_ratioQ80.html#holisticai.bias.metrics.rmse_ratioQ80" title="holisticai.bias.metrics.rmse_ratioQ80"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.metrics.rmse_ratioQ80</span></code></a>(...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/holisticai.bias.metrics.rmse_ratioQ80.html#holisticai.bias.metrics.rmse_ratioQ80" title="holisticai.bias.metrics.rmse_ratioQ80"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.metrics.rmse_ratioQ80</span></code></a>(...)</p></td>
 <td><p>RMSE ratio (Top 20%).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/holisticai.bias.metrics.mae_ratioQ80.html#holisticai.bias.metrics.mae_ratioQ80" title="holisticai.bias.metrics.mae_ratioQ80"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.metrics.mae_ratioQ80</span></code></a>(...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/holisticai.bias.metrics.mae_ratioQ80.html#holisticai.bias.metrics.mae_ratioQ80" title="holisticai.bias.metrics.mae_ratioQ80"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.metrics.mae_ratioQ80</span></code></a>(...)</p></td>
 <td><p>MAE ratio (Top 20%).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/holisticai.bias.metrics.regression_bias_metrics.html#holisticai.bias.metrics.regression_bias_metrics" title="holisticai.bias.metrics.regression_bias_metrics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.metrics.regression_bias_metrics</span></code></a>(...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/holisticai.bias.metrics.regression_bias_metrics.html#holisticai.bias.metrics.regression_bias_metrics" title="holisticai.bias.metrics.regression_bias_metrics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.metrics.regression_bias_metrics</span></code></a>(...)</p></td>
 <td><p>Regression bias metrics batch computation</p></td>
 </tr>
 </tbody>
@@ -308,25 +319,16 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/holisticai.bias.metrics.exposure_kl.html#holisticai.bias.metrics.exposure_kl" title="holisticai.bias.metrics.exposure_kl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.metrics.exposure_kl</span></code></a>(group_a, ...)</p></td>
 <td><p>Exposure KL Divergence.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/holisticai.bias.metrics.avg_accuracy_ratio.html#holisticai.bias.metrics.avg_accuracy_ratio" title="holisticai.bias.metrics.avg_accuracy_ratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.metrics.avg_accuracy_ratio</span></code></a>(...)</p></td>
-<td><p>Average accuracy ratio</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/holisticai.bias.metrics.avg_precision_ratio.html#holisticai.bias.metrics.avg_precision_ratio" title="holisticai.bias.metrics.avg_precision_ratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.metrics.avg_precision_ratio</span></code></a>(...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/holisticai.bias.metrics.avg_precision_ratio.html#holisticai.bias.metrics.avg_precision_ratio" title="holisticai.bias.metrics.avg_precision_ratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.metrics.avg_precision_ratio</span></code></a>(...)</p></td>
 <td><p>Average precision ratio</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/holisticai.bias.metrics.avg_recall_ratio.html#holisticai.bias.metrics.avg_recall_ratio" title="holisticai.bias.metrics.avg_recall_ratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.metrics.avg_recall_ratio</span></code></a>(...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/holisticai.bias.metrics.avg_recall_ratio.html#holisticai.bias.metrics.avg_recall_ratio" title="holisticai.bias.metrics.avg_recall_ratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.metrics.avg_recall_ratio</span></code></a>(...)</p></td>
 <td><p>Average recall ratio</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/holisticai.bias.metrics.avg_f1_ratio.html#holisticai.bias.metrics.avg_f1_ratio" title="holisticai.bias.metrics.avg_f1_ratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.metrics.avg_f1_ratio</span></code></a>(...[, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/holisticai.bias.metrics.avg_f1_ratio.html#holisticai.bias.metrics.avg_f1_ratio" title="holisticai.bias.metrics.avg_f1_ratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.metrics.avg_f1_ratio</span></code></a>(...[, ...])</p></td>
 <td><p>Average f1 ratio</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/holisticai.bias.metrics.avg_rmse_ratio.html#holisticai.bias.metrics.avg_rmse_ratio" title="holisticai.bias.metrics.avg_rmse_ratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.metrics.avg_rmse_ratio</span></code></a>(...)</p></td>
-<td><p>Average RMSE ratio.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/holisticai.bias.metrics.avg_mae_ratio.html#holisticai.bias.metrics.avg_mae_ratio" title="holisticai.bias.metrics.avg_mae_ratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.metrics.avg_mae_ratio</span></code></a>(...[, ...])</p></td>
-<td><p>Average MAE ratio.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/holisticai.bias.metrics.recommender_bias_metrics.html#holisticai.bias.metrics.recommender_bias_metrics" title="holisticai.bias.metrics.recommender_bias_metrics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.metrics.recommender_bias_metrics</span></code></a>(...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/holisticai.bias.metrics.recommender_bias_metrics.html#holisticai.bias.metrics.recommender_bias_metrics" title="holisticai.bias.metrics.recommender_bias_metrics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.metrics.recommender_bias_metrics</span></code></a>(...)</p></td>
 <td><p>Recommender bias metrics batch computation.</p></td>
 </tr>
 </tbody>
@@ -417,13 +419,75 @@
 </tbody>
 </table>
 </section>
+<section id="plotting">
+<h2>Plotting<a class="headerlink" href="#plotting" title="Permalink to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/holisticai.bias.plots.abroca_plot.html#holisticai.bias.plots.abroca_plot" title="holisticai.bias.plots.abroca_plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.plots.abroca_plot</span></code></a>(group_a, ...)</p></td>
+<td><p>ABROCA plot</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/holisticai.bias.plots.pca_scatter_plot.html#holisticai.bias.plots.pca_scatter_plot" title="holisticai.bias.plots.pca_scatter_plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.plots.pca_scatter_plot</span></code></a>(data, ...)</p></td>
+<td><p>Cluster PCA Scatter Plot</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/holisticai.bias.plots.plot_group_pie.html#holisticai.bias.plots.plot_group_pie" title="holisticai.bias.plots.plot_group_pie"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.plots.plot_group_pie</span></code></a>(X[, title])</p></td>
+<td><p>Plot a pie chart showing proportions of groups in a feature.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/holisticai.bias.plots.group_comparison_matrices.html#holisticai.bias.plots.group_comparison_matrices" title="holisticai.bias.plots.group_comparison_matrices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.plots.group_comparison_matrices</span></code></a>(...)</p></td>
+<td><p>Group confusion matrices comparison.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/holisticai.bias.plots.success_rate_plot.html#holisticai.bias.plots.success_rate_plot" title="holisticai.bias.plots.success_rate_plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.plots.success_rate_plot</span></code></a>(...)</p></td>
+<td><p>Success rate plot (Binary Classification).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/holisticai.bias.plots.statistical_parity_plot.html#holisticai.bias.plots.statistical_parity_plot" title="holisticai.bias.plots.statistical_parity_plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.plots.statistical_parity_plot</span></code></a>(...)</p></td>
+<td><p>Statistical Parity Plot (Binary Classification).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/holisticai.bias.plots.disparate_impact_plot.html#holisticai.bias.plots.disparate_impact_plot" title="holisticai.bias.plots.disparate_impact_plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.plots.disparate_impact_plot</span></code></a>(...)</p></td>
+<td><p>Disparate Impact Plot (Binary Classification).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/holisticai.bias.plots.success_rate_matrix_plot.html#holisticai.bias.plots.success_rate_matrix_plot" title="holisticai.bias.plots.success_rate_matrix_plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.plots.success_rate_matrix_plot</span></code></a>(...)</p></td>
+<td><p>Success Rate Matrix Plot.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/holisticai.bias.plots.accuracy_bar_plot.html#holisticai.bias.plots.accuracy_bar_plot" title="holisticai.bias.plots.accuracy_bar_plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.plots.accuracy_bar_plot</span></code></a>(...)</p></td>
+<td><p>Accuracy Bar Plot.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/holisticai.bias.plots.long_tail_plot.html#holisticai.bias.plots.long_tail_plot" title="holisticai.bias.plots.long_tail_plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.plots.long_tail_plot</span></code></a>(mat_pred)</p></td>
+<td><p>Long Tail Plot.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/holisticai.bias.plots.exposure_diff_plot.html#holisticai.bias.plots.exposure_diff_plot" title="holisticai.bias.plots.exposure_diff_plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.plots.exposure_diff_plot</span></code></a>(...)</p></td>
+<td><p>Exposure Difference plot.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/holisticai.bias.plots.success_rate_curve.html#holisticai.bias.plots.success_rate_curve" title="holisticai.bias.plots.success_rate_curve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.plots.success_rate_curve</span></code></a>(...)</p></td>
+<td><p>Success rates curve.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/holisticai.bias.plots.statistical_parity_curve.html#holisticai.bias.plots.statistical_parity_curve" title="holisticai.bias.plots.statistical_parity_curve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.plots.statistical_parity_curve</span></code></a>(...)</p></td>
+<td><p>Statistical Parity Curve</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/holisticai.bias.plots.disparate_impact_curve.html#holisticai.bias.plots.disparate_impact_curve" title="holisticai.bias.plots.disparate_impact_curve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.plots.disparate_impact_curve</span></code></a>(...)</p></td>
+<td><p>Disparate Impact curve</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/holisticai.bias.plots.success_rate_curves.html#holisticai.bias.plots.success_rate_curves" title="holisticai.bias.plots.success_rate_curves"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.plots.success_rate_curves</span></code></a>(...)</p></td>
+<td><p>Success Rate Curve</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/holisticai.bias.plots.rmse_bar_plot.html#holisticai.bias.plots.rmse_bar_plot" title="holisticai.bias.plots.rmse_bar_plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.plots.rmse_bar_plot</span></code></a>(p_attr, ...)</p></td>
+<td><p>RMSE Bar Plot</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/holisticai.bias.plots.mae_bar_plot.html#holisticai.bias.plots.mae_bar_plot" title="holisticai.bias.plots.mae_bar_plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.bias.plots.mae_bar_plot</span></code></a>(p_attr, ...)</p></td>
+<td><p>MAE Bar Plot</p></td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="Holistic AI Metrics Library" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Holistic AI Library" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="generated/holisticai.bias.metrics.statistical_parity.html" class="btn btn-neutral float-right" title="holisticai.bias.metrics.statistical_parity" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

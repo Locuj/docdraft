@@ -1,7 +1,7 @@
 Bias
 ====
 
-holistic.bias is a python module meant to help in auditing the bias in algorithms.
+holistic.bias is a python module meant to help in auditing the bias in algorithms. There are metrics for _classification_, _regression_, _clustering_, _recommender_ and _multiclass_ models as well as plotting functions.
 
 Classification
 --------------
@@ -51,10 +51,8 @@ Recommender
 .. autosummary::
     :toctree: generated/
 
-    holisticai.bias.metrics.agg_div
     holisticai.bias.metrics.gini_index
     holisticai.bias.metrics.exposure_entropy
-    holisticai.bias.metrics.avg_rec_popularity
     holisticai.bias.metrics.mad_score
     holisticai.bias.metrics.exposure_l1
     holisticai.bias.metrics.exposure_kl
@@ -98,3 +96,30 @@ Multiclass
     holisticai.bias.metrics.multiclass_true_rates
     holisticai.bias.metrics.multiclass_statistical_parity
     holisticai.bias.metrics.multiclass_bias_metrics
+
+Plotting
+--------
+
+.. autosummary::
+    :toctree: generated/
+
+    holisticai.bias.plots.abroca_plot
+    holisticai.bias.plots.pca_scatter_plot
+    holisticai.bias.plots.plot_group_pie
+    holisticai.bias.plots.group_comparison_matrices
+    holisticai.bias.plots.success_rate_plot
+    holisticai.bias.plots.statistical_parity_plot
+    holisticai.bias.plots.disparate_impact_plot
+    holisticai.bias.plots.success_rate_matrix_plot
+    holisticai.bias.plots.accuracy_bar_plot
+    holisticai.bias.plots.long_tail_plot
+    holisticai.bias.plots.exposure_diff_plot
+    holisticai.bias.plots.success_rate_curve
+    holisticai.bias.plots.statistical_parity_curve
+    holisticai.bias.plots.disparate_impact_curve
+    holisticai.bias.plots.success_rate_curves
+    holisticai.bias.plots.rmse_bar_plot
+    holisticai.bias.plots.mae_bar_plot
+  
+
+

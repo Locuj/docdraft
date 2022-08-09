@@ -21,7 +21,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Measuring Bias Examples" href="../measuring_bias_examples.html" />
+    <link rel="next" title="holisticai.bias.plots.abroca_plot" href="holisticai.bias.plots.abroca_plot.html" />
     <link rel="prev" title="holisticai.bias.metrics.multiclass_statistical_parity" href="holisticai.bias.metrics.multiclass_statistical_parity.html" /> 
 </head>
 
@@ -41,7 +41,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../bias.html">Bias</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../bias.html#classification">Classification</a></li>
@@ -62,12 +62,11 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">holisticai.bias.metrics.multiclass_bias_metrics</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../bias.html#plotting">Plotting</a></li>
 </ul>
 </li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Examples:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../measuring_bias_examples.html">Measuring Bias Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">Utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datasets.html">Datasets</a></li>
 </ul>
 
         </div>
@@ -123,7 +122,7 @@
 <h1>holisticai.bias.metrics.multiclass_bias_metrics<a class="headerlink" href="#holisticai-bias-metrics-multiclass-bias-metrics" title="Permalink to this heading"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="holisticai.bias.metrics.multiclass_bias_metrics">
-<span class="sig-prename descclassname"><span class="pre">holisticai.bias.metrics.</span></span><span class="sig-name descname"><span class="pre">multiclass_bias_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_attr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.metrics.multiclass_bias_metrics" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">holisticai.bias.metrics.</span></span><span class="sig-name descname"><span class="pre">multiclass_bias_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_attr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'both'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.metrics.multiclass_bias_metrics" title="Permalink to this definition"></a></dt>
 <dd><p>Multiclass bias metrics batch computation.</p>
 <p class="rubric">Description</p>
 <p>This function computes all the relevant multiclass bias metrics,
@@ -135,6 +134,7 @@ and displays them as a pandas dataframe.</p>
 <li><p><strong>g_maj</strong> (<em>numpy array</em>) – Majority class vector</p></li>
 <li><p><strong>y_pred</strong> (<em>numpy array</em>) – Regression predictions vector</p></li>
 <li><p><strong>(</strong><strong>optional</strong><strong>)</strong> (<em>y_true</em>) – Regression target vector</p></li>
+<li><p><strong>metric_type</strong> (<em>'both'</em><em>, </em><em>'equal_outcome'</em><em> or </em><em>'equal_opportunity'</em>) – Specifies which metrics we compute</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -153,7 +153,7 @@ and displays them as a pandas dataframe.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="holisticai.bias.metrics.multiclass_statistical_parity.html" class="btn btn-neutral float-left" title="holisticai.bias.metrics.multiclass_statistical_parity" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../measuring_bias_examples.html" class="btn btn-neutral float-right" title="Measuring Bias Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="holisticai.bias.plots.abroca_plot.html" class="btn btn-neutral float-right" title="holisticai.bias.plots.abroca_plot" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

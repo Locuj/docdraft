@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Holistic AI Metrics Library &mdash; Holistic  documentation</title>
+  <title>Holistic AI Library &mdash; Holistic  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/custom_style.css" type="text/css" />
@@ -40,13 +40,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="bias.html">Bias</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Examples:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="measuring_bias_examples.html">Measuring Bias Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
 </ul>
 
         </div>
@@ -63,7 +61,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="#" class="icon icon-home"></a> &raquo;</li>
-      <li>Holistic AI Metrics Library</li>
+      <li>Holistic AI Library</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -97,35 +95,29 @@
     text-align: unset;
 }
 </style>
-<section id="holistic-ai-metrics-library">
-<h1>Holistic AI Metrics Library<a class="headerlink" href="#holistic-ai-metrics-library" title="Permalink to this heading"></a></h1>
-<p>We have set out to produce a library of metrics for auditing AI and algorithms. To do so we focus on 5 different verticals that help us in assessing AI risk - that is Bias, Efficacy, Explainability, Privacy and Robustness. For each vertical we have a set of metrics as well as classes to help compute and display these metrics in a simple and seamless way.</p>
+<section id="holistic-ai-library">
+<h1>Holistic AI Library<a class="headerlink" href="#holistic-ai-library" title="Permalink to this heading"></a></h1>
+<p>This is the holisticai library. This library includes functions for assesing AI risk. Currently we include metrics and plotting functions specifically for bias. Tools for assessing efficacy, Explainability, Privacy and Robustness will be added soon. For each of these ares we have a set of metrics as well as classes to help compute and display these metrics in a simple and seamless way.</p>
 <section id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">holistic</span></code></p>
+<p>You can test the library by installing with <cite>pip</cite> on Mac/Linux:</p>
+<p><code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--index-url</span> <span class="pre">https://test.pypi.org/simple/</span> <span class="pre">--extra-index-url</span> <span class="pre">https://pypi.org/simple/</span> <span class="pre">holisticai</span></code></p>
+<p>or on windows:</p>
+<p><code class="docutils literal notranslate"><span class="pre">py</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--index-url</span> <span class="pre">https://test.pypi.org/simple/</span> <span class="pre">--extra-index-url</span> <span class="pre">https://pypi.org/simple/</span> <span class="pre">holisticai</span></code></p>
+<p>Coming soon: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">holistic</span></code></p>
 <div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="bias.html">Bias</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="bias.html#classification">Classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bias.html#regression">Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bias.html#recommender">Recommender</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bias.html#clustering">Clustering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bias.html#multiclass">Multiclass</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="bias.html">Bias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
 </ul>
 </div>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Examples:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="measuring_bias_examples.html">Measuring Bias Examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="measuring_bias_examples.html#general-bias-metrics-examples">General bias metrics examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="measuring_bias_examples.html#bias-plot-examples">Bias Plot Examples</a></li>
-</ul>
-</li>
-</ul>
-</div>
+<p>Will this text go in a nice place?</p>
+</section>
+<section id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this heading"></a></h2>
+<p>Coming soon!</p>
 </section>
 </section>
 

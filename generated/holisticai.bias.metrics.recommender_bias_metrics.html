@@ -22,7 +22,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="holisticai.bias.metrics.cluster_balance" href="holisticai.bias.metrics.cluster_balance.html" />
-    <link rel="prev" title="holisticai.bias.metrics.avg_mae_ratio" href="holisticai.bias.metrics.avg_mae_ratio.html" /> 
+    <link rel="prev" title="holisticai.bias.metrics.avg_f1_ratio" href="holisticai.bias.metrics.avg_f1_ratio.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -41,7 +41,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../bias.html">Bias</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../bias.html#classification">Classification</a></li>
@@ -52,23 +52,19 @@
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.mad_score.html">holisticai.bias.metrics.mad_score</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.exposure_l1.html">holisticai.bias.metrics.exposure_l1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.exposure_kl.html">holisticai.bias.metrics.exposure_kl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.avg_accuracy_ratio.html">holisticai.bias.metrics.avg_accuracy_ratio</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.avg_precision_ratio.html">holisticai.bias.metrics.avg_precision_ratio</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.avg_recall_ratio.html">holisticai.bias.metrics.avg_recall_ratio</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.avg_f1_ratio.html">holisticai.bias.metrics.avg_f1_ratio</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.avg_rmse_ratio.html">holisticai.bias.metrics.avg_rmse_ratio</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.avg_mae_ratio.html">holisticai.bias.metrics.avg_mae_ratio</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">holisticai.bias.metrics.recommender_bias_metrics</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../bias.html#clustering">Clustering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../bias.html#multiclass">Multiclass</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bias.html#plotting">Plotting</a></li>
 </ul>
 </li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Examples:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../measuring_bias_examples.html">Measuring Bias Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">Utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datasets.html">Datasets</a></li>
 </ul>
 
         </div>
@@ -124,7 +120,7 @@
 <h1>holisticai.bias.metrics.recommender_bias_metrics<a class="headerlink" href="#holisticai-bias-metrics-recommender-bias-metrics" title="Permalink to this heading"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="holisticai.bias.metrics.recommender_bias_metrics">
-<span class="sig-prename descclassname"><span class="pre">holisticai.bias.metrics.</span></span><span class="sig-name descname"><span class="pre">recommender_bias_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat_true</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.metrics.recommender_bias_metrics" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">holisticai.bias.metrics.</span></span><span class="sig-name descname"><span class="pre">recommender_bias_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mat_true</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.metrics.recommender_bias_metrics" title="Permalink to this definition"></a></dt>
 <dd><p>Recommender bias metrics batch computation.</p>
 <p class="rubric">Description</p>
 <p>This function computes all the relevant recommender bias metrics,
@@ -138,9 +134,11 @@ and displays them as a pandas dataframe.</p>
 score (binary or soft pred) for each user,item pair.</p></li>
 <li><p><strong>mat_true</strong> (<em>numpy ndarray</em>) – Matrix with shape (num_users, num_items). A target score
 (binary or soft pred) for each user,item pair.</p></li>
-<li><p><strong>(</strong><strong>optional</strong><strong>)</strong> (<em>thresh</em>) – If not None, the number of items that are shown to each user.</p></li>
+<li><p><strong>(</strong><strong>optional</strong><strong>)</strong> (<em>normalize</em>) – If not None, the number of items that are shown to each user.</p></li>
 <li><p><strong>(</strong><strong>optional</strong><strong>)</strong> – Threshold in (0,1) range indicating value at which
 a given item is shown to user (if top is None).</p></li>
+<li><p><strong>(</strong><strong>optional</strong><strong>)</strong> – If True, normalises the data matrix to [0,1] range.</p></li>
+<li><p><strong>metric_type</strong> (<em>'all'</em><em>, </em><em>'item_based'</em><em>, </em><em>'equal_outcome'</em><em> or </em><em>'equal_opportunity'</em>) – Specifies which metrics we compute</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -158,7 +156,7 @@ a given item is shown to user (if top is None).</p></li>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="holisticai.bias.metrics.avg_mae_ratio.html" class="btn btn-neutral float-left" title="holisticai.bias.metrics.avg_mae_ratio" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="holisticai.bias.metrics.avg_f1_ratio.html" class="btn btn-neutral float-left" title="holisticai.bias.metrics.avg_f1_ratio" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="holisticai.bias.metrics.cluster_balance.html" class="btn btn-neutral float-right" title="holisticai.bias.metrics.cluster_balance" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

@@ -43,7 +43,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../bias.html">Bias</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../bias.html#classification">Classification</a></li>
@@ -54,23 +54,19 @@
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.mad_score.html">holisticai.bias.metrics.mad_score</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.exposure_l1.html">holisticai.bias.metrics.exposure_l1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.exposure_kl.html">holisticai.bias.metrics.exposure_kl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.avg_accuracy_ratio.html">holisticai.bias.metrics.avg_accuracy_ratio</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.avg_precision_ratio.html">holisticai.bias.metrics.avg_precision_ratio</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.avg_recall_ratio.html">holisticai.bias.metrics.avg_recall_ratio</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.avg_f1_ratio.html">holisticai.bias.metrics.avg_f1_ratio</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.avg_rmse_ratio.html">holisticai.bias.metrics.avg_rmse_ratio</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.avg_mae_ratio.html">holisticai.bias.metrics.avg_mae_ratio</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.recommender_bias_metrics.html">holisticai.bias.metrics.recommender_bias_metrics</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../bias.html#clustering">Clustering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../bias.html#multiclass">Multiclass</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bias.html#plotting">Plotting</a></li>
 </ul>
 </li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Examples:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../measuring_bias_examples.html">Measuring Bias Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">Utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datasets.html">Datasets</a></li>
 </ul>
 
         </div>
@@ -139,10 +135,10 @@ homogeneous distribution. Scale is relative to number of items.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mat_pred</strong> (<em>numpy ndarray</em>) – Matrix with shape (num_users, num_items). A recommender
 score (binary or soft pred) for each user,item pair.</p></li>
-<li><p><strong>(</strong><strong>optional</strong><strong>)</strong> (<em>thresh</em>) – If not None, the number of items that are shown to each user.</p></li>
+<li><p><strong>(</strong><strong>optional</strong><strong>)</strong> (<em>normalize</em>) – If not None, the number of items that are shown to each user.</p></li>
 <li><p><strong>(</strong><strong>optional</strong><strong>)</strong> – Threshold in (0,1) range indicating value at which
 a given item is shown to user (if top is None).</p></li>
-<li><p><strong>normalize</strong> (<em>bool</em>) – If True, normalises the data matrix to [0,1] range.</p></li>
+<li><p><strong>(</strong><strong>optional</strong><strong>)</strong> – If True, normalises the data matrix to [0,1] range.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
