@@ -19,14 +19,13 @@ Coming soon: ``pip install holisticai``
 
 
 .. toctree::
-    :maxdepth: 1
+    :maxdepth: 2
     :caption: Documentation
 
     bias
     utils
     datasets
     
-Will this text go in a nice place?
 
 Tutorials
 ---------
