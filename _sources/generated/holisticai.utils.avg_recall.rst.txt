@@ -1,0 +1,6 @@
+﻿holisticai.utils.avg\_recall
+============================
+
+.. currentmodule:: holisticai.utils
+
+.. autofunction:: avg_recall

@@ -1,0 +1,6 @@
+﻿holisticai.utils.avg\_f1
+========================
+
+.. currentmodule:: holisticai.utils
+
+.. autofunction:: avg_f1

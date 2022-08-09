@@ -1,0 +1,6 @@
+﻿holisticai.utils.check\_regression\_inputs
+==========================================
+
+.. currentmodule:: holisticai.utils
+
+.. autofunction:: check_regression_inputs

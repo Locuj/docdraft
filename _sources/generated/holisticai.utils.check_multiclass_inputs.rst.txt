@@ -1,0 +1,6 @@
+﻿holisticai.utils.check\_multiclass\_inputs
+==========================================
+
+.. currentmodule:: holisticai.utils
+
+.. autofunction:: check_multiclass_inputs

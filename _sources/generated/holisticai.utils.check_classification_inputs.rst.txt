@@ -1,0 +1,6 @@
+﻿holisticai.utils.check\_classification\_inputs
+==============================================
+
+.. currentmodule:: holisticai.utils
+
+.. autofunction:: check_classification_inputs
