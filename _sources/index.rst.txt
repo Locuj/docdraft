@@ -22,8 +22,8 @@ You can test the library by installing with `pip`:
     datasets
     
 
-Tutorials
----------
-
-Coming soon!
-
+.. toctree::
+    :maxdepth: 2
+    :caption: Tutorials:
+  
+    Classification Tutorial <classification_tutorial>

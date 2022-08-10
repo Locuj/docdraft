@@ -51,6 +51,7 @@ Recommender
 .. autosummary::
     :toctree: generated/
 
+    holisticai.bias.metrics.aggregate_diversity
     holisticai.bias.metrics.gini_index
     holisticai.bias.metrics.exposure_entropy
     holisticai.bias.metrics.mad_score
@@ -121,5 +122,3 @@ Plotting
     holisticai.bias.plots.rmse_bar_plot
     holisticai.bias.plots.mae_bar_plot
   
-
-

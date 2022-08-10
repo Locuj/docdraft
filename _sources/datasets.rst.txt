@@ -13,4 +13,3 @@ Data loaders
     holisticai.datasets.load_credit
     holisticai.datasets.load_student
     holisticai.datasets.load_lawschool
-
