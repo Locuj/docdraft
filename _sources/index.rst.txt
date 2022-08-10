@@ -7,16 +7,11 @@ This is the holisticai library. This library includes functions for assesing AI 
 Installation
 ------------
 
-You can test the library by installing with `pip` on Mac/Linux:
+You can test the library by installing with `pip`:
 
-``python3 -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ holisticai``
+.. code-block::
 
-or on windows:
-
-``py -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ holisticai``
-
-Coming soon: ``pip install holisticai``
-
+  pip3 install -i https://test.pypi.org/pypi/ --extra-index-url https://pypi.org/simple holisticai
 
 .. toctree::
     :maxdepth: 1
