@@ -2,7 +2,7 @@
 Holistic AI Library 
 ===================
 
-This is the holisticai library. This library includes functions for assesing AI risk. Currently we include metrics and plotting functions specifically for bias. Tools for assessing efficacy, Explainability, Privacy and Robustness will be added soon. For each of these ares we have a set of metrics as well as classes to help compute and display these metrics in a simple and seamless way.
+This is the holisticai library. This library includes functions for assessing AI risk. Currently we include metrics and plotting functions specifically for bias. Tools for assessing efficacy, Explainability, Privacy and Robustness will be added soon. For each of these ares we have a set of metrics as well as classes to help compute and display these metrics in a simple and seamless way.
 
 Installation
 ------------
