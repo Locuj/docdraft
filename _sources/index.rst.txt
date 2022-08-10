@@ -23,7 +23,7 @@ You can test the library by installing with `pip`:
     
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
     :caption: Tutorials:
   
-    Classification Tutorial <classification_tutorial>
+    Classification <tutorials/tutorial_classification>
