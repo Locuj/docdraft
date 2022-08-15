@@ -1,7 +1,7 @@
 Utils
 =====
 
-holistic.utils is a python module which contains utility functions for plotting, formatting, efficacy and validation.
+`holisticai.utils` is a python module which contains utility functions for plotting, formatting, efficacy and validation.
 
 Formatting
 ----------

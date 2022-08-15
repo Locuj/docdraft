@@ -65,9 +65,11 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../datasets.html">Datasets</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Tutorials:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorial_classification.html">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/measuring_bias_classification.html">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/measuring_bias_recommender.html">Recommender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/measuring_bias_regression.html">Regression</a></li>
 </ul>
 
         </div>
@@ -123,7 +125,7 @@
 <h1>holisticai.utils.recommender_formatter<a class="headerlink" href="#holisticai-utils-recommender-formatter" title="Permalink to this heading"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="holisticai.utils.recommender_formatter">
-<span class="sig-prename descclassname"><span class="pre">holisticai.utils.</span></span><span class="sig-name descname"><span class="pre">recommender_formatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">users_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">items_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scores_col</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.utils.recommender_formatter" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">holisticai.utils.</span></span><span class="sig-name descname"><span class="pre">recommender_formatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">users_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">items_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scores_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggfunc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sum'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.utils.recommender_formatter" title="Permalink to this definition"></a></dt>
 <dd><p>Recommender formatter</p>
 <p class="rubric">Description</p>
 <p>Coerce pandas dataframe to format we use for recommender
@@ -137,10 +139,11 @@ bias metrics: matrix of scores with shape (num_users, num_items).</p>
 <li><p><strong>items_col</strong> (<em>str</em>) – The name of the column with item id’s</p></li>
 <li><p><strong>scores_col</strong> (<em>str</em>) – The name of the column with score
 (predicted or true) of user on given item</p></li>
+<li><p><strong>aggfunc</strong> (<em>'sum'</em><em> or </em><em>'mean'</em>) – the aggregation function for duplicate index, column pairs</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>unique_users, unique_items, p_attr, mat_scores</p>
+<dd class="field-even"><p>df_pivot, p_attr</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>list of numpy ndarray</p>

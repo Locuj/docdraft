@@ -1,7 +1,7 @@
 Datasets
 ========
 
-holistic.datasets is a python module which contains loading functions for loading some useful datasets.
+`holisticai.datasets` is a python module which contains loading functions for loading some useful datasets.
 
 Data loaders
 ------------

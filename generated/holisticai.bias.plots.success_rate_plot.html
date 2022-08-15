@@ -55,7 +55,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../bias.html#plotting">Plotting</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.abroca_plot.html">holisticai.bias.plots.abroca_plot</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.pca_scatter_plot.html">holisticai.bias.plots.pca_scatter_plot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.plot_group_pie.html">holisticai.bias.plots.plot_group_pie</a></li>
+<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.group_pie_plot.html">holisticai.bias.plots.group_pie_plot</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.group_comparison_matrices.html">holisticai.bias.plots.group_comparison_matrices</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">holisticai.bias.plots.success_rate_plot</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.statistical_parity_plot.html">holisticai.bias.plots.statistical_parity_plot</a></li>
@@ -77,9 +77,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../utils.html">Utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../datasets.html">Datasets</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Tutorials:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/tutorial_classification.html">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/measuring_bias_classification.html">Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/measuring_bias_recommender.html">Recommender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/measuring_bias_regression.html">Regression</a></li>
 </ul>
 
         </div>
@@ -143,7 +145,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>p_attr</strong> (<em>numpy array</em>) – Protected attribute vector</p></li>
-<li><p><strong>y_pred</strong> (<em>numpy array</em>) – Prediction vector (binary)</p></li>
+<li><p><strong>y_pred</strong> (<em>numpy array</em>) – Prediction vector</p></li>
 <li><p><strong>(</strong><strong>optional</strong><strong>)</strong> (<em>groups</em>) – The groups we are considering</p></li>
 </ul>
 </dd>

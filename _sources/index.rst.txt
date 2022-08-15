@@ -20,10 +20,11 @@ You can test the library by installing with `pip`:
     bias
     utils
     datasets
-    
 
 .. toctree::
     :maxdepth: 1
-    :caption: Tutorials:
+    :caption: Tutorials
   
-    Classification <tutorials/tutorial_classification>
+    Classification <tutorials/measuring_bias_classification>
+    Recommender <tutorials/measuring_bias_recommender>
+    Regression <tutorials/measuring_bias_regression>
