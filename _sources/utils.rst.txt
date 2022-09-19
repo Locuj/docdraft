@@ -9,12 +9,10 @@ Formatting
 .. autosummary::
     :toctree: generated/
     
-    holisticai.utils.pandas_to_numpy
-    holisticai.utils.numpy_to_groups
+    holisticai.utils.extract_columns
+    holisticai.utils.extract_group_vectors
     holisticai.utils.mat_to_binary
     holisticai.utils.normalize_tensor
-    holisticai.utils.slice_arrays_by_quantile
-    holisticai.utils.categorical_to_distribution
     holisticai.utils.recommender_formatter
 
 Plotting

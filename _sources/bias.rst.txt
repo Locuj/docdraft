@@ -1,5 +1,3 @@
-.. currentmodule:: holisticai
-
 Bias
 ====
 
@@ -11,18 +9,22 @@ Metrics
 Classification
 ~~~~~~~~~~~~~~
 
+
 .. autosummary::
     :toctree: generated/
-    
-    holisticai.bias.metrics.statistical_parity
-    holisticai.bias.metrics.disparate_impact
-    holisticai.bias.metrics.four_fifths
-    holisticai.bias.metrics.cohen_d
-    holisticai.bias.metrics.correlation_diff
-    holisticai.bias.metrics.equal_opportunity_diff
-    holisticai.bias.metrics.false_positive_diff
+
+    holisticai.bias.metrics.abroca
+    holisticai.bias.metrics.accuracy_diff
     holisticai.bias.metrics.average_odds_diff
     holisticai.bias.metrics.classification_bias_metrics
+    holisticai.bias.metrics.cohen_d
+    holisticai.bias.metrics.disparate_impact
+    holisticai.bias.metrics.equal_opportunity_diff
+    holisticai.bias.metrics.false_negative_rate_diff
+    holisticai.bias.metrics.false_positive_rate_diff
+    holisticai.bias.metrics.four_fifths
+    holisticai.bias.metrics.statistical_parity
+    holisticai.bias.metrics.true_negative_rate_diff
 
 Regression
 ~~~~~~~~~~
@@ -30,25 +32,18 @@ Regression
 .. autosummary::
     :toctree: generated/
 
-    holisticai.bias.metrics.disparate_impactQ
-    holisticai.bias.metrics.disparate_impactQ90
-    holisticai.bias.metrics.disparate_impactQ80
-    holisticai.bias.metrics.disparate_impactQ50
-    holisticai.bias.metrics.no_disparate_impact_level
     holisticai.bias.metrics.avg_score_diff
-    holisticai.bias.metrics.avg_score_diffQ80
-    holisticai.bias.metrics.zscore_diff
-    holisticai.bias.metrics.zscore_diffQ80
-    holisticai.bias.metrics.statistical_parity_auc
-    holisticai.bias.metrics.weighed_statistical_parity_auc
-    holisticai.bias.metrics.max_statistical_parity
-    holisticai.bias.metrics.correlation_diff_r
-    holisticai.bias.metrics.rmse_ratio
+    holisticai.bias.metrics.correlation_diff
+    holisticai.bias.metrics.disparate_impact_regression
     holisticai.bias.metrics.mae_ratio
-    holisticai.bias.metrics.correlation_diffQ80
-    holisticai.bias.metrics.rmse_ratioQ80
-    holisticai.bias.metrics.mae_ratioQ80
+    holisticai.bias.metrics.max_statistical_parity
+    holisticai.bias.metrics.no_disparate_impact_level
     holisticai.bias.metrics.regression_bias_metrics
+    holisticai.bias.metrics.rmse_ratio
+    holisticai.bias.metrics.statistical_parity_auc
+    holisticai.bias.metrics.statistical_parity_regression
+    holisticai.bias.metrics.weighed_statistical_parity_auc
+    holisticai.bias.metrics.zscore_diff
     
 Recommender
 ~~~~~~~~~~~
@@ -57,51 +52,52 @@ Recommender
     :toctree: generated/
 
     holisticai.bias.metrics.aggregate_diversity
-    holisticai.bias.metrics.gini_index
-    holisticai.bias.metrics.exposure_entropy
-    holisticai.bias.metrics.mad_score
-    holisticai.bias.metrics.exposure_l1
-    holisticai.bias.metrics.exposure_kl
+    holisticai.bias.metrics.avg_f1_ratio
     holisticai.bias.metrics.avg_precision_ratio
     holisticai.bias.metrics.avg_recall_ratio
-    holisticai.bias.metrics.avg_f1_ratio
-    holisticai.bias.metrics.recommender_rmse_ratio
-    holisticai.bias.metrics.recommender_mae_ratio
     holisticai.bias.metrics.avg_recommendation_popularity
+    holisticai.bias.metrics.exposure_entropy
+    holisticai.bias.metrics.exposure_kl
+    holisticai.bias.metrics.exposure_l1
+    holisticai.bias.metrics.gini_index
+    holisticai.bias.metrics.mad_score
     holisticai.bias.metrics.recommender_bias_metrics
+    holisticai.bias.metrics.recommender_mae_ratio
+    holisticai.bias.metrics.recommender_rmse_ratio
 
 Clustering
 ~~~~~~~~~
 .. autosummary::
     :toctree: generated/
 
-    holisticai.bias.metrics.cluster_balance
-    holisticai.bias.metrics.min_cluster_ratio
     holisticai.bias.metrics.avg_cluster_ratio
-    holisticai.bias.metrics.cluster_dist_l1
-    holisticai.bias.metrics.cluster_dist_kl
+    holisticai.bias.metrics.cluster_balance
     holisticai.bias.metrics.cluster_dist_entropy
-    holisticai.bias.metrics.mi_diff
-    holisticai.bias.metrics.social_fairness_ratio
-    holisticai.bias.metrics.silhouette_diff
+    holisticai.bias.metrics.cluster_dist_kl
+    holisticai.bias.metrics.cluster_dist_l1
     holisticai.bias.metrics.clustering_bias_metrics
+    holisticai.bias.metrics.mi_diff
+    holisticai.bias.metrics.min_cluster_ratio
+    holisticai.bias.metrics.silhouette_diff
+    holisticai.bias.metrics.social_fairness_ratio
 
 Multiclass
 ~~~~~~~~~~
 .. autosummary::
     :toctree: generated/
 
-    holisticai.bias.metrics.confusion_tensor
-    holisticai.bias.metrics.confusion_matrix
-    holisticai.bias.metrics.success_rate_matrix
     holisticai.bias.metrics.accuracy_matrix
+    holisticai.bias.metrics.confusion_matrix
+    holisticai.bias.metrics.confusion_tensor
+    holisticai.bias.metrics.frequency_matrix
+    holisticai.bias.metrics.multiclass_average_odds
+    holisticai.bias.metrics.multiclass_bias_metrics
+    holisticai.bias.metrics.multiclass_equality_of_opp
+    holisticai.bias.metrics.multiclass_statistical_parity
+    holisticai.bias.metrics.multiclass_true_rates
     holisticai.bias.metrics.precision_matrix
     holisticai.bias.metrics.recall_matrix
-    holisticai.bias.metrics.multiclass_equality_of_opp
-    holisticai.bias.metrics.multiclass_average_odds
-    holisticai.bias.metrics.multiclass_true_rates
-    holisticai.bias.metrics.multiclass_statistical_parity
-    holisticai.bias.metrics.multiclass_bias_metrics
+    holisticai.bias.metrics.success_rate_matrix
 
 Plotting
 --------
@@ -110,22 +106,24 @@ Plotting
     :toctree: generated/
 
     holisticai.bias.plots.abroca_plot
-    holisticai.bias.plots.pca_scatter_plot
+    holisticai.bias.plots.distribution_plot
     holisticai.bias.plots.group_pie_plot
-    holisticai.bias.plots.group_comparison_matrices
-    holisticai.bias.plots.success_rate_plot
-    holisticai.bias.plots.statistical_parity_plot
-    holisticai.bias.plots.disparate_impact_plot
-    holisticai.bias.plots.success_rate_matrix_plot
+    holisticai.bias.plots.histogram_plot
     holisticai.bias.plots.accuracy_bar_plot
-    holisticai.bias.plots.long_tail_plot
+    holisticai.bias.plots.disparate_impact_plot
+    holisticai.bias.plots.statistical_parity_plot
+    holisticai.bias.plots.success_rate_matrix_plot
+    holisticai.bias.plots.success_rate_plot
     holisticai.bias.plots.exposure_diff_plot
-    holisticai.bias.plots.success_rate_curve
-    holisticai.bias.plots.statistical_parity_curve
+    holisticai.bias.plots.exposure_ratio_plot
+    holisticai.bias.plots.long_tail_plot
     holisticai.bias.plots.disparate_impact_curve
-    holisticai.bias.plots.success_rate_curves
-    holisticai.bias.plots.rmse_bar_plot
     holisticai.bias.plots.mae_bar_plot
+    holisticai.bias.plots.rmse_bar_plot
+    holisticai.bias.plots.statistical_parity_curve
+    holisticai.bias.plots.success_rate_curve
+    holisticai.bias.plots.success_rate_curves
+
   
 Mitigation
 ----------

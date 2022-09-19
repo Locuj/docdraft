@@ -24,8 +24,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="holisticai.bias.plots.success_rate_curves" href="holisticai.bias.plots.success_rate_curves.html" />
-    <link rel="prev" title="holisticai.bias.plots.statistical_parity_curve" href="holisticai.bias.plots.statistical_parity_curve.html" /> 
+    <link rel="next" title="holisticai.bias.plots.mae_bar_plot" href="holisticai.bias.plots.mae_bar_plot.html" />
+    <link rel="prev" title="holisticai.bias.plots.long_tail_plot" href="holisticai.bias.plots.long_tail_plot.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -50,20 +50,23 @@
 <li class="toctree-l2"><a class="reference internal" href="../bias.html#metrics">Metrics</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../bias.html#plotting">Plotting</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.abroca_plot.html">holisticai.bias.plots.abroca_plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.distribution_plot.html">holisticai.bias.plots.distribution_plot</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.group_pie_plot.html">holisticai.bias.plots.group_pie_plot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.success_rate_plot.html">holisticai.bias.plots.success_rate_plot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.statistical_parity_plot.html">holisticai.bias.plots.statistical_parity_plot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.disparate_impact_plot.html">holisticai.bias.plots.disparate_impact_plot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.success_rate_matrix_plot.html">holisticai.bias.plots.success_rate_matrix_plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.histogram_plot.html">holisticai.bias.plots.histogram_plot</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.accuracy_bar_plot.html">holisticai.bias.plots.accuracy_bar_plot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.long_tail_plot.html">holisticai.bias.plots.long_tail_plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.disparate_impact_plot.html">holisticai.bias.plots.disparate_impact_plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.statistical_parity_plot.html">holisticai.bias.plots.statistical_parity_plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.success_rate_matrix_plot.html">holisticai.bias.plots.success_rate_matrix_plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.success_rate_plot.html">holisticai.bias.plots.success_rate_plot</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.exposure_diff_plot.html">holisticai.bias.plots.exposure_diff_plot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.success_rate_curve.html">holisticai.bias.plots.success_rate_curve</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.statistical_parity_curve.html">holisticai.bias.plots.statistical_parity_curve</a></li>
+<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.exposure_ratio_plot.html">holisticai.bias.plots.exposure_ratio_plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.long_tail_plot.html">holisticai.bias.plots.long_tail_plot</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">holisticai.bias.plots.disparate_impact_curve</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.success_rate_curves.html">holisticai.bias.plots.success_rate_curves</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.rmse_bar_plot.html">holisticai.bias.plots.rmse_bar_plot</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.mae_bar_plot.html">holisticai.bias.plots.mae_bar_plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.rmse_bar_plot.html">holisticai.bias.plots.rmse_bar_plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.statistical_parity_curve.html">holisticai.bias.plots.statistical_parity_curve</a></li>
+<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.success_rate_curve.html">holisticai.bias.plots.success_rate_curve</a></li>
+<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.success_rate_curves.html">holisticai.bias.plots.success_rate_curves</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../bias.html#mitigation">Mitigation</a></li>
@@ -163,8 +166,8 @@ or data quantiles</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="holisticai.bias.plots.statistical_parity_curve.html" class="btn btn-neutral float-left" title="holisticai.bias.plots.statistical_parity_curve" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="holisticai.bias.plots.success_rate_curves.html" class="btn btn-neutral float-right" title="holisticai.bias.plots.success_rate_curves" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="holisticai.bias.plots.long_tail_plot.html" class="btn btn-neutral float-left" title="holisticai.bias.plots.long_tail_plot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="holisticai.bias.plots.mae_bar_plot.html" class="btn btn-neutral float-right" title="holisticai.bias.plots.mae_bar_plot" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
