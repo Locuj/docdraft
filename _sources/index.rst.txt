@@ -26,5 +26,5 @@ You can test the library by installing with `pip`:
     :caption: Tutorials
 
     Measuring bias <measuring_bias>
-    Mitigatin bias <mitigating_bias>
+    Mitigating bias <mitigating_bias>
 
