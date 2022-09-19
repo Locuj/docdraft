@@ -1,0 +1,6 @@
+﻿holisticai.bias.metrics.correlation\_diff\_r
+============================================
+
+.. currentmodule:: holisticai.bias.metrics
+
+.. autofunction:: correlation_diff_r

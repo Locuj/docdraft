@@ -1,0 +1,7 @@
+Mitigating bias
+===============
+.. toctree::
+    :maxdepth: 1
+
+    tutorials/mitigating_bias_tutorials/mitigation_algorithms_tutorial
+    tutorials/mitigating_bias_tutorials/mitigation_bias_classification

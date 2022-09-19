@@ -24,8 +24,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="holisticai.utils.pandas_to_numpy" href="generated/holisticai.utils.pandas_to_numpy.html" />
-    <link rel="prev" title="holisticai.bias.plots.mae_bar_plot" href="generated/holisticai.bias.plots.mae_bar_plot.html" /> 
+    <link rel="next" title="holisticai.utils.mat_to_binary" href="generated/holisticai.utils.mat_to_binary.html" />
+    <link rel="prev" title="holisticai.bias.mitigation.RejectOptionClassification" href="generated/holisticai.bias.mitigation.RejectOptionClassification.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -49,33 +49,13 @@
 <li class="toctree-l1"><a class="reference internal" href="bias.html">Bias</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Utils</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#formatting">Formatting</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.utils.pandas_to_numpy.html">holisticai.utils.pandas_to_numpy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.utils.numpy_to_groups.html">holisticai.utils.numpy_to_groups</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/holisticai.utils.mat_to_binary.html">holisticai.utils.mat_to_binary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/holisticai.utils.normalize_tensor.html">holisticai.utils.normalize_tensor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.utils.slice_arrays_by_quantile.html">holisticai.utils.slice_arrays_by_quantile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.utils.categorical_to_distribution.html">holisticai.utils.categorical_to_distribution</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/holisticai.utils.recommender_formatter.html">holisticai.utils.recommender_formatter</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#plotting">Plotting</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="generated/holisticai.utils.get_colors.html">holisticai.utils.get_colors</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#recommender-efficacy-metrics">Recommender Efficacy Metrics</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.utils.avg_precision.html">holisticai.utils.avg_precision</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.utils.avg_recall.html">holisticai.utils.avg_recall</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.utils.avg_f1.html">holisticai.utils.avg_f1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.utils.recommender_rmse.html">holisticai.utils.recommender_rmse</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.utils.recommender_mae.html">holisticai.utils.recommender_mae</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#validation">Validation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.utils.check_classification_inputs.html">holisticai.utils.check_classification_inputs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.utils.check_regression_inputs.html">holisticai.utils.check_regression_inputs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.utils.check_clustering_inputs.html">holisticai.utils.check_clustering_inputs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.utils.check_multiclass_inputs.html">holisticai.utils.check_multiclass_inputs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/holisticai.utils.check_recommender_inputs.html">holisticai.utils.check_recommender_inputs</a></li>
 </ul>
 </li>
 </ul>
@@ -84,9 +64,8 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/measuring_bias_classification.html">Classification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/measuring_bias_recommender.html">Recommender</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/measuring_bias_regression.html">Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="measuring_bias.html">Measuring bias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mitigating_bias.html">Mitigatin bias</a></li>
 </ul>
 
         </div>
@@ -148,23 +127,11 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/holisticai.utils.pandas_to_numpy.html#holisticai.utils.pandas_to_numpy" title="holisticai.utils.pandas_to_numpy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.utils.pandas_to_numpy</span></code></a>(df, cols)</p></td>
-<td><p>From pandas df to numpy arrays</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/holisticai.utils.numpy_to_groups.html#holisticai.utils.numpy_to_groups" title="holisticai.utils.numpy_to_groups"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.utils.numpy_to_groups</span></code></a>(arr, groups)</p></td>
-<td><p>From numpy array to group vectors.</p></td>
-</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/holisticai.utils.mat_to_binary.html#holisticai.utils.mat_to_binary" title="holisticai.utils.mat_to_binary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.utils.mat_to_binary</span></code></a>(mat[, top, ...])</p></td>
 <td><p>Formatting helper function - makes a matrix binary</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/holisticai.utils.normalize_tensor.html#holisticai.utils.normalize_tensor" title="holisticai.utils.normalize_tensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.utils.normalize_tensor</span></code></a>(tensor)</p></td>
-<td><p>Formatting helper function - normalises a tensor to 0,1 range</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/holisticai.utils.slice_arrays_by_quantile.html#holisticai.utils.slice_arrays_by_quantile" title="holisticai.utils.slice_arrays_by_quantile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.utils.slice_arrays_by_quantile</span></code></a>(q, ...)</p></td>
-<td><p>Slice arrays by quantile</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/holisticai.utils.categorical_to_distribution.html#holisticai.utils.categorical_to_distribution" title="holisticai.utils.categorical_to_distribution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.utils.categorical_to_distribution</span></code></a>(arr)</p></td>
-<td><p>Categorical to Distribution.</p></td>
+<td><p>Formatting helper function - normalises a tensor to [0,1] range</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/holisticai.utils.recommender_formatter.html#holisticai.utils.recommender_formatter" title="holisticai.utils.recommender_formatter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.utils.recommender_formatter</span></code></a>(df, ...)</p></td>
 <td><p>Recommender formatter</p></td>
@@ -186,66 +153,14 @@
 </tbody>
 </table>
 </section>
-<section id="recommender-efficacy-metrics">
-<h2>Recommender Efficacy Metrics<a class="headerlink" href="#recommender-efficacy-metrics" title="Permalink to this heading"></a></h2>
-<table class="autosummary longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/holisticai.utils.avg_precision.html#holisticai.utils.avg_precision" title="holisticai.utils.avg_precision"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.utils.avg_precision</span></code></a>(mat_pred, ...)</p></td>
-<td><p>Average Precision (recommender)</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/holisticai.utils.avg_recall.html#holisticai.utils.avg_recall" title="holisticai.utils.avg_recall"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.utils.avg_recall</span></code></a>(mat_pred, mat_true)</p></td>
-<td><p>Average Recall (recommender)</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/holisticai.utils.avg_f1.html#holisticai.utils.avg_f1" title="holisticai.utils.avg_f1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.utils.avg_f1</span></code></a>(mat_pred, mat_true)</p></td>
-<td><p>Average f1 (recommender)</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/holisticai.utils.recommender_rmse.html#holisticai.utils.recommender_rmse" title="holisticai.utils.recommender_rmse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.utils.recommender_rmse</span></code></a>(mat_pred, ...)</p></td>
-<td><p>Recommender RMSE</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/holisticai.utils.recommender_mae.html#holisticai.utils.recommender_mae" title="holisticai.utils.recommender_mae"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.utils.recommender_mae</span></code></a>(mat_pred, ...)</p></td>
-<td><p>Recommender MAE</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="validation">
-<h2>Validation<a class="headerlink" href="#validation" title="Permalink to this heading"></a></h2>
-<table class="autosummary longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/holisticai.utils.check_classification_inputs.html#holisticai.utils.check_classification_inputs" title="holisticai.utils.check_classification_inputs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.utils.check_classification_inputs</span></code></a>(...)</p></td>
-<td><p>Check classification inputs</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/holisticai.utils.check_regression_inputs.html#holisticai.utils.check_regression_inputs" title="holisticai.utils.check_regression_inputs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.utils.check_regression_inputs</span></code></a>(...)</p></td>
-<td><p>Check regression inputs</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/holisticai.utils.check_clustering_inputs.html#holisticai.utils.check_clustering_inputs" title="holisticai.utils.check_clustering_inputs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.utils.check_clustering_inputs</span></code></a>(...)</p></td>
-<td><p>Check clustering inputs</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/holisticai.utils.check_multiclass_inputs.html#holisticai.utils.check_multiclass_inputs" title="holisticai.utils.check_multiclass_inputs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.utils.check_multiclass_inputs</span></code></a>(...)</p></td>
-<td><p>Check multiclass inputs</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/holisticai.utils.check_recommender_inputs.html#holisticai.utils.check_recommender_inputs" title="holisticai.utils.check_recommender_inputs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">holisticai.utils.check_recommender_inputs</span></code></a>(...)</p></td>
-<td><p>Check recommender inputs</p></td>
-</tr>
-</tbody>
-</table>
-</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="generated/holisticai.bias.plots.mae_bar_plot.html" class="btn btn-neutral float-left" title="holisticai.bias.plots.mae_bar_plot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="generated/holisticai.utils.pandas_to_numpy.html" class="btn btn-neutral float-right" title="holisticai.utils.pandas_to_numpy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="generated/holisticai.bias.mitigation.RejectOptionClassification.html" class="btn btn-neutral float-left" title="holisticai.bias.mitigation.RejectOptionClassification" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="generated/holisticai.utils.mat_to_binary.html" class="btn btn-neutral float-right" title="holisticai.utils.mat_to_binary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -47,24 +47,28 @@
               <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../bias.html">Bias</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../bias.html#classification">Classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../bias.html#regression">Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../bias.html#recommender">Recommender</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../bias.html#clustering">Clustering</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.cluster_balance.html">holisticai.bias.metrics.cluster_balance</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">holisticai.bias.metrics.min_cluster_ratio</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.avg_cluster_ratio.html">holisticai.bias.metrics.avg_cluster_ratio</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.cluster_dist_l1.html">holisticai.bias.metrics.cluster_dist_l1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.cluster_dist_kl.html">holisticai.bias.metrics.cluster_dist_kl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.cluster_dist_entropy.html">holisticai.bias.metrics.cluster_dist_entropy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.mi_diff.html">holisticai.bias.metrics.mi_diff</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.social_fairness_ratio.html">holisticai.bias.metrics.social_fairness_ratio</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.silhouette_diff.html">holisticai.bias.metrics.silhouette_diff</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.clustering_bias_metrics.html">holisticai.bias.metrics.clustering_bias_metrics</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../bias.html#metrics">Metrics</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../bias.html#classification">Classification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bias.html#regression">Regression</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bias.html#recommender">Recommender</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../bias.html#clustering">Clustering</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.cluster_balance.html">holisticai.bias.metrics.cluster_balance</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">holisticai.bias.metrics.min_cluster_ratio</a></li>
+<li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.avg_cluster_ratio.html">holisticai.bias.metrics.avg_cluster_ratio</a></li>
+<li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.cluster_dist_l1.html">holisticai.bias.metrics.cluster_dist_l1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.cluster_dist_kl.html">holisticai.bias.metrics.cluster_dist_kl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.cluster_dist_entropy.html">holisticai.bias.metrics.cluster_dist_entropy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.mi_diff.html">holisticai.bias.metrics.mi_diff</a></li>
+<li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.social_fairness_ratio.html">holisticai.bias.metrics.social_fairness_ratio</a></li>
+<li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.silhouette_diff.html">holisticai.bias.metrics.silhouette_diff</a></li>
+<li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.clustering_bias_metrics.html">holisticai.bias.metrics.clustering_bias_metrics</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../bias.html#multiclass">Multiclass</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bias.html#multiclass">Multiclass</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../bias.html#plotting">Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bias.html#mitigation">Mitigation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../utils.html">Utils</a></li>
@@ -72,9 +76,8 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/measuring_bias_classification.html">Classification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/measuring_bias_recommender.html">Recommender</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/measuring_bias_regression.html">Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../measuring_bias.html">Measuring bias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigating_bias.html">Mitigatin bias</a></li>
 </ul>
 
         </div>
@@ -140,19 +143,18 @@ to the number of group_b members.</p>
 <p>A value of 1 is desired. That is when all clusters are perfectly
 balanced. Low values imply the existence of clusters where
 group_a has fewer members than group_b.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>group_a</strong> (<em>numpy array</em>) – Group membership vector (binary)</p></li>
-<li><p><strong>group_b</strong> (<em>numpy array</em>) – Group membership vector (binary)</p></li>
-<li><p><strong>y_pred</strong> (<em>numpy array</em>) – Cluster predictions (categorical)</p></li>
-</ul>
+<p class="rubric">Parameters</p>
+<dl class="simple">
+<dt>group_a<span class="classifier">array-like</span></dt><dd><p>Group membership vector (binary)</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Minimum Cluster Ratio</p>
+<dt>group_b<span class="classifier">array-like</span></dt><dd><p>Group membership vector (binary)</p>
 </dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>float</p>
+<dt>y_pred<span class="classifier">array-like</span></dt><dd><p>Cluster predictions (categorical)</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>float</dt><dd><p>Minimum Cluster Ratio</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>

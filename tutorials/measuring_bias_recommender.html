@@ -25,9 +25,7 @@
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Measuring Bias in regression" href="measuring_bias_regression.html" />
-    <link rel="prev" title="Measuring Bias in classification" href="measuring_bias_classification.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -53,19 +51,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../datasets.html">Datasets</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="measuring_bias_classification.html">Classification</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Recommender</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#Importing-the-data">Importing the data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Plotting-and-Data-Exploration">Plotting and Data Exploration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Evaluate-Fairness-of-Model">Evaluate Fairness of Model</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Item-Fairness">Item Fairness</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#User-fairness---Equality-of-Outcome">User fairness - Equality of Outcome</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="measuring_bias_regression.html">Regression</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../measuring_bias.html">Measuring bias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigating_bias.html">Mitigatin bias</a></li>
 </ul>
 
         </div>
@@ -378,7 +366,7 @@ div.rendered_html tbody tr:hover {
 <h2>Importing the data<a class="headerlink" href="#Importing-the-data" title="Permalink to this heading"></a></h2>
 <p>We will start by importing the example dataset, which we host on our library. The <a class="reference external" href="https://www.kaggle.com/datasets/ravichaubey1506/lastfm">datatset</a> contains a set of artists that were downloaded by users. It includes personal information about the user, specifically sex and country of origin. A user can download more than one artist. We will use the column “score”, which contains only 1s for counting the interactions.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -391,128 +379,21 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
-</pre></div>
+<div class="prompt empty docutils container">
 </div>
-<div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ImportError</span>                               Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">/home/babe/src/holistic/INTERNAL/holisticai/tutorials/measuring_bias_recommender.ipynb Cell 5</span> in <span class="ansi-cyan-fg">&lt;cell line: 3&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">      &lt;a href=&#39;vscode-notebook-cell:/home/babe/src/holistic/INTERNAL/holisticai/tutorials/measuring_bias_recommender.ipynb#W4sZmlsZQ%3D%3D?line=0&#39;&gt;1&lt;/a&gt;</span> import numpy as np
+<span class="ansi-green-intense-fg ansi-bold">      &lt;a href=&#39;vscode-notebook-cell:/home/babe/src/holistic/INTERNAL/holisticai/tutorials/measuring_bias_recommender.ipynb#W4sZmlsZQ%3D%3D?line=1&#39;&gt;2&lt;/a&gt;</span> import pandas as pd
+<span class="ansi-green-fg">----&gt; &lt;a href=&#39;vscode-notebook-cell:/home/babe/src/holistic/INTERNAL/holisticai/tutorials/measuring_bias_recommender.ipynb#W4sZmlsZQ%3D%3D?line=2&#39;&gt;3&lt;/a&gt;</span> from holisticai.datasets import load_lastfm
+<span class="ansi-green-intense-fg ansi-bold">      &lt;a href=&#39;vscode-notebook-cell:/home/babe/src/holistic/INTERNAL/holisticai/tutorials/measuring_bias_recommender.ipynb#W4sZmlsZQ%3D%3D?line=4&#39;&gt;5&lt;/a&gt;</span> lastfm = load_lastfm()
+<span class="ansi-green-intense-fg ansi-bold">      &lt;a href=&#39;vscode-notebook-cell:/home/babe/src/holistic/INTERNAL/holisticai/tutorials/measuring_bias_recommender.ipynb#W4sZmlsZQ%3D%3D?line=5&#39;&gt;6&lt;/a&gt;</span> lastfm
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>user</th>
-      <th>artist</th>
-      <th>sex</th>
-      <th>country</th>
-      <th>score</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>red hot chili peppers</td>
-      <td>f</td>
-      <td>Germany</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>the black dahlia murder</td>
-      <td>f</td>
-      <td>Germany</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1</td>
-      <td>goldfrapp</td>
-      <td>f</td>
-      <td>Germany</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1</td>
-      <td>dropkick murphys</td>
-      <td>f</td>
-      <td>Germany</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>1</td>
-      <td>le tigre</td>
-      <td>f</td>
-      <td>Germany</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>289950</th>
-      <td>19718</td>
-      <td>bob dylan</td>
-      <td>f</td>
-      <td>Canada</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>289951</th>
-      <td>19718</td>
-      <td>pixies</td>
-      <td>f</td>
-      <td>Canada</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>289952</th>
-      <td>19718</td>
-      <td>the clash</td>
-      <td>f</td>
-      <td>Canada</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>289953</th>
-      <td>19718</td>
-      <td>a tribe called quest</td>
-      <td>f</td>
-      <td>Canada</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>289954</th>
-      <td>19718</td>
-      <td>radiohead</td>
-      <td>f</td>
-      <td>Canada</td>
-      <td>1</td>
-    </tr>
-  </tbody>
-</table>
-<p>289955 rows × 5 columns</p>
-</div></div>
+<span class="ansi-red-fg">ImportError</span>: cannot import name &#39;load_lastfm&#39; from &#39;holisticai.datasets&#39; (/home/babe/src/general/lib/python3.10/site-packages/holisticai/datasets/__init__.py)
+</pre></div></div>
 </div>
 <p>We now need to change the dataframe to an interaction matrix, where every row is a user and every column is an artist. We can use the formatting function provided in the library, the output dataframe can be used as an input to the bias metric functions for recommenders.</p>
 <div class="nbinput nblast docutils container">
@@ -875,10 +756,7 @@ Number of Unique Artists : 1004
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="measuring_bias_classification.html" class="btn btn-neutral float-left" title="Measuring Bias in classification" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="measuring_bias_regression.html" class="btn btn-neutral float-right" title="Measuring Bias in regression" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 

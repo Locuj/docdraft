@@ -24,7 +24,7 @@ You can test the library by installing with `pip`:
 .. toctree::
     :maxdepth: 1
     :caption: Tutorials
-  
-    Classification <tutorials/measuring_bias_classification>
-    Recommender <tutorials/measuring_bias_recommender>
-    Regression <tutorials/measuring_bias_regression>
+
+    Measuring bias <measuring_bias>
+    Mitigatin bias <mitigating_bias>
+

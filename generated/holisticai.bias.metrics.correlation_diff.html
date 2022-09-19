@@ -49,23 +49,26 @@
               <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../bias.html">Bias</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="../bias.html#classification">Classification</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.statistical_parity.html">holisticai.bias.metrics.statistical_parity</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.disparate_impact.html">holisticai.bias.metrics.disparate_impact</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.four_fifths.html">holisticai.bias.metrics.four_fifths</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.cohen_d.html">holisticai.bias.metrics.cohen_d</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">holisticai.bias.metrics.correlation_diff</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.equal_opportunity_diff.html">holisticai.bias.metrics.equal_opportunity_diff</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.false_positive_diff.html">holisticai.bias.metrics.false_positive_diff</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.average_odds_diff.html">holisticai.bias.metrics.average_odds_diff</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.classification_bias_metrics.html">holisticai.bias.metrics.classification_bias_metrics</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../bias.html#metrics">Metrics</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../bias.html#classification">Classification</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.statistical_parity.html">holisticai.bias.metrics.statistical_parity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.disparate_impact.html">holisticai.bias.metrics.disparate_impact</a></li>
+<li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.four_fifths.html">holisticai.bias.metrics.four_fifths</a></li>
+<li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.cohen_d.html">holisticai.bias.metrics.cohen_d</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">holisticai.bias.metrics.correlation_diff</a></li>
+<li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.equal_opportunity_diff.html">holisticai.bias.metrics.equal_opportunity_diff</a></li>
+<li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.average_odds_diff.html">holisticai.bias.metrics.average_odds_diff</a></li>
+<li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.classification_bias_metrics.html">holisticai.bias.metrics.classification_bias_metrics</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../bias.html#regression">Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../bias.html#recommender">Recommender</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../bias.html#clustering">Clustering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../bias.html#multiclass">Multiclass</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bias.html#regression">Regression</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bias.html#recommender">Recommender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bias.html#clustering">Clustering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bias.html#multiclass">Multiclass</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../bias.html#plotting">Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bias.html#mitigation">Mitigation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../utils.html">Utils</a></li>
@@ -73,9 +76,8 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/measuring_bias_classification.html">Classification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/measuring_bias_recommender.html">Recommender</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/measuring_bias_regression.html">Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../measuring_bias.html">Measuring bias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigating_bias.html">Mitigatin bias</a></li>
 </ul>
 
         </div>
@@ -131,40 +133,42 @@
 <h1>holisticai.bias.metrics.correlation_diff<a class="headerlink" href="#holisticai-bias-metrics-correlation-diff" title="Permalink to this heading"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="holisticai.bias.metrics.correlation_diff">
-<span class="sig-prename descclassname"><span class="pre">holisticai.bias.metrics.</span></span><span class="sig-name descname"><span class="pre">correlation_diff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.metrics.correlation_diff" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">holisticai.bias.metrics.</span></span><span class="sig-name descname"><span class="pre">correlation_diff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.metrics.correlation_diff" title="Permalink to this definition"></a></dt>
 <dd><p>Correlation difference.</p>
 <p class="rubric">Description</p>
-<p>This function computes the difference in correlation between predicted
-and true labels for group_a and group_b.</p>
+<p>This function computes the difference in correlation between predictions
+and targets for group_a and group_b.</p>
 <p class="rubric">Interpretation</p>
 <p>A value of 0 is desired. This metric ranges between -2 and 2,
-with negative values indicating bias against group_a, and
-positive values indicating bias against group_b.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>group_a</strong> (<em>numpy array</em>) – Group membership vector (binary)</p></li>
-<li><p><strong>group_b</strong> (<em>numpy array</em>) – Group membership vector (binary)</p></li>
-<li><p><strong>y_pred</strong> (<em>numpy array</em>) – Predictions vector (binary)</p></li>
-<li><p><strong>y_true</strong> (<em>numpy array</em>) – Target vector (binary)</p></li>
-</ul>
+with -1 indicating strong bias against group_a, and +1
+indicating strong bias against group_b.</p>
+<p class="rubric">Parameters</p>
+<dl class="simple">
+<dt>group_a<span class="classifier">array-like</span></dt><dd><p>Group membership vector (binary)</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Correlation Difference : <span class="math notranslate nohighlight">\(CV_a - CV_b\)</span></p>
+<dt>group_b<span class="classifier">array-like</span></dt><dd><p>Group membership vector (binary)</p>
 </dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>float</p>
+<dt>y_pred<span class="classifier">array-like</span></dt><dd><p>Predictions vector (regression)</p>
+</dd>
+<dt>y_true<span class="classifier">numpy array</span></dt><dd><p>Target vector (regression)</p>
+</dd>
+<dt>q (optional)<span class="classifier">float</span></dt><dd><p>quantile of predictions considered</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>float</dt><dd><p>correlation difference : <span class="math notranslate nohighlight">\(CV_a - CV_b\)</span></p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">holisticai.bias.metrics</span> <span class="kn">import</span> <span class="n">correlation_diff</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">group_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">group_b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">y_true</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">correlation_diff</span><span class="p">(</span><span class="n">group_a</span><span class="p">,</span> <span class="n">group_b</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">y_true</span><span class="p">)</span>
-<span class="go">1.4472135954999579</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">50</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group_b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">50</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_true</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">correlation_diff</span><span class="p">(</span><span class="n">group_a</span><span class="p">,</span> <span class="n">group_b</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">y_true</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">1.0000000000000002</span>
 </pre></div>
 </div>
 </dd></dl>

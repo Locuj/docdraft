@@ -23,9 +23,7 @@
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="holisticai.utils.mat_to_binary" href="holisticai.utils.mat_to_binary.html" />
-    <link rel="prev" title="holisticai.utils.pandas_to_numpy" href="holisticai.utils.pandas_to_numpy.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -45,31 +43,15 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../bias.html">Bias</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../utils.html">Utils</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="../utils.html#formatting">Formatting</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="holisticai.utils.pandas_to_numpy.html">holisticai.utils.pandas_to_numpy</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">holisticai.utils.numpy_to_groups</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.utils.mat_to_binary.html">holisticai.utils.mat_to_binary</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.utils.normalize_tensor.html">holisticai.utils.normalize_tensor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.utils.slice_arrays_by_quantile.html">holisticai.utils.slice_arrays_by_quantile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.utils.categorical_to_distribution.html">holisticai.utils.categorical_to_distribution</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.utils.recommender_formatter.html">holisticai.utils.recommender_formatter</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../utils.html#plotting">Plotting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../utils.html#recommender-efficacy-metrics">Recommender Efficacy Metrics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../utils.html#validation">Validation</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">Utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../datasets.html">Datasets</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/measuring_bias_classification.html">Classification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/measuring_bias_recommender.html">Recommender</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/measuring_bias_regression.html">Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../measuring_bias.html">Measuring bias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigating_bias.html">Mitigatin bias</a></li>
 </ul>
 
         </div>
@@ -86,7 +68,6 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="../utils.html">Utils</a> &raquo;</li>
       <li>holisticai.utils.numpy_to_groups</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/generated/holisticai.utils.numpy_to_groups.rst.txt" rel="nofollow"> View page source</a>
@@ -123,35 +104,12 @@
 </style>
 <section id="holisticai-utils-numpy-to-groups">
 <h1>holisticai.utils.numpy_to_groups<a class="headerlink" href="#holisticai-utils-numpy-to-groups" title="Permalink to this heading"></a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="holisticai.utils.numpy_to_groups">
-<span class="sig-prename descclassname"><span class="pre">holisticai.utils.</span></span><span class="sig-name descname"><span class="pre">numpy_to_groups</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.utils.numpy_to_groups" title="Permalink to this definition"></a></dt>
-<dd><p>From numpy array to group vectors.</p>
-<p class="rubric">Description</p>
-<p>This function returns a group membership vector for
-each group in groups.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>arr</strong> (<em>numpy array</em>) – Attribute vector</p></li>
-<li><p><strong>groups</strong> (<em>list of str</em>) – Group names</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>list of membership vectors</p>
-</dd>
-</dl>
-</dd></dl>
-
 </section>
 
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="holisticai.utils.pandas_to_numpy.html" class="btn btn-neutral float-left" title="holisticai.utils.pandas_to_numpy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="holisticai.utils.mat_to_binary.html" class="btn btn-neutral float-right" title="holisticai.utils.mat_to_binary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 

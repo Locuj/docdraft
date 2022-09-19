@@ -24,8 +24,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="holisticai.bias.plots.group_comparison_matrices" href="holisticai.bias.plots.group_comparison_matrices.html" />
-    <link rel="prev" title="holisticai.bias.plots.pca_scatter_plot" href="holisticai.bias.plots.pca_scatter_plot.html" /> 
+    <link rel="next" title="holisticai.bias.plots.success_rate_plot" href="holisticai.bias.plots.success_rate_plot.html" />
+    <link rel="prev" title="holisticai.bias.plots.abroca_plot" href="holisticai.bias.plots.abroca_plot.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -47,16 +47,10 @@
               <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../bias.html">Bias</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../bias.html#classification">Classification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../bias.html#regression">Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../bias.html#recommender">Recommender</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../bias.html#clustering">Clustering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../bias.html#multiclass">Multiclass</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bias.html#metrics">Metrics</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../bias.html#plotting">Plotting</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.abroca_plot.html">holisticai.bias.plots.abroca_plot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.pca_scatter_plot.html">holisticai.bias.plots.pca_scatter_plot</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">holisticai.bias.plots.group_pie_plot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.group_comparison_matrices.html">holisticai.bias.plots.group_comparison_matrices</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.success_rate_plot.html">holisticai.bias.plots.success_rate_plot</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.statistical_parity_plot.html">holisticai.bias.plots.statistical_parity_plot</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.disparate_impact_plot.html">holisticai.bias.plots.disparate_impact_plot</a></li>
@@ -72,6 +66,7 @@
 <li class="toctree-l3"><a class="reference internal" href="holisticai.bias.plots.mae_bar_plot.html">holisticai.bias.plots.mae_bar_plot</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../bias.html#mitigation">Mitigation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../utils.html">Utils</a></li>
@@ -79,9 +74,8 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/measuring_bias_classification.html">Classification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/measuring_bias_recommender.html">Recommender</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/measuring_bias_regression.html">Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../measuring_bias.html">Measuring bias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigating_bias.html">Mitigatin bias</a></li>
 </ul>
 
         </div>
@@ -137,19 +131,21 @@
 <h1>holisticai.bias.plots.group_pie_plot<a class="headerlink" href="#holisticai-bias-plots-group-pie-plot" title="Permalink to this heading"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="holisticai.bias.plots.group_pie_plot">
-<span class="sig-prename descclassname"><span class="pre">holisticai.bias.plots.</span></span><span class="sig-name descname"><span class="pre">group_pie_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Group</span> <span class="pre">Proportions'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.plots.group_pie_plot" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">holisticai.bias.plots.</span></span><span class="sig-name descname"><span class="pre">group_pie_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_feat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.plots.group_pie_plot" title="Permalink to this definition"></a></dt>
 <dd><p>Plot a pie chart showing proportions of groups in a feature.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>arr</strong> (<em>pandas series</em><em> or </em><em>numpy array</em>) – Feature of interest</p></li>
-<li><p><strong>title</strong> (<em>string</em><em> (</em><em>optional</em><em>, </em><em>default='Group Proportions'</em><em>)</em>) – Title for chart</p></li>
-</ul>
+<p class="rubric">Parameters</p>
+<dl class="simple">
+<dt>y_feat<span class="classifier">pandas series or numpy array</span></dt><dd><p>Feature of interest</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>None</p>
+<dt>ax (optional)<span class="classifier">matplotlib axes</span></dt><dd><p>Pre-existing axes for the plot</p>
+</dd>
+<dt>size (optional)<span class="classifier">(int, int)</span></dt><dd><p>Size of the figure</p>
+</dd>
+<dt>title (optional)<span class="classifier">str</span></dt><dd><p>Title of the figure</p>
 </dd>
 </dl>
+<p class="rubric">Returns</p>
+<p>matplotlib ax</p>
 </dd></dl>
 
 </section>
@@ -158,8 +154,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="holisticai.bias.plots.pca_scatter_plot.html" class="btn btn-neutral float-left" title="holisticai.bias.plots.pca_scatter_plot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="holisticai.bias.plots.group_comparison_matrices.html" class="btn btn-neutral float-right" title="holisticai.bias.plots.group_comparison_matrices" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="holisticai.bias.plots.abroca_plot.html" class="btn btn-neutral float-left" title="holisticai.bias.plots.abroca_plot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="holisticai.bias.plots.success_rate_plot.html" class="btn btn-neutral float-right" title="holisticai.bias.plots.success_rate_plot" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

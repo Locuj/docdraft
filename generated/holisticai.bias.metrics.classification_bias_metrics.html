@@ -24,7 +24,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="holisticai.bias.metrics.disparate_impactQ" href="holisticai.bias.metrics.disparate_impactQ.html" />
+    <link rel="next" title="holisticai.bias.metrics.no_disparate_impact_level" href="holisticai.bias.metrics.no_disparate_impact_level.html" />
     <link rel="prev" title="holisticai.bias.metrics.average_odds_diff" href="holisticai.bias.metrics.average_odds_diff.html" /> 
 </head>
 
@@ -47,23 +47,26 @@
               <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../bias.html">Bias</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="../bias.html#classification">Classification</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.statistical_parity.html">holisticai.bias.metrics.statistical_parity</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.disparate_impact.html">holisticai.bias.metrics.disparate_impact</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.four_fifths.html">holisticai.bias.metrics.four_fifths</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.cohen_d.html">holisticai.bias.metrics.cohen_d</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.correlation_diff.html">holisticai.bias.metrics.correlation_diff</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.equal_opportunity_diff.html">holisticai.bias.metrics.equal_opportunity_diff</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.false_positive_diff.html">holisticai.bias.metrics.false_positive_diff</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.bias.metrics.average_odds_diff.html">holisticai.bias.metrics.average_odds_diff</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">holisticai.bias.metrics.classification_bias_metrics</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../bias.html#metrics">Metrics</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../bias.html#classification">Classification</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.statistical_parity.html">holisticai.bias.metrics.statistical_parity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.disparate_impact.html">holisticai.bias.metrics.disparate_impact</a></li>
+<li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.four_fifths.html">holisticai.bias.metrics.four_fifths</a></li>
+<li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.cohen_d.html">holisticai.bias.metrics.cohen_d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.correlation_diff.html">holisticai.bias.metrics.correlation_diff</a></li>
+<li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.equal_opportunity_diff.html">holisticai.bias.metrics.equal_opportunity_diff</a></li>
+<li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.average_odds_diff.html">holisticai.bias.metrics.average_odds_diff</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">holisticai.bias.metrics.classification_bias_metrics</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../bias.html#regression">Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../bias.html#recommender">Recommender</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../bias.html#clustering">Clustering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../bias.html#multiclass">Multiclass</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bias.html#regression">Regression</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bias.html#recommender">Recommender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bias.html#clustering">Clustering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bias.html#multiclass">Multiclass</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../bias.html#plotting">Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bias.html#mitigation">Mitigation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../utils.html">Utils</a></li>
@@ -71,9 +74,8 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/measuring_bias_classification.html">Classification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/measuring_bias_recommender.html">Recommender</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/measuring_bias_regression.html">Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../measuring_bias.html">Measuring bias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigating_bias.html">Mitigatin bias</a></li>
 </ul>
 
         </div>
@@ -129,27 +131,30 @@
 <h1>holisticai.bias.metrics.classification_bias_metrics<a class="headerlink" href="#holisticai-bias-metrics-classification-bias-metrics" title="Permalink to this heading"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="holisticai.bias.metrics.classification_bias_metrics">
-<span class="sig-prename descclassname"><span class="pre">holisticai.bias.metrics.</span></span><span class="sig-name descname"><span class="pre">classification_bias_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_true</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'both'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.metrics.classification_bias_metrics" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">holisticai.bias.metrics.</span></span><span class="sig-name descname"><span class="pre">classification_bias_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_true</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_score</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'equal_outcome'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.metrics.classification_bias_metrics" title="Permalink to this definition"></a></dt>
 <dd><p>Classification bias metrics batch computation.</p>
 <p class="rubric">Description</p>
 <p>This function computes all the relevant classification bias metrics,
 and displays them as a pandas dataframe. It also includes a fair reference
 value for comparison.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>group_a</strong> (<em>numpy array</em>) – Group membership vector (binary)</p></li>
-<li><p><strong>group_b</strong> (<em>numpy array</em>) – Group membership vector (binary)</p></li>
-<li><p><strong>y_pred</strong> (<em>numpy array</em>) – Predictions vector (binary)</p></li>
-<li><p><strong>(</strong><strong>optional</strong><strong>)</strong> (<em>y_true</em>) – Target vector (binary)</p></li>
-<li><p><strong>metric_type</strong> (<em>'both'</em><em>, </em><em>'equal_outcome'</em><em> or </em><em>'equal_opportunity'</em>) – Specifies which metrics we compute</p></li>
-</ul>
+<p class="rubric">Parameters</p>
+<dl class="simple">
+<dt>group_a<span class="classifier">array-like</span></dt><dd><p>Group membership vector (binary)</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Metrics | Values | Reference</p>
+<dt>group_b<span class="classifier">array-like</span></dt><dd><p>Group membership vector (binary)</p>
 </dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>pandas DataFrame</p>
+<dt>y_pred<span class="classifier">array-like</span></dt><dd><p>Predictions vector (binary)</p>
+</dd>
+<dt>y_true (optional)<span class="classifier">numpy array</span></dt><dd><p>Target vector (binary)</p>
+</dd>
+<dt>y_score (optional)<span class="classifier">array-like</span></dt><dd><p>Probability estimates (regression)</p>
+</dd>
+<dt>metric_type (optional)<span class="classifier">‘both’, ‘equal_outcome’ or ‘equal_opportunity’</span></dt><dd><p>Specifies which metrics we compute</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>pandas DataFrame</dt><dd><p>Metrics | Values | Reference</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -162,7 +167,7 @@ value for comparison.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="holisticai.bias.metrics.average_odds_diff.html" class="btn btn-neutral float-left" title="holisticai.bias.metrics.average_odds_diff" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="holisticai.bias.metrics.disparate_impactQ.html" class="btn btn-neutral float-right" title="holisticai.bias.metrics.disparate_impactQ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="holisticai.bias.metrics.no_disparate_impact_level.html" class="btn btn-neutral float-right" title="holisticai.bias.metrics.no_disparate_impact_level" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

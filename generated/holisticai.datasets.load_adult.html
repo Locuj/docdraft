@@ -24,7 +24,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="holisticai.datasets.load_credit" href="holisticai.datasets.load_credit.html" />
+    <link rel="next" title="holisticai.datasets.load_student" href="holisticai.datasets.load_student.html" />
     <link rel="prev" title="Datasets" href="../datasets.html" /> 
 </head>
 
@@ -51,9 +51,9 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../datasets.html">Datasets</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../datasets.html#data-loaders">Data loaders</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">holisticai.datasets.load_adult</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.datasets.load_credit.html">holisticai.datasets.load_credit</a></li>
 <li class="toctree-l3"><a class="reference internal" href="holisticai.datasets.load_student.html">holisticai.datasets.load_student</a></li>
-<li class="toctree-l3"><a class="reference internal" href="holisticai.datasets.load_lawschool.html">holisticai.datasets.load_lawschool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="holisticai.datasets.load_law_school.html">holisticai.datasets.load_law_school</a></li>
+<li class="toctree-l3"><a class="reference internal" href="holisticai.datasets.load_last_fm.html">holisticai.datasets.load_last_fm</a></li>
 </ul>
 </li>
 </ul>
@@ -61,9 +61,8 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/measuring_bias_classification.html">Classification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/measuring_bias_recommender.html">Recommender</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/measuring_bias_regression.html">Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../measuring_bias.html">Measuring bias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mitigating_bias.html">Mitigatin bias</a></li>
 </ul>
 
         </div>
@@ -119,17 +118,56 @@
 <h1>holisticai.datasets.load_adult<a class="headerlink" href="#holisticai-datasets-load-adult" title="Permalink to this heading"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="holisticai.datasets.load_adult">
-<span class="sig-prename descclassname"><span class="pre">holisticai.datasets.</span></span><span class="sig-name descname"><span class="pre">load_adult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">preprocessing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.datasets.load_adult" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">holisticai.datasets.</span></span><span class="sig-name descname"><span class="pre">load_adult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_home</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_X_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">as_frame</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.datasets.load_adult" title="Permalink to this definition"></a></dt>
 <dd><p>Load Adult Dataset.</p>
 <p class="rubric">Description</p>
-<p>This function loads the Adult dataset (first 10,000 rows)
-as a pandas DataFrame.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>preprocessing</strong> (<em>bool</em>) – Whether we preprocess the data</p>
+<p>We use the sklearn.datasets fetch_openml function to
+fetch data from the openml api. Information about
+the Adult dataset can be obtained by printing
+load_adult()[‘DESCR’].</p>
+<p class="rubric">Parameters</p>
+<dl class="simple">
+<dt>data_home<span class="classifier">str</span></dt><dd><p>The directory to which the data is downloaded. If None, we download
+to the holisticai_data folder in user home directory.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>pandas DataFrame</p>
+<dt>return_X_y<span class="classifier">bool, default=False</span></dt><dd><p>If True, returns <code class="docutils literal notranslate"><span class="pre">(data,</span> <span class="pre">target)</span></code> instead of a Bunch object.
+See below for more information about the <cite>data</cite> and <cite>target</cite> object.</p>
+</dd>
+<dt>as_frame<span class="classifier">bool, default=False</span></dt><dd><p>If True, the data is a pandas DataFrame including columns with
+appropriate dtypes (numeric). The target is
+a pandas DataFrame or Series depending on the number of target columns.
+If <cite>return_X_y</cite> is True, then (<cite>data</cite>, <cite>target</cite>) will be pandas
+DataFrames or Series as described below.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl>
+<dt>data<span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bunch</span></code></span></dt><dd><p>Dictionary-like object, with the following attributes.
+data : {ndarray, dataframe} of shape (1797, 64)</p>
+<blockquote>
+<div><p>The flattened data matrix. If <cite>as_frame=True</cite>, <cite>data</cite> will be
+a pandas DataFrame.</p>
+</div></blockquote>
+<dl>
+<dt>target: {ndarray, Series} of shape (1797,)</dt><dd><p>The classification target. If <cite>as_frame=True</cite>, <cite>target</cite> will be
+a pandas Series.</p>
+</dd>
+<dt>frame: DataFrame of shape (1797, 65)</dt><dd><p>Only present when <cite>as_frame=True</cite>. DataFrame with <cite>data</cite> and
+<cite>target</cite>.</p>
+</dd>
+<dt>feature_names: list</dt><dd><p>The names of the dataset columns.</p>
+</dd>
+<dt>target_names: list</dt><dd><p>The names of target classes.</p>
+</dd>
+<dt>DESCR: str</dt><dd><p>The full description of the dataset.</p>
+</dd>
+<dt>(data, target)<span class="classifier">tuple if <code class="docutils literal notranslate"><span class="pre">return_X_y</span></code> is True</span></dt><dd><p>A tuple of two ndarrays by default. The first contains a 2D ndarray of
+shape (num_rows, num_columns) with each row representing one sample and
+each column representing the features. The second ndarray of shape (1797)
+contains the target samples.  If <cite>as_frame=True</cite>, both arrays are pandas
+objects, i.e. <cite>X</cite> a dataframe and <cite>y</cite> a series.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
@@ -141,7 +179,7 @@ as a pandas DataFrame.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../datasets.html" class="btn btn-neutral float-left" title="Datasets" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="holisticai.datasets.load_credit.html" class="btn btn-neutral float-right" title="holisticai.datasets.load_credit" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="holisticai.datasets.load_student.html" class="btn btn-neutral float-right" title="holisticai.datasets.load_student" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
