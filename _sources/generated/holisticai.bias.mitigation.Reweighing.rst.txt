@@ -22,7 +22,6 @@
       ~Reweighing.has_param_handler
       ~Reweighing.link_parameters
       ~Reweighing.map_favorable_unfavorable
-      ~Reweighing.read_bias_mitigation_parameters
       ~Reweighing.reformat_function
       ~Reweighing.transform
       ~Reweighing.update_bias_param

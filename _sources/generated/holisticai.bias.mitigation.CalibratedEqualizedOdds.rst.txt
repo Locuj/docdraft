@@ -20,7 +20,6 @@
       ~CalibratedEqualizedOdds.get_estimator_param
       ~CalibratedEqualizedOdds.has_param_handler
       ~CalibratedEqualizedOdds.link_parameters
-      ~CalibratedEqualizedOdds.read_bias_mitigation_parameters
       ~CalibratedEqualizedOdds.reformat_function
       ~CalibratedEqualizedOdds.transform
       ~CalibratedEqualizedOdds.update_bias_param

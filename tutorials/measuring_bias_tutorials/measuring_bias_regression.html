@@ -26,7 +26,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Measuring Bias in recommender systems" href="measuring_bias_recommender.html" />
+    <link rel="next" title="Measuring bias in recommender systems" href="measuring_bias_recommender.html" />
     <link rel="prev" title="Measuring Bias in classification" href="measuring_bias_classification.html" /> 
 </head>
 
@@ -51,6 +51,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../bias.html">Bias</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../utils.html">Utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../datasets.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pipeline.html">Pipeline</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul class="current">
@@ -63,7 +64,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#Measure-bias"><strong>Measure bias</strong></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="measuring_bias_recommender.html">Measuring Bias in recommender systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="measuring_bias_recommender.html">Measuring bias in recommender systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="measuring_bias_clustering.html"><strong>Measuring Bias in clustering</strong></a></li>
 <li class="toctree-l2"><a class="reference internal" href="measuring_bias_multiclass.html"><strong>Measuring Bias in multiclass classification</strong></a></li>
 </ul>
@@ -381,27 +382,29 @@ div.rendered_html tbody tr:hover {
 <section id="Load-the-data">
 <h2><strong>Load the data</strong><a class="headerlink" href="#Load-the-data" title="Permalink to this heading"></a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Base Imports</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../../&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">holisticai.datasets</span> <span class="kn">import</span> <span class="n">load_student</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">load_student</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">load_student</span><span class="p">()[</span><span class="s1">&#39;frame&#39;</span><span class="p">]</span>
 <span class="n">df</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -451,121 +454,121 @@ div.rendered_html tbody tr:hover {
       <th>0</th>
       <td>GP</td>
       <td>F</td>
-      <td>18</td>
+      <td>18.0</td>
       <td>U</td>
       <td>GT3</td>
       <td>A</td>
-      <td>4</td>
-      <td>4</td>
+      <td>4.0</td>
+      <td>4.0</td>
       <td>at_home</td>
       <td>teacher</td>
       <td>...</td>
-      <td>4</td>
-      <td>3</td>
-      <td>4</td>
-      <td>1</td>
-      <td>1</td>
-      <td>3</td>
-      <td>6</td>
-      <td>5</td>
-      <td>6</td>
-      <td>6</td>
+      <td>4.0</td>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
+      <td>6.0</td>
+      <td>6.0</td>
     </tr>
     <tr>
       <th>1</th>
       <td>GP</td>
       <td>F</td>
-      <td>17</td>
+      <td>17.0</td>
       <td>U</td>
       <td>GT3</td>
       <td>T</td>
-      <td>1</td>
-      <td>1</td>
+      <td>1.0</td>
+      <td>1.0</td>
       <td>at_home</td>
       <td>other</td>
       <td>...</td>
-      <td>5</td>
-      <td>3</td>
-      <td>3</td>
-      <td>1</td>
-      <td>1</td>
-      <td>3</td>
-      <td>4</td>
-      <td>5</td>
-      <td>5</td>
-      <td>6</td>
+      <td>5.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>6.0</td>
     </tr>
     <tr>
       <th>2</th>
       <td>GP</td>
       <td>F</td>
-      <td>15</td>
+      <td>15.0</td>
       <td>U</td>
       <td>LE3</td>
       <td>T</td>
-      <td>1</td>
-      <td>1</td>
+      <td>1.0</td>
+      <td>1.0</td>
       <td>at_home</td>
       <td>other</td>
       <td>...</td>
-      <td>4</td>
-      <td>3</td>
-      <td>2</td>
-      <td>2</td>
-      <td>3</td>
-      <td>3</td>
-      <td>10</td>
-      <td>7</td>
-      <td>8</td>
-      <td>10</td>
+      <td>4.0</td>
+      <td>3.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>10.0</td>
+      <td>7.0</td>
+      <td>8.0</td>
+      <td>10.0</td>
     </tr>
     <tr>
       <th>3</th>
       <td>GP</td>
       <td>F</td>
-      <td>15</td>
+      <td>15.0</td>
       <td>U</td>
       <td>GT3</td>
       <td>T</td>
-      <td>4</td>
-      <td>2</td>
+      <td>4.0</td>
+      <td>2.0</td>
       <td>health</td>
       <td>services</td>
       <td>...</td>
-      <td>3</td>
-      <td>2</td>
-      <td>2</td>
-      <td>1</td>
-      <td>1</td>
-      <td>5</td>
-      <td>2</td>
-      <td>15</td>
-      <td>14</td>
-      <td>15</td>
+      <td>3.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>2.0</td>
+      <td>15.0</td>
+      <td>14.0</td>
+      <td>15.0</td>
     </tr>
     <tr>
       <th>4</th>
       <td>GP</td>
       <td>F</td>
-      <td>16</td>
+      <td>16.0</td>
       <td>U</td>
       <td>GT3</td>
       <td>T</td>
-      <td>3</td>
-      <td>3</td>
+      <td>3.0</td>
+      <td>3.0</td>
       <td>other</td>
       <td>other</td>
       <td>...</td>
-      <td>4</td>
-      <td>3</td>
-      <td>2</td>
-      <td>1</td>
-      <td>2</td>
-      <td>5</td>
-      <td>4</td>
-      <td>6</td>
-      <td>10</td>
-      <td>10</td>
+      <td>4.0</td>
+      <td>3.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>6.0</td>
+      <td>10.0</td>
+      <td>10.0</td>
     </tr>
     <tr>
       <th>...</th>
@@ -595,121 +598,121 @@ div.rendered_html tbody tr:hover {
       <th>390</th>
       <td>MS</td>
       <td>M</td>
-      <td>20</td>
+      <td>20.0</td>
       <td>U</td>
       <td>LE3</td>
       <td>A</td>
-      <td>2</td>
-      <td>2</td>
+      <td>2.0</td>
+      <td>2.0</td>
       <td>services</td>
       <td>services</td>
       <td>...</td>
-      <td>5</td>
-      <td>5</td>
-      <td>4</td>
-      <td>4</td>
-      <td>5</td>
-      <td>4</td>
-      <td>11</td>
-      <td>9</td>
-      <td>9</td>
-      <td>9</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>11.0</td>
+      <td>9.0</td>
+      <td>9.0</td>
+      <td>9.0</td>
     </tr>
     <tr>
       <th>391</th>
       <td>MS</td>
       <td>M</td>
-      <td>17</td>
+      <td>17.0</td>
       <td>U</td>
       <td>LE3</td>
       <td>T</td>
-      <td>3</td>
-      <td>1</td>
+      <td>3.0</td>
+      <td>1.0</td>
       <td>services</td>
       <td>services</td>
       <td>...</td>
-      <td>2</td>
-      <td>4</td>
-      <td>5</td>
-      <td>3</td>
-      <td>4</td>
-      <td>2</td>
-      <td>3</td>
-      <td>14</td>
-      <td>16</td>
-      <td>16</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>5.0</td>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>14.0</td>
+      <td>16.0</td>
+      <td>16.0</td>
     </tr>
     <tr>
       <th>392</th>
       <td>MS</td>
       <td>M</td>
-      <td>21</td>
+      <td>21.0</td>
       <td>R</td>
       <td>GT3</td>
       <td>T</td>
-      <td>1</td>
-      <td>1</td>
+      <td>1.0</td>
+      <td>1.0</td>
       <td>other</td>
       <td>other</td>
       <td>...</td>
-      <td>5</td>
-      <td>5</td>
-      <td>3</td>
-      <td>3</td>
-      <td>3</td>
-      <td>3</td>
-      <td>3</td>
-      <td>10</td>
-      <td>8</td>
-      <td>7</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>10.0</td>
+      <td>8.0</td>
+      <td>7.0</td>
     </tr>
     <tr>
       <th>393</th>
       <td>MS</td>
       <td>M</td>
-      <td>18</td>
+      <td>18.0</td>
       <td>R</td>
       <td>LE3</td>
       <td>T</td>
-      <td>3</td>
-      <td>2</td>
+      <td>3.0</td>
+      <td>2.0</td>
       <td>services</td>
       <td>other</td>
       <td>...</td>
-      <td>4</td>
-      <td>4</td>
-      <td>1</td>
-      <td>3</td>
-      <td>4</td>
-      <td>5</td>
-      <td>0</td>
-      <td>11</td>
-      <td>12</td>
-      <td>10</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>5.0</td>
+      <td>0.0</td>
+      <td>11.0</td>
+      <td>12.0</td>
+      <td>10.0</td>
     </tr>
     <tr>
       <th>394</th>
       <td>MS</td>
       <td>M</td>
-      <td>19</td>
+      <td>19.0</td>
       <td>U</td>
       <td>LE3</td>
       <td>T</td>
-      <td>1</td>
-      <td>1</td>
+      <td>1.0</td>
+      <td>1.0</td>
       <td>other</td>
       <td>at_home</td>
       <td>...</td>
-      <td>3</td>
-      <td>2</td>
-      <td>3</td>
-      <td>3</td>
-      <td>3</td>
-      <td>5</td>
-      <td>5</td>
-      <td>8</td>
-      <td>9</td>
-      <td>9</td>
+      <td>3.0</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>8.0</td>
+      <td>9.0</td>
+      <td>9.0</td>
     </tr>
   </tbody>
 </table>
@@ -722,7 +725,7 @@ div.rendered_html tbody tr:hover {
 <h2><strong>Data Exploration</strong><a class="headerlink" href="#Data-Exploration" title="Permalink to this heading"></a></h2>
 <p>We import some of the holisticai plotters for quick exploration of the data.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">holisticai.bias.plots</span> <span class="kn">import</span> <span class="n">group_pie_plot</span>
@@ -732,71 +735,110 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group_pie_plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;AxesSubplot:&gt;
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_regression_9_0.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_regression_9_0.png" />
+<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_regression_9_1.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_regression_9_1.png" />
 </div>
 </div>
 <p>The data is balanced in terms of sex.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">distribution_plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;G3&#39;</span><span class="p">])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># distribution of grades for male an female</span>
+<span class="n">distribution_plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;G3&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;AxesSubplot:xlabel=&#39;G3&#39;, ylabel=&#39;Density&#39;&gt;
+</pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_regression_11_0.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_regression_11_0.png" />
+<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_regression_11_1.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_regression_11_1.png" />
 </div>
 </div>
 <p>The grades are fairly similar for both sex subgroups, showing a slight difference with density of male grades in the 12 to 20 range being higher.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">distribution_plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;address&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;G3&#39;</span><span class="p">])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># distribution of grades for urban and rural</span>
+<span class="n">distribution_plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;G3&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;address&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;AxesSubplot:xlabel=&#39;G3&#39;, ylabel=&#39;Density&#39;&gt;
+</pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_regression_13_0.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_regression_13_0.png" />
+<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_regression_13_1.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_regression_13_1.png" />
 </div>
 </div>
 <p>The distributions for different addresses (Urban vs Rural) show more difference, with Rural grades having higher density at lower grades.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">distribution_plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Mjob&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;G3&#39;</span><span class="p">])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># distribution of grades for different Mother jobs</span>
+<span class="n">distribution_plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;G3&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Mjob&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;AxesSubplot:xlabel=&#39;G3&#39;, ylabel=&#39;Density&#39;&gt;
+</pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_regression_15_0.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_regression_15_0.png" />
+<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_regression_15_1.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_regression_15_1.png" />
 </div>
 </div>
 <p>The Mother’s job attribute is the one that shows most difference in the densities of grades. For instance we observe students with a mother working in health have higher density at higher grades.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_attr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Fjob&#39;</span><span class="p">])</span>
@@ -805,11 +847,20 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;AxesSubplot:xlabel=&#39;Score&#39;&gt;
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_regression_17_0.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_regression_17_0.png" />
+<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_regression_17_1.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_regression_17_1.png" />
 </div>
 </div>
 <p>The above shows the success rate (sucess is exceeding the given threshold) as a function of threshold for different subgroups of the population : Father’s job in [‘at_home’, ‘health’, ‘teacher’]. We can observe that student’s with a parent as a teacher are more likely to exceed high thresholds than other groups.</p>
@@ -818,7 +869,7 @@ div.rendered_html tbody tr:hover {
 <h2><strong>Preprocess Data and Train a model</strong><a class="headerlink" href="#Preprocess-Data-and-Train-a-model" title="Permalink to this heading"></a></h2>
 <p>We use a sklearn linear regression model.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
@@ -828,7 +879,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we don&#39;t want to encode protected attributes</span>
@@ -853,7 +904,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load, preprocess and split for training</span>
@@ -864,7 +915,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># G3 is the students final grade (drop G2 and G1 as well because highly correlated with G3)</span>
@@ -883,7 +934,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_absolute_error</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">max_error</span>
@@ -900,28 +951,28 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Mean Absolute Error    : 3.4796914493336395
-Root Mean Square Error : 4.3682321619616005
-Max Residual Error     : 11.444976806640625
+Mean Absolute Error    : 3.47984506302521
+Root Mean Square Error : 4.368370386032354
+Max Residual Error     : 11.4404296875
 </pre></div></div>
 </div>
 </section>
 <section id="Measure-bias">
 <h2><strong>Measure bias</strong><a class="headerlink" href="#Measure-bias" title="Permalink to this heading"></a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import some bias metrics</span>
-<span class="kn">from</span> <span class="nn">holisticai.bias.metrics</span> <span class="kn">import</span> <span class="n">statistical_parityQ</span>
-<span class="kn">from</span> <span class="nn">holisticai.bias.metrics</span> <span class="kn">import</span> <span class="n">disparate_impactQ</span>
+<span class="kn">from</span> <span class="nn">holisticai.bias.metrics</span> <span class="kn">import</span> <span class="n">statistical_parity_regression</span>
+<span class="kn">from</span> <span class="nn">holisticai.bias.metrics</span> <span class="kn">import</span> <span class="n">disparate_impact_regression</span>
 <span class="kn">from</span> <span class="nn">holisticai.bias.metrics</span> <span class="kn">import</span> <span class="n">mae_ratio</span>
 <span class="kn">from</span> <span class="nn">holisticai.bias.metrics</span> <span class="kn">import</span> <span class="n">rmse_ratio</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set up vectors for gender</span>
@@ -934,14 +985,14 @@ Max Residual Error     : 11.444976806640625
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># evaluate fairness metrics for gender</span>
-<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Statistical Parity Q80   : &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">statistical_parityQ</span><span class="p">(</span><span class="n">group_a</span><span class="p">,</span> <span class="n">group_b</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)))</span>
-<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Disparate Impact Q80     : &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">disparate_impactQ</span><span class="p">(</span><span class="n">group_a</span><span class="p">,</span> <span class="n">group_b</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Statistical Parity Q80   : &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">statistical_parity_regression</span><span class="p">(</span><span class="n">group_a</span><span class="p">,</span> <span class="n">group_b</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Disparate Impact Q80     : &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">disparate_impact_regression</span><span class="p">(</span><span class="n">group_a</span><span class="p">,</span> <span class="n">group_b</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)))</span>
 <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;MAE Ratio                : &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">mae_ratio</span><span class="p">(</span><span class="n">group_a</span><span class="p">,</span> <span class="n">group_b</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">y_true</span><span class="p">)))</span>
-<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;RMSE Ratio                : &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">rmse_ratio</span><span class="p">(</span><span class="n">group_a</span><span class="p">,</span> <span class="n">group_b</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">y_true</span><span class="p">)))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;RMSE Ratio               : &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">rmse_ratio</span><span class="p">(</span><span class="n">group_a</span><span class="p">,</span> <span class="n">group_b</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">y_true</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -952,13 +1003,13 @@ Max Residual Error     : 11.444976806640625
 <div class="highlight"><pre>
 Statistical Parity Q80   : 0.02345958168456755
 Disparate Impact Q80     : 1.1236959761549925
-MAE Ratio                : 0.9140503977510039
-RMSE Ratio                : 0.8662953866085686
+MAE Ratio                : 0.9141914932210146
+RMSE Ratio               : 0.8664403104812392
 </pre></div></div>
 </div>
 <p>All the above metrics are within acceptable ranges. This shows there isn’t much bias for the subgroups of the sex column. Let’s try the address attribute.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set up vectors for address</span>
@@ -971,14 +1022,14 @@ RMSE Ratio                : 0.8662953866085686
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># evaluate fairness metrics for address</span>
-<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Statistical Parity Q80   : &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">statistical_parityQ</span><span class="p">(</span><span class="n">group_a</span><span class="p">,</span> <span class="n">group_b</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)))</span>
-<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Disparate Impact Q80     : &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">disparate_impactQ</span><span class="p">(</span><span class="n">group_a</span><span class="p">,</span> <span class="n">group_b</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Statistical Parity Q80   : &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">statistical_parity_regression</span><span class="p">(</span><span class="n">group_a</span><span class="p">,</span> <span class="n">group_b</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Disparate Impact Q80     : &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">disparate_impact_regression</span><span class="p">(</span><span class="n">group_a</span><span class="p">,</span> <span class="n">group_b</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)))</span>
 <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;MAE Ratio                : &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">mae_ratio</span><span class="p">(</span><span class="n">group_a</span><span class="p">,</span> <span class="n">group_b</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">y_true</span><span class="p">)))</span>
-<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;RMSE Ratio                : &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">rmse_ratio</span><span class="p">(</span><span class="n">group_a</span><span class="p">,</span> <span class="n">group_b</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">y_true</span><span class="p">)))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;RMSE Ratio               : &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">rmse_ratio</span><span class="p">(</span><span class="n">group_a</span><span class="p">,</span> <span class="n">group_b</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">y_true</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -989,16 +1040,16 @@ RMSE Ratio                : 0.8662953866085686
 <div class="highlight"><pre>
 Statistical Parity Q80   : 0.10488505747126436
 Disparate Impact Q80     : 1.839080459770115
-MAE Ratio                : 0.9035917401196849
-RMSE Ratio                : 0.9325520200015031
+MAE Ratio                : 0.903540339319332
+RMSE Ratio               : 0.9324667996167351
 </pre></div></div>
 </div>
 <p>The disparate impact at quantile 0.8 is outside of fair ranges (0.8, 1.2), students living in urban areas are 1.8 times more likely to be predicted in top 20% of grades than students living in rural areas.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Disparate Impact Q80     : &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">disparate_impactQ</span><span class="p">(</span><span class="n">group_a</span><span class="p">,</span> <span class="n">group_b</span><span class="p">,</span> <span class="n">y_true</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Disparate Impact Q80     : &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">disparate_impact_regression</span><span class="p">(</span><span class="n">group_a</span><span class="p">,</span> <span class="n">group_b</span><span class="p">,</span> <span class="n">y_true</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -1014,7 +1065,7 @@ Disparate Impact Q80     : 4.2298850574712645
 <p><strong>Equality of outcome metrics (batch computation)</strong></p>
 <p>Use address as protected attribute</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set up vectors for address</span>
@@ -1026,7 +1077,7 @@ Disparate Impact Q80     : 4.2298850574712645
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">holisticai.bias.metrics</span> <span class="kn">import</span> <span class="n">regression_bias_metrics</span>
@@ -1035,7 +1086,7 @@ Disparate Impact Q80     : 4.2298850574712645
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -1083,33 +1134,23 @@ Disparate Impact Q80     : 4.2298850574712645
       <td>1</td>
     </tr>
     <tr>
-      <th>Statistical Parity Q80</th>
+      <th>Statistical Parity Q50</th>
       <td>0.104885</td>
       <td>0</td>
     </tr>
     <tr>
       <th>No Disparate Impact Level</th>
-      <td>13.556582</td>
+      <td>13.555368</td>
       <td>-</td>
     </tr>
     <tr>
       <th>Average Score Difference</th>
-      <td>0.618871</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>Average Score Difference Q80</th>
-      <td>-0.349112</td>
+      <td>0.617831</td>
       <td>0</td>
     </tr>
     <tr>
       <th>Z Score Difference</th>
-      <td>0.274984</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>Z Score Difference Q80</th>
-      <td>-0.524643</td>
+      <td>0.274551</td>
       <td>0</td>
     </tr>
     <tr>
@@ -1122,11 +1163,6 @@ Disparate Impact Q80     : 4.2298850574712645
       <td>0.091049</td>
       <td>0</td>
     </tr>
-    <tr>
-      <th>Weighed Statistical Parity AUC</th>
-      <td>0.087440</td>
-      <td>0</td>
-    </tr>
   </tbody>
 </table>
 </div></div>
@@ -1134,20 +1170,20 @@ Disparate Impact Q80     : 4.2298850574712645
 <p><strong>Equality of opportunity metrics (batch computation)</strong></p>
 <p>Use address as protected attribute</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set up vectors for address</span>
 
-<span class="n">group_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="s1">&#39;address&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;U&#39;</span><span class="p">)</span>
-<span class="n">group_b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="s1">&#39;address&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;R&#39;</span><span class="p">)</span>
-<span class="n">y_pred</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">protected_attributes</span><span class="p">)))</span>
-<span class="n">y_true</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+<span class="n">group_a</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[</span><span class="s1">&#39;address&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;U&#39;</span>
+<span class="n">group_b</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[</span><span class="s1">&#39;address&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;R&#39;</span>
+<span class="n">y_pred</span>  <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">protected_attributes</span><span class="p">))</span>
+<span class="n">y_true</span>  <span class="o">=</span> <span class="n">y_test</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regression_bias_metrics</span><span class="p">(</span><span class="n">group_a</span><span class="p">,</span> <span class="n">group_b</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">y_true</span><span class="p">,</span> <span class="n">metric_type</span><span class="o">=</span><span class="s1">&#39;equal_opportunity&#39;</span><span class="p">)</span>
@@ -1155,7 +1191,7 @@ Disparate Impact Q80     : 4.2298850574712645
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -1189,32 +1225,27 @@ Disparate Impact Q80     : 4.2298850574712645
   <tbody>
     <tr>
       <th>RMSE Ratio</th>
-      <td>0.932552</td>
+      <td>0.932467</td>
       <td>1</td>
     </tr>
     <tr>
       <th>RMSE Ratio Q80</th>
-      <td>0.818775</td>
+      <td>0.818352</td>
       <td>1</td>
     </tr>
     <tr>
       <th>MAE Ratio</th>
-      <td>0.903592</td>
+      <td>0.903540</td>
       <td>1</td>
     </tr>
     <tr>
       <th>MAE Ratio Q80</th>
-      <td>0.756552</td>
+      <td>0.756066</td>
       <td>1</td>
     </tr>
     <tr>
       <th>Correlation Difference</th>
-      <td>0.215193</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>Correlation Difference Q80</th>
-      <td>1.208281</td>
+      <td>0.215388</td>
       <td>0</td>
     </tr>
   </tbody>
@@ -1229,7 +1260,7 @@ Disparate Impact Q80     : 4.2298850574712645
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="measuring_bias_classification.html" class="btn btn-neutral float-left" title="Measuring Bias in classification" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="measuring_bias_recommender.html" class="btn btn-neutral float-right" title="Measuring Bias in recommender systems" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="measuring_bias_recommender.html" class="btn btn-neutral float-right" title="Measuring bias in recommender systems" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -62,7 +62,6 @@
 <li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.rmse_ratio.html">holisticai.bias.metrics.rmse_ratio</a></li>
 <li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.statistical_parity_auc.html">holisticai.bias.metrics.statistical_parity_auc</a></li>
 <li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.statistical_parity_regression.html">holisticai.bias.metrics.statistical_parity_regression</a></li>
-<li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.weighed_statistical_parity_auc.html">holisticai.bias.metrics.weighed_statistical_parity_auc</a></li>
 <li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.zscore_diff.html">holisticai.bias.metrics.zscore_diff</a></li>
 </ul>
 </li>
@@ -77,6 +76,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../utils.html">Utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../datasets.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pipeline.html">Pipeline</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
@@ -141,7 +141,7 @@
 <dd><p>Disparate Impact quantile (Regression version).</p>
 <p class="rubric">Description</p>
 <p>This function computes the ratio of success rates between group_a and
-group_b, where sucess means predicted score exceeds a given quantile.</p>
+group_b, where sucess means predicted score exceeds a given quantile (default = 0.8).</p>
 <p class="rubric">Interpretation</p>
 <p>A value of 1 is desired. Values below 1 are unfair towards group_a.
 Values above 1 are unfair towards group_b. The range (0.8,1.2)
@@ -154,7 +154,7 @@ is considered acceptable.</p>
 </dd>
 <dt>y_pred<span class="classifier">array-like</span></dt><dd><p>Predictions vector (regression)</p>
 </dd>
-<dt>q (optional)<span class="classifier">float</span></dt><dd><p>quantile of predictions considered</p>
+<dt>q (optional)<span class="classifier">float, default=0.8</span></dt><dd><p>quantile of predictions considered</p>
 </dd>
 </dl>
 <p class="rubric">Returns</p>

@@ -1,6 +1,0 @@
-﻿holisticai.bias.plots.plot\_group\_pie
-======================================
-
-.. currentmodule:: holisticai.bias.plots
-
-.. autofunction:: plot_group_pie

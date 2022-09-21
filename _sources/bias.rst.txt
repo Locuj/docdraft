@@ -9,7 +9,6 @@ Metrics
 Classification
 ~~~~~~~~~~~~~~
 
-
 .. autosummary::
     :toctree: generated/
 
@@ -42,9 +41,8 @@ Regression
     holisticai.bias.metrics.rmse_ratio
     holisticai.bias.metrics.statistical_parity_auc
     holisticai.bias.metrics.statistical_parity_regression
-    holisticai.bias.metrics.weighed_statistical_parity_auc
     holisticai.bias.metrics.zscore_diff
-    
+
 Recommender
 ~~~~~~~~~~~
 
@@ -64,19 +62,18 @@ Recommender
     holisticai.bias.metrics.recommender_bias_metrics
     holisticai.bias.metrics.recommender_mae_ratio
     holisticai.bias.metrics.recommender_rmse_ratio
+)
 
 Clustering
-~~~~~~~~~
+~~~~~~~~~~
 .. autosummary::
     :toctree: generated/
 
-    holisticai.bias.metrics.avg_cluster_ratio
     holisticai.bias.metrics.cluster_balance
     holisticai.bias.metrics.cluster_dist_entropy
     holisticai.bias.metrics.cluster_dist_kl
     holisticai.bias.metrics.cluster_dist_l1
     holisticai.bias.metrics.clustering_bias_metrics
-    holisticai.bias.metrics.mi_diff
     holisticai.bias.metrics.min_cluster_ratio
     holisticai.bias.metrics.silhouette_diff
     holisticai.bias.metrics.social_fairness_ratio
@@ -97,7 +94,6 @@ Multiclass
     holisticai.bias.metrics.multiclass_true_rates
     holisticai.bias.metrics.precision_matrix
     holisticai.bias.metrics.recall_matrix
-    holisticai.bias.metrics.success_rate_matrix
 
 Plotting
 --------
@@ -106,23 +102,23 @@ Plotting
     :toctree: generated/
 
     holisticai.bias.plots.abroca_plot
-    holisticai.bias.plots.distribution_plot
-    holisticai.bias.plots.group_pie_plot
-    holisticai.bias.plots.histogram_plot
-    holisticai.bias.plots.accuracy_bar_plot
-    holisticai.bias.plots.disparate_impact_plot
-    holisticai.bias.plots.statistical_parity_plot
-    holisticai.bias.plots.success_rate_matrix_plot
-    holisticai.bias.plots.success_rate_plot
+    holisticai.bias.plots.success_rate_curve
+    holisticai.bias.plots.disparate_impact_curve
+    holisticai.bias.plots.statistical_parity_curve
+    holisticai.bias.plots.success_rate_curves
+    holisticai.bias.plots.rmse_bar_plot
+    holisticai.bias.plots.mae_bar_plot
     holisticai.bias.plots.exposure_diff_plot
     holisticai.bias.plots.exposure_ratio_plot
+    holisticai.bias.plots.frequency_plot
+    holisticai.bias.plots.statistical_parity_plot
+    holisticai.bias.plots.disparate_impact_plot
+    holisticai.bias.plots.frequency_matrix_plot
+    holisticai.bias.plots.accuracy_bar_plot
     holisticai.bias.plots.long_tail_plot
-    holisticai.bias.plots.disparate_impact_curve
-    holisticai.bias.plots.mae_bar_plot
-    holisticai.bias.plots.rmse_bar_plot
-    holisticai.bias.plots.statistical_parity_curve
-    holisticai.bias.plots.success_rate_curve
-    holisticai.bias.plots.success_rate_curves
+    holisticai.bias.plots.group_pie_plot
+    holisticai.bias.plots.distribution_plot
+    holisticai.bias.plots.histogram_plot
 
   
 Mitigation

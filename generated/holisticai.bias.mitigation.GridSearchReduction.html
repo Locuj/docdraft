@@ -63,6 +63,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../utils.html">Utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../datasets.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pipeline.html">Pipeline</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
@@ -138,7 +139,7 @@ International Conference on Machine Learning. PMLR, 2018.</p>
 International Conference on Machine Learning. PMLR, 2019.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="holisticai.bias.mitigation.GridSearchReduction.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">constraints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'DemographicParity'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'EqualizedOdds'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'TruePositiveRateParity'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'FalsePositiveRateParity'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'ErrorRateParity'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'EqualizedOdds'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraint_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.mitigation.GridSearchReduction.__init__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">constraints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'EqualizedOdds'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraint_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.mitigation.GridSearchReduction.__init__" title="Permalink to this definition"></a></dt>
 <dd><p>Init Grid Search Reduction Transformer</p>
 <p class="rubric">Parameters</p>
 <dl class="simple">
@@ -162,6 +163,8 @@ best model. The weight placed on the error rate will be <code class="code docuti
 values distributed between <code class="code docutils literal notranslate"><span class="pre">-grid_limit</span></code> and <code class="code docutils literal notranslate"><span class="pre">grid_limit</span></code>
 by default</p>
 </dd>
+<dt>verbose<span class="classifier">int</span></dt><dd><p>If &gt;0, will show progress percentage.</p>
+</dd>
 </dl>
 </dd></dl>
 
@@ -184,23 +187,29 @@ by default</p>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_estimator_param</span></code>(param_name[, default])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_param_handler</span></code>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holisticai.bias.mitigation.GridSearchReduction.get_params" title="holisticai.bias.mitigation.GridSearchReduction.get_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_params</span></code></a>([deep])</p></td>
+<td><p>Get parameters for this estimator.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_param_handler</span></code>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">link_parameters</span></code>(params_hdl)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">link_parameters</span></code>(params_hdl)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holisticai.bias.mitigation.GridSearchReduction.predict" title="holisticai.bias.mitigation.GridSearchReduction.predict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict</span></code></a>(X)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#holisticai.bias.mitigation.GridSearchReduction.predict" title="holisticai.bias.mitigation.GridSearchReduction.predict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict</span></code></a>(X)</p></td>
 <td><p>Prediction</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holisticai.bias.mitigation.GridSearchReduction.predict_proba" title="holisticai.bias.mitigation.GridSearchReduction.predict_proba"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict_proba</span></code></a>(X)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holisticai.bias.mitigation.GridSearchReduction.predict_proba" title="holisticai.bias.mitigation.GridSearchReduction.predict_proba"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict_proba</span></code></a>(X)</p></td>
 <td><p>Probability Prediction</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_bias_mitigation_parameters</span></code>(group_a, group_b)</p></td>
-<td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reformat_function</span></code>(func)</p></td>
 <td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holisticai.bias.mitigation.GridSearchReduction.score" title="holisticai.bias.mitigation.GridSearchReduction.score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">score</span></code></a>(X, y[, sample_weight])</p></td>
+<td><p>Return the mean accuracy on the given test data and labels.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#holisticai.bias.mitigation.GridSearchReduction.set_params" title="holisticai.bias.mitigation.GridSearchReduction.set_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_params</span></code></a>(**params)</p></td>
+<td><p>Set the parameters of this estimator.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">transform_estimator</span></code>(estimator)</p></td>
 <td><p></p></td>
@@ -224,7 +233,7 @@ by default</p>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">CONSTRAINTS</span></code></p></td>
-<td><p>alias of <code class="xref py py-obj docutils literal notranslate"><span class="pre">Literal</span></code>['DemographicParity', 'EqualizedOdds', 'TruePositiveRateParity', 'FalsePositiveRateParity', 'ErrorRateParity']</p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
@@ -234,7 +243,7 @@ by default</p>
 <dd><p>Fit model using Grid Search Reduction.</p>
 <p class="rubric">Parameters</p>
 <dl class="simple">
-<dt>X<span class="classifier">numpy array</span></dt><dd><p>input matrix</p>
+<dt>X<span class="classifier">matrix-like</span></dt><dd><p>Input matrix</p>
 </dd>
 <dt>y_true<span class="classifier">array-like</span></dt><dd><p>Target vector</p>
 </dd>
@@ -248,6 +257,23 @@ by default</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="holisticai.bias.mitigation.GridSearchReduction.get_params">
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.mitigation.GridSearchReduction.get_params" title="Permalink to this definition"></a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<p class="rubric">Parameters</p>
+<dl class="simple">
+<dt>deep<span class="classifier">bool, default=True</span></dt><dd><p>If True, will return the parameters for this estimator and
+contained subobjects that are estimators.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>params<span class="classifier">dict</span></dt><dd><p>Parameter names mapped to their values.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="holisticai.bias.mitigation.GridSearchReduction.predict">
 <span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.mitigation.GridSearchReduction.predict" title="Permalink to this definition"></a></dt>
 <dd><p>Prediction</p>
@@ -255,7 +281,7 @@ by default</p>
 <p>Predict output for the given samples.</p>
 <p class="rubric">Parameters</p>
 <dl class="simple">
-<dt>X<span class="classifier">array-like</span></dt><dd><p>Input Matrix</p>
+<dt>X<span class="classifier">matrix-like</span></dt><dd><p>Input Matrix</p>
 </dd>
 </dl>
 <p class="rubric">Returns</p>
@@ -270,12 +296,55 @@ by default</p>
 <p>Probability estimate for the given samples.</p>
 <p class="rubric">Parameters</p>
 <dl class="simple">
-<dt>X<span class="classifier">array-like</span></dt><dd><p>Input Matrix</p>
+<dt>X<span class="classifier">matrix-like</span></dt><dd><p>Input Matrix</p>
 </dd>
 </dl>
 <p class="rubric">Returns</p>
 <dl class="simple">
 <dt>numpy.ndarray</dt><dd><p>probability output</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="holisticai.bias.mitigation.GridSearchReduction.score">
+<span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.mitigation.GridSearchReduction.score" title="Permalink to this definition"></a></dt>
+<dd><p>Return the mean accuracy on the given test data and labels.</p>
+<p>In multi-label classification, this is the subset accuracy
+which is a harsh metric since you require for each sample that
+each label set be correctly predicted.</p>
+<p class="rubric">Parameters</p>
+<dl class="simple">
+<dt>X<span class="classifier">array-like of shape (n_samples, n_features)</span></dt><dd><p>Test samples.</p>
+</dd>
+<dt>y<span class="classifier">array-like of shape (n_samples,) or (n_samples, n_outputs)</span></dt><dd><p>True labels for <cite>X</cite>.</p>
+</dd>
+<dt>sample_weight<span class="classifier">array-like of shape (n_samples,), default=None</span></dt><dd><p>Sample weights.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>score<span class="classifier">float</span></dt><dd><p>Mean accuracy of <code class="docutils literal notranslate"><span class="pre">self.predict(X)</span></code> wrt. <cite>y</cite>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="holisticai.bias.mitigation.GridSearchReduction.set_params">
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.mitigation.GridSearchReduction.set_params" title="Permalink to this definition"></a></dt>
+<dd><p>Set the parameters of this estimator.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as <code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code>). The latter have
+parameters of the form <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s
+possible to update each component of a nested object.</p>
+<p class="rubric">Parameters</p>
+<dl class="simple">
+<dt><a href="#id1"><span class="problematic" id="id2">**</span></a>params<span class="classifier">dict</span></dt><dd><p>Estimator parameters.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>self<span class="classifier">estimator instance</span></dt><dd><p>Estimator instance.</p>
 </dd>
 </dl>
 </dd></dl>

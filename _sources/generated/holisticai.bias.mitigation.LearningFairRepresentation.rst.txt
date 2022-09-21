@@ -20,7 +20,6 @@
       ~LearningFairRepresentation.get_estimator_param
       ~LearningFairRepresentation.has_param_handler
       ~LearningFairRepresentation.link_parameters
-      ~LearningFairRepresentation.read_bias_mitigation_parameters
       ~LearningFairRepresentation.reformat_function
       ~LearningFairRepresentation.transform
       ~LearningFairRepresentation.update_bias_param

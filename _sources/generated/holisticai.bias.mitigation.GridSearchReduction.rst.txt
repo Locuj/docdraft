@@ -17,12 +17,14 @@
       ~GridSearchReduction.fit
       ~GridSearchReduction.get_bias_param
       ~GridSearchReduction.get_estimator_param
+      ~GridSearchReduction.get_params
       ~GridSearchReduction.has_param_handler
       ~GridSearchReduction.link_parameters
       ~GridSearchReduction.predict
       ~GridSearchReduction.predict_proba
-      ~GridSearchReduction.read_bias_mitigation_parameters
       ~GridSearchReduction.reformat_function
+      ~GridSearchReduction.score
+      ~GridSearchReduction.set_params
       ~GridSearchReduction.transform_estimator
       ~GridSearchReduction.update_bias_param
       ~GridSearchReduction.update_estimator_param

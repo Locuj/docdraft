@@ -19,7 +19,6 @@
       ~RejectOptionClassification.get_estimator_param
       ~RejectOptionClassification.has_param_handler
       ~RejectOptionClassification.link_parameters
-      ~RejectOptionClassification.read_bias_mitigation_parameters
       ~RejectOptionClassification.reformat_function
       ~RejectOptionClassification.transform
       ~RejectOptionClassification.update_bias_param

@@ -64,7 +64,6 @@
 <li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.multiclass_true_rates.html">holisticai.bias.metrics.multiclass_true_rates</a></li>
 <li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.precision_matrix.html">holisticai.bias.metrics.precision_matrix</a></li>
 <li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.recall_matrix.html">holisticai.bias.metrics.recall_matrix</a></li>
-<li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.success_rate_matrix.html">holisticai.bias.metrics.success_rate_matrix</a></li>
 </ul>
 </li>
 </ul>
@@ -75,6 +74,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../utils.html">Utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../datasets.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pipeline.html">Pipeline</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
@@ -135,13 +135,13 @@
 <h1>holisticai.bias.metrics.frequency_matrix<a class="headerlink" href="#holisticai-bias-metrics-frequency-matrix" title="Permalink to this heading"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="holisticai.bias.metrics.frequency_matrix">
-<span class="sig-prename descclassname"><span class="pre">holisticai.bias.metrics.</span></span><span class="sig-name descname"><span class="pre">frequency_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_attr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.metrics.frequency_matrix" title="Permalink to this definition"></a></dt>
-<dd><p>Success Rate Matrix.</p>
+<span class="sig-prename descclassname"><span class="pre">holisticai.bias.metrics.</span></span><span class="sig-name descname"><span class="pre">frequency_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p_attr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'group'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.metrics.frequency_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Frequency Matrix.</p>
 <p class="rubric">Description</p>
-<p>This function computes the success rate matrix. For each
-group, class pair we compute the sucess rate of that group
-for admission within that class. The returned matrix has
-shape (num_groups, num_classes).</p>
+<p>This function computes the frequency matrix. For each
+group, class pair we compute the count of that group
+for admission within that class. We include the option to normalise
+over groups or classes. By default we normalise by ‘group’.</p>
 <p class="rubric">Parameters</p>
 <dl class="simple">
 <dt>p_attr<span class="classifier">array-like</span></dt><dd><p>Multiclass protected attribute vector.</p>
@@ -162,10 +162,10 @@ shape (num_groups, num_classes).</p>
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">holisticai.bias.metrics</span> <span class="kn">import</span> <span class="n">success_rate_matrix</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">holisticai.bias.metrics</span> <span class="kn">import</span> <span class="n">frequency_matrix</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">p_attr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">success_rate_matrix</span><span class="p">(</span><span class="n">p_attr</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">frequency_matrix</span><span class="p">(</span><span class="n">p_attr</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">)</span>
 <span class="go">    0     1     2</span>
 <span class="go">A  0.50  0.25  0.25</span>
 <span class="go">B  0.25  0.50  0.25</span>

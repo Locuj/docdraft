@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Measuring Bias in recommender systems &mdash; holisticai  documentation</title>
+  <title>Measuring bias in recommender systems &mdash; holisticai  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
@@ -51,20 +51,21 @@
 <li class="toctree-l1"><a class="reference internal" href="../../bias.html">Bias</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../utils.html">Utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../datasets.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pipeline.html">Pipeline</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../measuring_bias.html">Measuring bias</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="measuring_bias_classification.html"><strong>Measuring Bias in classification</strong></a></li>
 <li class="toctree-l2"><a class="reference internal" href="measuring_bias_regression.html"><strong>Measuring Bias in regression</strong></a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Measuring Bias in recommender systems</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Measuring bias in recommender systems</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#Importing-the-data">Importing the data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Plotting-and-Data-Exploration">Plotting and Data Exploration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Evaluate-Fairness-of-Model">Evaluate Fairness of Model</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#Item-Fairness">Item Fairness</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#User-fairness---Equality-of-Outcome">User fairness - Equality of Outcome</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#User-fairness---Equality-of-Outcome">User fairness - Equality of Outcome</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="measuring_bias_clustering.html"><strong>Measuring Bias in clustering</strong></a></li>
@@ -89,7 +90,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../measuring_bias.html">Measuring bias</a> &raquo;</li>
-      <li>Measuring Bias in recommender systems</li>
+      <li>Measuring bias in recommender systems</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/tutorials/measuring_bias_tutorials/measuring_bias_recommender.ipynb.txt" rel="nofollow"> View page source</a>
       </li>
@@ -377,19 +378,21 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<section id="Measuring-Bias-in-recommender-systems">
-<h1>Measuring Bias in recommender systems<a class="headerlink" href="#Measuring-Bias-in-recommender-systems" title="Permalink to this heading"></a></h1>
+<section id="Measuring-bias-in-recommender-systems">
+<h1>Measuring bias in recommender systems<a class="headerlink" href="#Measuring-bias-in-recommender-systems" title="Permalink to this heading"></a></h1>
 <p>This is an introduction to fairness in recommender systems. A recommender system aims to recommend the best item according to the user preference. In this tutorial, we will focus on the task of correctly predicting users’ music preference.</p>
 <p>A recommender system can be biased in multiple ways. For example, we may be concerned that the artists in our database will not get equal representation (item fairness). Alternative, our main concern may be that different groups of users (e.g. male/female users) will get different music recommendations (user fairness). In the following, we will show how to explore the data for fairness, and measure these various types of fairness using the holisticai library.</p>
 <section id="Importing-the-data">
 <h2>Importing the data<a class="headerlink" href="#Importing-the-data" title="Permalink to this heading"></a></h2>
 <p>We will start by importing the example dataset, which we host on our library. The <a class="reference external" href="https://www.kaggle.com/datasets/ravichaubey1506/lastfm">datatset</a> contains a set of artists that were downloaded by users. It includes personal information about the user, specifically sex and country of origin. A user can download more than one artist. We will use the column “score”, which contains only 1s for counting the interactions.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../&#39;</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">holisticai.datasets</span> <span class="kn">import</span> <span class="n">load_last_fm</span>
 
 <span class="n">bunch</span> <span class="o">=</span> <span class="n">load_last_fm</span><span class="p">()</span>
@@ -398,9 +401,121 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>user</th>
+      <th>artist</th>
+      <th>sex</th>
+      <th>country</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>red hot chili peppers</td>
+      <td>f</td>
+      <td>Germany</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.0</td>
+      <td>the black dahlia murder</td>
+      <td>f</td>
+      <td>Germany</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.0</td>
+      <td>goldfrapp</td>
+      <td>f</td>
+      <td>Germany</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.0</td>
+      <td>dropkick murphys</td>
+      <td>f</td>
+      <td>Germany</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.0</td>
+      <td>le tigre</td>
+      <td>f</td>
+      <td>Germany</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>289950</th>
+      <td>19718.0</td>
+      <td>bob dylan</td>
+      <td>f</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>289951</th>
+      <td>19718.0</td>
+      <td>pixies</td>
+      <td>f</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>289952</th>
+      <td>19718.0</td>
+      <td>the clash</td>
+      <td>f</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>289953</th>
+      <td>19718.0</td>
+      <td>a tribe called quest</td>
+      <td>f</td>
+      <td>Canada</td>
+    </tr>
+    <tr>
+      <th>289954</th>
+      <td>19718.0</td>
+      <td>radiohead</td>
+      <td>f</td>
+      <td>Canada</td>
+    </tr>
+  </tbody>
+</table>
+<p>289955 rows × 4 columns</p>
+</div></div>
+</div>
 <p>We now need to change the dataframe to an interaction matrix, where every row is a user and every column is an artist. We can use the formatting function provided in the library, the output dataframe can be used as an input to the bias metric functions for recommenders.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import formatters</span>
@@ -416,7 +531,7 @@ div.rendered_html tbody tr:hover {
 <h2>Plotting and Data Exploration<a class="headerlink" href="#Plotting-and-Data-Exploration" title="Permalink to this heading"></a></h2>
 <p>We will now move to data exploration, using some of the functions for plotting available in our library.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import plotters</span>
@@ -427,8 +542,8 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Number of Unique Users : &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">df_pivot</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
@@ -436,13 +551,29 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Number of Unique Users : 15000
+Number of Unique Artists : 1004
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># male vs female representation in data</span>
 <span class="n">group_pie_plot</span><span class="p">(</span><span class="n">lastfm</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">])</span>
 </pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_recommender_11_0.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_recommender_11_0.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -458,7 +589,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_recommender_11_0.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_recommender_11_0.png" />
+<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_recommender_12_0.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_recommender_12_0.png" />
 </div>
 </div>
 <p>After an initial exploration of the users demographic, we can explore fairness-related plots. The <code class="docutils literal notranslate"><span class="pre">long_tail_plot</span></code> shows the descendent frequency of the items. In this example, the artists’ popularity seems falls <a class="reference external" href="https://en.wikipedia.org/wiki/Zipf%27s_law">exponentially</a> at a pretty fast rate. This can indicate an issue in terms of items fairness (i.e. if we want all artists to be recommended equally).</p>
@@ -475,7 +606,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_recommender_13_0.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_recommender_13_0.png" />
+<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_recommender_14_0.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_recommender_14_0.png" />
 </div>
 </div>
 <p>If we are interested in users’ fairness instead, we may want to compare how often the same artists are presented to different groups of users. Here, we will focus on the comparison between male and female users. Specifically, we calculate the proportion of male users (out of all male users) who have downloaded each artist. We then compare this value to the corresponding proportion of female users.</p>
@@ -495,7 +626,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_recommender_15_0.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_recommender_15_0.png" />
+<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_recommender_16_0.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_recommender_16_0.png" />
 </div>
 </div>
 <p>The differences in exposures seem to be overall quite small. However, since the number of items is quite large, the exposures are small to start with. In these cases, the exposure ratio may be a more informative choice.</p>
@@ -512,7 +643,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_recommender_17_0.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_recommender_17_0.png" />
+<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_recommender_18_0.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_recommender_18_0.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -527,7 +658,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_recommender_18_0.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_recommender_18_0.png" />
+<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_recommender_19_0.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_recommender_19_0.png" />
 </div>
 </div>
 <p>The above plots show that there are artists that are more than 5 times more popular amongst the female subgroup than male, and artists that are more than 20 times more popular amongst male rather than female users.</p>
@@ -653,9 +784,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <p>Above we have batch plotted all item_based metrics for recommender bias task. For instance observe the Average Recommendation Popularity is 522, meaning that on average a user will interact with an artist that has 522 total interactions.</p>
 </section>
-</section>
 <section id="User-fairness---Equality-of-Outcome">
-<h2>User fairness - Equality of Outcome<a class="headerlink" href="#User-fairness---Equality-of-Outcome" title="Permalink to this heading"></a></h2>
+<h3>User fairness - Equality of Outcome<a class="headerlink" href="#User-fairness---Equality-of-Outcome" title="Permalink to this heading"></a></h3>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
@@ -737,6 +867,7 @@ div.rendered_html tbody tr:hover {
 </div></div>
 </div>
 <p>Above we show the batch computation for equality of outcome metrics in a recommender systems setting.</p>
+</section>
 </section>
 </section>
 

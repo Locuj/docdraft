@@ -27,7 +27,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Measuring Bias in multiclass classification" href="measuring_bias_multiclass.html" />
-    <link rel="prev" title="Measuring Bias in recommender systems" href="measuring_bias_recommender.html" /> 
+    <link rel="prev" title="Measuring bias in recommender systems" href="measuring_bias_recommender.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -51,13 +51,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../../bias.html">Bias</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../utils.html">Utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../datasets.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pipeline.html">Pipeline</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../measuring_bias.html">Measuring bias</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="measuring_bias_classification.html"><strong>Measuring Bias in classification</strong></a></li>
 <li class="toctree-l2"><a class="reference internal" href="measuring_bias_regression.html"><strong>Measuring Bias in regression</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="measuring_bias_recommender.html">Measuring Bias in recommender systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="measuring_bias_recommender.html">Measuring bias in recommender systems</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#"><strong>Measuring Bias in clustering</strong></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#Load-the-data"><strong>Load the data</strong></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Data-Exploration"><strong>Data Exploration</strong></a></li>
@@ -399,24 +400,24 @@ div.rendered_html tbody tr:hover {
 
 <span class="c1">#sys</span>
 <span class="kn">import</span> <span class="nn">sys</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../../&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <p>We will start by importing the adult dataset, which we host on our library. The adult dataset contains a set of informations extract from US 1994 Census database. It includes personal information about the individuals, specifically sex, race, and education. In this tutorial we will perform unsupervised learning to cluster the data, then measure whether this clustering contains gender or race information (clustering bias).</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get data</span>
 <span class="kn">from</span> <span class="nn">holisticai.datasets</span> <span class="kn">import</span> <span class="n">load_adult</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">load_adult</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">load_adult</span><span class="p">()[</span><span class="s1">&#39;frame&#39;</span><span class="p">]</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -438,112 +439,112 @@ div.rendered_html tbody tr:hover {
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Age</th>
-      <th>Workclass</th>
-      <th>Final Weight</th>
-      <th>Education</th>
-      <th>Education Number of Years</th>
-      <th>Marital-status</th>
-      <th>Occupation</th>
-      <th>Relationship</th>
-      <th>Race</th>
-      <th>Sex</th>
-      <th>Capital-gain</th>
-      <th>Capital-loss</th>
-      <th>Hours-per-week</th>
-      <th>Native-country</th>
-      <th>Salary</th>
+      <th>age</th>
+      <th>workclass</th>
+      <th>fnlwgt</th>
+      <th>education</th>
+      <th>education-num</th>
+      <th>marital-status</th>
+      <th>occupation</th>
+      <th>relationship</th>
+      <th>race</th>
+      <th>sex</th>
+      <th>capital-gain</th>
+      <th>capital-loss</th>
+      <th>hours-per-week</th>
+      <th>native-country</th>
+      <th>class</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>39</td>
-      <td>State-gov</td>
-      <td>77516</td>
-      <td>Bachelors</td>
-      <td>13</td>
+      <td>25.0</td>
+      <td>Private</td>
+      <td>226802.0</td>
+      <td>11th</td>
+      <td>7.0</td>
       <td>Never-married</td>
-      <td>Adm-clerical</td>
-      <td>Not-in-family</td>
-      <td>White</td>
+      <td>Machine-op-inspct</td>
+      <td>Own-child</td>
+      <td>Black</td>
       <td>Male</td>
-      <td>2174</td>
-      <td>0</td>
-      <td>40</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>40.0</td>
       <td>United-States</td>
       <td>&lt;=50K</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>50</td>
-      <td>Self-emp-not-inc</td>
-      <td>83311</td>
-      <td>Bachelors</td>
-      <td>13</td>
+      <td>38.0</td>
+      <td>Private</td>
+      <td>89814.0</td>
+      <td>HS-grad</td>
+      <td>9.0</td>
       <td>Married-civ-spouse</td>
-      <td>Exec-managerial</td>
+      <td>Farming-fishing</td>
       <td>Husband</td>
       <td>White</td>
       <td>Male</td>
-      <td>0</td>
-      <td>0</td>
-      <td>13</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>50.0</td>
       <td>United-States</td>
       <td>&lt;=50K</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>38</td>
-      <td>Private</td>
-      <td>215646</td>
-      <td>HS-grad</td>
-      <td>9</td>
-      <td>Divorced</td>
-      <td>Handlers-cleaners</td>
-      <td>Not-in-family</td>
+      <td>28.0</td>
+      <td>Local-gov</td>
+      <td>336951.0</td>
+      <td>Assoc-acdm</td>
+      <td>12.0</td>
+      <td>Married-civ-spouse</td>
+      <td>Protective-serv</td>
+      <td>Husband</td>
       <td>White</td>
       <td>Male</td>
-      <td>0</td>
-      <td>0</td>
-      <td>40</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>40.0</td>
       <td>United-States</td>
-      <td>&lt;=50K</td>
+      <td>&gt;50K</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>53</td>
+      <td>44.0</td>
       <td>Private</td>
-      <td>234721</td>
-      <td>11th</td>
-      <td>7</td>
+      <td>160323.0</td>
+      <td>Some-college</td>
+      <td>10.0</td>
       <td>Married-civ-spouse</td>
-      <td>Handlers-cleaners</td>
+      <td>Machine-op-inspct</td>
       <td>Husband</td>
       <td>Black</td>
       <td>Male</td>
-      <td>0</td>
-      <td>0</td>
-      <td>40</td>
+      <td>7688.0</td>
+      <td>0.0</td>
+      <td>40.0</td>
       <td>United-States</td>
-      <td>&lt;=50K</td>
+      <td>&gt;50K</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>28</td>
-      <td>Private</td>
-      <td>338409</td>
-      <td>Bachelors</td>
-      <td>13</td>
-      <td>Married-civ-spouse</td>
-      <td>Prof-specialty</td>
-      <td>Wife</td>
-      <td>Black</td>
+      <td>18.0</td>
+      <td>NaN</td>
+      <td>103497.0</td>
+      <td>Some-college</td>
+      <td>10.0</td>
+      <td>Never-married</td>
+      <td>NaN</td>
+      <td>Own-child</td>
+      <td>White</td>
       <td>Female</td>
-      <td>0</td>
-      <td>0</td>
-      <td>40</td>
-      <td>Cuba</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>30.0</td>
+      <td>United-States</td>
       <td>&lt;=50K</td>
     </tr>
   </tbody>
@@ -554,119 +555,130 @@ div.rendered_html tbody tr:hover {
 <section id="Data-Exploration">
 <h2><strong>Data Exploration</strong><a class="headerlink" href="#Data-Exploration" title="Permalink to this heading"></a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import holisticai charts</span>
 <span class="kn">from</span> <span class="nn">holisticai.bias.plots</span> <span class="kn">import</span> <span class="n">group_pie_plot</span>
-<span class="kn">from</span> <span class="nn">holisticai.bias.plots</span> <span class="kn">import</span> <span class="n">distribution_plot</span>
+<span class="kn">from</span> <span class="nn">holisticai.bias.plots</span> <span class="kn">import</span> <span class="n">histogram_plot</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># pie plot of the Sex column</span>
-<span class="n">p_attr</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span>
+<span class="n">p_attr</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">]</span>
 <span class="n">group_pie_plot</span><span class="p">(</span><span class="n">p_attr</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;AxesSubplot:&gt;
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_clustering_8_0.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_clustering_8_0.png" />
+<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_clustering_8_1.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_clustering_8_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># pie plot of Race column</span>
-<span class="n">p_attr</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Race&#39;</span><span class="p">]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># pie plot of class column</span>
+<span class="n">p_attr</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span>
 <span class="n">group_pie_plot</span><span class="p">(</span><span class="n">p_attr</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;AxesSubplot:&gt;
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_clustering_9_0.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_clustering_9_0.png" />
+<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_clustering_9_1.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_clustering_9_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Distribution of &#39;education number of years&#39; with Race as hue</span>
-<span class="n">distribution_plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Race&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Education Number of Years&#39;</span><span class="p">])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Histogram of race with class as hue</span>
+<span class="n">histogram_plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;race&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;AxesSubplot:xlabel=&#39;race&#39;, ylabel=&#39;Probability&#39;&gt;
+</pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_clustering_10_0.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_clustering_10_0.png" />
+<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_clustering_10_1.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_clustering_10_1.png" />
 </div>
 </div>
 </section>
 <section id="Preprocess-data-and-Train-a-model">
 <h2><strong>Preprocess data and Train a model</strong><a class="headerlink" href="#Preprocess-data-and-Train-a-model" title="Permalink to this heading"></a></h2>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># categorical variables</span>
-<span class="n">cat_variables</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s1">&#39;Workclass&#39;</span><span class="p">,</span> <span class="s1">&#39;Education&#39;</span><span class="p">,</span> <span class="s1">&#39;Marital-status&#39;</span><span class="p">,</span> <span class="s1">&#39;Occupation&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Relationship&#39;</span><span class="p">,</span> <span class="s1">&#39;Race&#39;</span><span class="p">,</span> <span class="s1">&#39;Sex&#39;</span><span class="p">,</span> <span class="s1">&#39;Native-country&#39;</span><span class="p">,</span> <span class="s1">&#39;Salary&#39;</span>
-    <span class="p">]</span>
-
-<span class="c1"># numerical variables</span>
-<span class="n">int_variables</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="s1">&#39;Final Weight&#39;</span><span class="p">,</span> <span class="s1">&#39;Education Number of Years&#39;</span><span class="p">,</span> <span class="s1">&#39;Capital-gain&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Capital-loss&#39;</span><span class="p">,</span> <span class="s1">&#39;Hours-per-week&#39;</span>
-    <span class="p">]</span>
-
-<span class="c1"># mapping categorical variables to one-hot encoding</span>
-<span class="n">df_cat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-
-<span class="c1"># one-hot encoding of categorical variables</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span>
-
-<span class="c1"># one hot encode categorical variables</span>
-<span class="k">for</span> <span class="n">cat</span> <span class="ow">in</span> <span class="n">cat_variables</span><span class="p">:</span>
-    <span class="c1"># one-hot encoding fitting</span>
-    <span class="n">one_hot_func</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="n">cat</span><span class="p">]])</span>
-
-    <span class="c1"># mapping</span>
-    <span class="n">cat_mapped</span> <span class="o">=</span> <span class="n">one_hot_func</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="n">cat</span><span class="p">]])</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
-
-    <span class="c1"># storing</span>
-    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">cat_label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">one_hot_func</span><span class="o">.</span><span class="n">categories_</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-        <span class="n">df_cat</span><span class="p">[</span><span class="n">cat</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">cat_label</span><span class="p">]</span> <span class="o">=</span> <span class="n">cat_mapped</span><span class="p">[:,</span> <span class="n">k</span><span class="p">]</span>
-
-<span class="c1"># consolidating a final dataset</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="n">int_variables</span><span class="p">],</span> <span class="n">df_cat</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
 </div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/var/folders/l1/g77ghb8d3xg695jfbbdfjgdc0000gn/T/ipykernel_41952/1429175405.py:29: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
-  df_cat[cat + &#34;_&#34; + cat_label] = cat_mapped[:, k]
-/var/folders/l1/g77ghb8d3xg695jfbbdfjgdc0000gn/T/ipykernel_41952/1429175405.py:29: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
-  df_cat[cat + &#34;_&#34; + cat_label] = cat_mapped[:, k]
-/var/folders/l1/g77ghb8d3xg695jfbbdfjgdc0000gn/T/ipykernel_41952/1429175405.py:29: PerformanceWarning: DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
-  df_cat[cat + &#34;_&#34; + cat_label] = cat_mapped[:, k]
-</pre></div></div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dataset</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">load_adult</span><span class="p">()</span>
+
+<span class="c1"># Dataframe</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">],</span> <span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">protected_variables</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;sex&quot;</span><span class="p">,</span> <span class="s2">&quot;race&quot;</span><span class="p">]</span>
+<span class="n">output_variable</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span>
+
+<span class="c1"># Simple preprocessing</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">output_variable</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s2">&quot;&gt;50K&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;&lt;=50K&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">protected_variables</span> <span class="o">+</span> <span class="n">output_variable</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">group</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;sex&quot;</span><span class="p">]</span>
+<span class="n">group_a</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">group</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Female&quot;</span>
+<span class="n">group_b</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">group</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Male&quot;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">group_a</span><span class="p">,</span> <span class="n">group_b</span><span class="p">]</span>
+
+<span class="c1"># Train test split</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">train_data</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">test_data</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
 </div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
@@ -676,13 +688,14 @@ div.rendered_html tbody tr:hover {
 
 <span class="n">ks</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
 <span class="n">inertias</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">group_a_train</span><span class="p">,</span> <span class="n">group_b_train</span> <span class="o">=</span> <span class="n">train_data</span>
 
 <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">ks</span><span class="p">:</span>
     <span class="c1"># create a KMeans instance with k clusters: model</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="n">k</span><span class="p">)</span>
 
     <span class="c1"># fit model to samples</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
 
     <span class="c1"># append the inertia to the list of inertias</span>
     <span class="n">inertias</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">inertia_</span><span class="p">)</span>
@@ -693,9 +706,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="c1"># Plot ks vs inertias</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot ks vs inertias</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ks</span><span class="p">,</span> <span class="n">inertias</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of Clusters, k&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Inertia&#39;</span><span class="p">)</span>
@@ -708,7 +719,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_clustering_14_0.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_clustering_14_0.png" />
+<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_clustering_15_0.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_clustering_15_0.png" />
 </div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -716,11 +727,15 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we choose to use 4 clusters</span>
-
 <span class="n">model</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<br/></pre></div>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+
+<span class="c1"># test data</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">group_a</span><span class="p">,</span> <span class="n">group_b</span> <span class="o">=</span> <span class="n">test_data</span>
+
+<span class="c1"># predict</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
 </section>
@@ -731,7 +746,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># imports</span>
-<span class="kn">from</span> <span class="nn">holisticai.bias.plots</span> <span class="kn">import</span> <span class="n">success_rate_matrix_plot</span>
+<span class="kn">from</span> <span class="nn">holisticai.bias.plots</span> <span class="kn">import</span> <span class="n">frequency_matrix_plot</span>
 <span class="kn">from</span> <span class="nn">holisticai.bias.metrics</span> <span class="kn">import</span> <span class="n">cluster_balance</span>
 <span class="kn">from</span> <span class="nn">holisticai.bias.metrics</span> <span class="kn">import</span> <span class="n">min_cluster_ratio</span>
 </pre></div>
@@ -741,10 +756,10 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set up vectors for measuring bias</span>
-<span class="n">p_attr_sex</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span>
-<span class="n">p_attr_race</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Race&#39;</span><span class="p">]</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set up vectors for measuring bias [we consider sex and race]</span>
+<span class="n">p_attr_sex</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">X</span><span class="o">.</span><span class="n">index</span><span class="p">][</span><span class="s1">&#39;sex&#39;</span><span class="p">]</span>
+<span class="n">p_attr_race</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">X</span><span class="o">.</span><span class="n">index</span><span class="p">][</span><span class="s1">&#39;race&#39;</span><span class="p">]</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -752,15 +767,25 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">success_rate_matrix_plot</span><span class="p">(</span><span class="n">p_attr_sex</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># probability for each gender and class</span>
+<span class="n">frequency_matrix_plot</span><span class="p">(</span><span class="n">p_attr_sex</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="s1">&#39;group&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;AxesSubplot:xlabel=&#39;Class&#39;, ylabel=&#39;Group&#39;&gt;
+</pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_clustering_19_0.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_clustering_19_0.png" />
+<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_clustering_20_1.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_clustering_20_1.png" />
 </div>
 </div>
 <p>The clustering is quite balanced in terms of gender representations.</p>
@@ -768,62 +793,72 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">success_rate_matrix_plot</span><span class="p">(</span><span class="n">p_attr_race</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># probability for each race and group</span>
+<span class="n">frequency_matrix_plot</span><span class="p">(</span><span class="n">p_attr_race</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="s1">&#39;group&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;AxesSubplot:xlabel=&#39;Class&#39;, ylabel=&#39;Group&#39;&gt;
+</pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_clustering_21_0.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_clustering_21_0.png" />
+<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_clustering_22_1.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_clustering_22_1.png" />
 </div>
 </div>
 <p>In terms of race representations, some clusters are quite unbalanced. So the kmeans model has learnt some implicit Race information. Depending on the application of interest, this might be a bias issue.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group_a</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Race&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39; Amer-Indian-Eskimo&#39;</span>
-<span class="n">group_b</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Race&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39; White&#39;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group_a</span> <span class="o">=</span> <span class="n">p_attr_race</span><span class="o">==</span><span class="s1">&#39;Amer-Indian-Eskimo&#39;</span>
+<span class="n">group_b</span> <span class="o">=</span> <span class="n">p_attr_race</span><span class="o">==</span><span class="s1">&#39;White&#39;</span>
 <span class="n">cluster_balance</span><span class="p">(</span><span class="n">group_a</span><span class="p">,</span> <span class="n">group_b</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.3051664683084622
+0.2588980468025336
 </pre></div></div>
 </div>
 <p>The above metric indicates the clustering is not balanced in the sense of each group having similar representation in clusters to overall. The ideal value for this metric would be 1.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group_a</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Race&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39; Amer-Indian-Eskimo&#39;</span>
-<span class="n">group_b</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Race&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39; White&#39;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group_a</span> <span class="o">=</span> <span class="n">p_attr_race</span><span class="o">==</span><span class="s1">&#39;Amer-Indian-Eskimo&#39;</span>
+<span class="n">group_b</span> <span class="o">=</span> <span class="n">p_attr_race</span><span class="o">==</span><span class="s1">&#39;White&#39;</span>
 <span class="n">min_cluster_ratio</span><span class="p">(</span><span class="n">group_a</span><span class="p">,</span> <span class="n">group_b</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.003952569169960474
+0.0033003300330033004
 </pre></div></div>
 </div>
 <p>The above metric indicates there is a cluster where there are about 253 times more white people than Amer-Indian-Eskimos. This makes sense because of the difference in representation in overall population.</p>
 <section id="Batch-computation">
 <h3>Batch computation<a class="headerlink" href="#Batch-computation" title="Permalink to this heading"></a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import batch computer</span>
@@ -832,20 +867,20 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set up data arrays</span>
-
-<span class="n">group_a</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39; Female&#39;</span>
-<span class="n">group_b</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39; Male&#39;</span>
+<span class="n">group_a</span> <span class="o">=</span> <span class="n">p_attr_sex</span><span class="o">==</span><span class="s1">&#39;Female&#39;</span>
+<span class="n">group_b</span> <span class="o">=</span> <span class="n">p_attr_sex</span><span class="o">==</span><span class="s1">&#39;Male&#39;</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">y_pred</span>
 <span class="n">centroids</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">cluster_centers_</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clustering_bias_metrics</span><span class="p">(</span><span class="n">group_a</span><span class="p">,</span> <span class="n">group_b</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">,</span> <span class="n">centroids</span> <span class="o">=</span> <span class="n">centroids</span><span class="p">,</span> <span class="n">metric_type</span> <span class="o">=</span> <span class="s1">&#39;equal_outcome&#39;</span><span class="p">)</span>
@@ -853,7 +888,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -887,44 +922,39 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>Cluster Balance</th>
-      <td>0.778883</td>
+      <td>0.872191</td>
       <td>1</td>
     </tr>
     <tr>
       <th>Minimum Cluster Ratio</th>
-      <td>0.345528</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>Average Cluster Ratio</th>
-      <td>0.453595</td>
+      <td>0.396657</td>
       <td>1</td>
     </tr>
     <tr>
       <th>Cluster Distribution Total Variation</th>
-      <td>0.025961</td>
+      <td>0.042961</td>
       <td>0</td>
     </tr>
     <tr>
       <th>Cluster Distribution KL Div</th>
-      <td>0.002874</td>
+      <td>0.005572</td>
       <td>0</td>
     </tr>
     <tr>
       <th>Social Fairness Ratio</th>
-      <td>0.982741</td>
+      <td>0.965040</td>
       <td>1</td>
     </tr>
     <tr>
       <th>Silhouette Difference</th>
-      <td>0.001276</td>
+      <td>0.004837</td>
       <td>0</td>
     </tr>
   </tbody>
 </table>
 </div></div>
 </div>
-<p>The above metrics hint at the computed clustering not biased in terms of Sex attribute.</p>
+<p>The above metrics hint that the computed clustering <strong>not</strong> biased in terms of sex attribute.</p>
 </section>
 </section>
 </section>
@@ -933,7 +963,7 @@ div.rendered_html tbody tr:hover {
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="measuring_bias_recommender.html" class="btn btn-neutral float-left" title="Measuring Bias in recommender systems" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="measuring_bias_recommender.html" class="btn btn-neutral float-left" title="Measuring bias in recommender systems" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="measuring_bias_multiclass.html" class="btn btn-neutral float-right" title="Measuring Bias in multiclass classification" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

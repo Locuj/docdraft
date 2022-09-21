@@ -1,6 +1,0 @@
-﻿holisticai.bias.metrics.avg\_rec\_popularity
-============================================
-
-.. currentmodule:: holisticai.bias.metrics
-
-.. autofunction:: avg_rec_popularity

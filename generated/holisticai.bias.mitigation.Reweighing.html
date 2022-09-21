@@ -25,7 +25,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="holisticai.bias.mitigation.LearningFairRepresentation" href="holisticai.bias.mitigation.LearningFairRepresentation.html" />
-    <link rel="prev" title="holisticai.bias.plots.success_rate_curves" href="holisticai.bias.plots.success_rate_curves.html" /> 
+    <link rel="prev" title="holisticai.bias.plots.histogram_plot" href="holisticai.bias.plots.histogram_plot.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -63,6 +63,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../utils.html">Utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../datasets.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pipeline.html">Pipeline</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
@@ -147,7 +148,7 @@ without discrimination.” Knowledge and information systems 33.1 (2012): 1-33.<
 <tr class="row-even"><td><p><a class="reference internal" href="#holisticai.bias.mitigation.Reweighing.compute_frequencies" title="holisticai.bias.mitigation.Reweighing.compute_frequencies"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_frequencies</span></code></a>(fav_labels, ...[, group])</p></td>
 <td><p>compute frequencies about favorable and unfavorable labels</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holisticai.bias.mitigation.Reweighing.fit" title="holisticai.bias.mitigation.Reweighing.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(y_true, group_a, group_b[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holisticai.bias.mitigation.Reweighing.fit" title="holisticai.bias.mitigation.Reweighing.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(y_true, group_a, group_b[, sample_weight])</p></td>
 <td><p>Fit.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#holisticai.bias.mitigation.Reweighing.fit_transform" title="holisticai.bias.mitigation.Reweighing.fit_transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit_transform</span></code></a>(X, y_true, group_a, group_b[, ...])</p></td>
@@ -165,22 +166,19 @@ without discrimination.” Knowledge and information systems 33.1 (2012): 1-33.<
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">link_parameters</span></code>(params_hdl)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#holisticai.bias.mitigation.Reweighing.map_favorable_unfavorable" title="holisticai.bias.mitigation.Reweighing.map_favorable_unfavorable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">map_favorable_unfavorable</span></code></a>(y, ...[, group])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holisticai.bias.mitigation.Reweighing.map_favorable_unfavorable" title="holisticai.bias.mitigation.Reweighing.map_favorable_unfavorable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">map_favorable_unfavorable</span></code></a>(y[, group])</p></td>
 <td><p>match favorable and unfavorable labels</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_bias_mitigation_parameters</span></code>(group_a, group_b)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reformat_function</span></code>(func)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reformat_function</span></code>(func)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#holisticai.bias.mitigation.Reweighing.transform" title="holisticai.bias.mitigation.Reweighing.transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transform</span></code></a>(X)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#holisticai.bias.mitigation.Reweighing.transform" title="holisticai.bias.mitigation.Reweighing.transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transform</span></code></a>(X)</p></td>
 <td><p>passthrough</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_bias_param</span></code>(param_name, param_value)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_bias_param</span></code>(param_name, param_value)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_estimator_param</span></code>(param_name, param_value)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_estimator_param</span></code>(param_name, param_value)</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -205,7 +203,7 @@ without discrimination.” Knowledge and information systems 33.1 (2012): 1-33.<
 
 <dl class="py method">
 <dt class="sig sig-object py" id="holisticai.bias.mitigation.Reweighing.fit">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">favorable_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unfavorable_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.mitigation.Reweighing.fit" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.mitigation.Reweighing.fit" title="Permalink to this definition"></a></dt>
 <dd><p>Fit.</p>
 <p class="rubric">Description</p>
 <p>Access fitted sample_weight param with self.estimator_params[“sample_weight”].</p>
@@ -217,10 +215,6 @@ without discrimination.” Knowledge and information systems 33.1 (2012): 1-33.<
 </dd>
 <dt>group_b<span class="classifier">array-like</span></dt><dd><p>Group membership vector (binary)</p>
 </dd>
-<dt>favorable_label (optional)<span class="classifier">int</span></dt><dd><p>Favorable class reference</p>
-</dd>
-<dt>unfavorable_label (optional)<span class="classifier">int</span></dt><dd><p>Unfavorable class reference</p>
-</dd>
 <dt>sample_weight (optional)<span class="classifier">array-like</span></dt><dd><p>Samples weights vector</p>
 </dd>
 </dl>
@@ -230,24 +224,20 @@ without discrimination.” Knowledge and information systems 33.1 (2012): 1-33.<
 
 <dl class="py method">
 <dt class="sig sig-object py" id="holisticai.bias.mitigation.Reweighing.fit_transform">
-<span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_true</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">favorable_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unfavorable_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.mitigation.Reweighing.fit_transform" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">fit_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_true</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.mitigation.Reweighing.fit_transform" title="Permalink to this definition"></a></dt>
 <dd><p>Fit transform.</p>
 <p class="rubric">Description</p>
 <p>Access fitted sample_weight param with self.estimator_params[“sample_weight”].
 The transform returns the same object inputed.</p>
 <p class="rubric">Parameters</p>
 <dl class="simple">
-<dt>X<span class="classifier">any</span></dt><dd><p>Input data (if exists), otherwise None</p>
+<dt>X<span class="classifier">matrix-like</span></dt><dd><p>Input matrix</p>
 </dd>
 <dt>y_true<span class="classifier">array-like</span></dt><dd><p>Target vector</p>
 </dd>
 <dt>group_a<span class="classifier">array-like</span></dt><dd><p>Group membership vector (binary)</p>
 </dd>
 <dt>group_b<span class="classifier">array-like</span></dt><dd><p>Group membership vector (binary)</p>
-</dd>
-<dt>favorable_label (optional)<span class="classifier">int</span></dt><dd><p>Favorable class reference</p>
-</dd>
-<dt>unfavorable_label (optional)<span class="classifier">int</span></dt><dd><p>Unfavorable class reference</p>
 </dd>
 <dt>sample_weight (optional)<span class="classifier">array-like</span></dt><dd><p>Samples weights vector</p>
 </dd>
@@ -258,7 +248,7 @@ The transform returns the same object inputed.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="holisticai.bias.mitigation.Reweighing.map_favorable_unfavorable">
-<span class="sig-name descname"><span class="pre">map_favorable_unfavorable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">favorable_label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unfavorable_label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.mitigation.Reweighing.map_favorable_unfavorable" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">map_favorable_unfavorable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.mitigation.Reweighing.map_favorable_unfavorable" title="Permalink to this definition"></a></dt>
 <dd><p>match favorable and unfavorable labels</p>
 </dd></dl>
 
@@ -276,7 +266,7 @@ The transform returns the same object inputed.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="holisticai.bias.plots.success_rate_curves.html" class="btn btn-neutral float-left" title="holisticai.bias.plots.success_rate_curves" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="holisticai.bias.plots.histogram_plot.html" class="btn btn-neutral float-left" title="holisticai.bias.plots.histogram_plot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="holisticai.bias.mitigation.LearningFairRepresentation.html" class="btn btn-neutral float-right" title="holisticai.bias.mitigation.LearningFairRepresentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

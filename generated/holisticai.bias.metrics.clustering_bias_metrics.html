@@ -24,7 +24,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="holisticai.bias.metrics.mi_diff" href="holisticai.bias.metrics.mi_diff.html" />
+    <link rel="next" title="holisticai.bias.metrics.min_cluster_ratio" href="holisticai.bias.metrics.min_cluster_ratio.html" />
     <link rel="prev" title="holisticai.bias.metrics.cluster_dist_l1" href="holisticai.bias.metrics.cluster_dist_l1.html" /> 
 </head>
 
@@ -52,13 +52,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../bias.html#regression">Regression</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../bias.html#recommender">Recommender</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="../bias.html#clustering">Clustering</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.avg_cluster_ratio.html">holisticai.bias.metrics.avg_cluster_ratio</a></li>
 <li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.cluster_balance.html">holisticai.bias.metrics.cluster_balance</a></li>
 <li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.cluster_dist_entropy.html">holisticai.bias.metrics.cluster_dist_entropy</a></li>
 <li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.cluster_dist_kl.html">holisticai.bias.metrics.cluster_dist_kl</a></li>
 <li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.cluster_dist_l1.html">holisticai.bias.metrics.cluster_dist_l1</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">holisticai.bias.metrics.clustering_bias_metrics</a></li>
-<li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.mi_diff.html">holisticai.bias.metrics.mi_diff</a></li>
 <li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.min_cluster_ratio.html">holisticai.bias.metrics.min_cluster_ratio</a></li>
 <li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.silhouette_diff.html">holisticai.bias.metrics.silhouette_diff</a></li>
 <li class="toctree-l4"><a class="reference internal" href="holisticai.bias.metrics.social_fairness_ratio.html">holisticai.bias.metrics.social_fairness_ratio</a></li>
@@ -73,6 +71,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../utils.html">Utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../datasets.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pipeline.html">Pipeline</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
@@ -133,7 +132,7 @@
 <h1>holisticai.bias.metrics.clustering_bias_metrics<a class="headerlink" href="#holisticai-bias-metrics-clustering-bias-metrics" title="Permalink to this heading"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="holisticai.bias.metrics.clustering_bias_metrics">
-<span class="sig-prename descclassname"><span class="pre">holisticai.bias.metrics.</span></span><span class="sig-name descname"><span class="pre">clustering_bias_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_true</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">centroids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'equal_outcome'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.metrics.clustering_bias_metrics" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">holisticai.bias.metrics.</span></span><span class="sig-name descname"><span class="pre">clustering_bias_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">centroids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'equal_outcome'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#holisticai.bias.metrics.clustering_bias_metrics" title="Permalink to this definition"></a></dt>
 <dd><p>Clustering bias metrics batch computation.</p>
 <p class="rubric">Description</p>
 <p>This function computes all the relevant clustering bias metrics,
@@ -145,8 +144,6 @@ and displays them as a pandas dataframe.</p>
 <dt>group_b<span class="classifier">array-like</span></dt><dd><p>Group membership vector (binary)</p>
 </dd>
 <dt>y_pred<span class="classifier">array-like</span></dt><dd><p>Cluster predictions (categorical)</p>
-</dd>
-<dt>y_true (optional)<span class="classifier">array-like</span></dt><dd><p>Cluster target values (categorical)</p>
 </dd>
 <dt>data (optional)<span class="classifier">matrix-like</span></dt><dd><p>Data matrix of shape (num_inst, dim)</p>
 </dd>
@@ -169,7 +166,7 @@ and displays them as a pandas dataframe.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="holisticai.bias.metrics.cluster_dist_l1.html" class="btn btn-neutral float-left" title="holisticai.bias.metrics.cluster_dist_l1" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="holisticai.bias.metrics.mi_diff.html" class="btn btn-neutral float-right" title="holisticai.bias.metrics.mi_diff" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="holisticai.bias.metrics.min_cluster_ratio.html" class="btn btn-neutral float-right" title="holisticai.bias.metrics.min_cluster_ratio" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

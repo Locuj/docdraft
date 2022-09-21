@@ -19,7 +19,6 @@
       ~EqualizedOdds.get_estimator_param
       ~EqualizedOdds.has_param_handler
       ~EqualizedOdds.link_parameters
-      ~EqualizedOdds.read_bias_mitigation_parameters
       ~EqualizedOdds.reformat_function
       ~EqualizedOdds.transform
       ~EqualizedOdds.update_bias_param

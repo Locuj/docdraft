@@ -51,13 +51,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../../bias.html">Bias</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../utils.html">Utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../datasets.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pipeline.html">Pipeline</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../measuring_bias.html">Measuring bias</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="measuring_bias_classification.html"><strong>Measuring Bias in classification</strong></a></li>
 <li class="toctree-l2"><a class="reference internal" href="measuring_bias_regression.html"><strong>Measuring Bias in regression</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="measuring_bias_recommender.html">Measuring Bias in recommender systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="measuring_bias_recommender.html">Measuring bias in recommender systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="measuring_bias_clustering.html"><strong>Measuring Bias in clustering</strong></a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#"><strong>Measuring Bias in multiclass classification</strong></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#Load-the-data"><strong>Load the data</strong></a></li>
@@ -381,12 +382,12 @@ div.rendered_html tbody tr:hover {
 <section id="Load-the-data">
 <h2><strong>Load the data</strong><a class="headerlink" href="#Load-the-data" title="Permalink to this heading"></a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Base imports</span>
 <span class="kn">import</span> <span class="nn">sys</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../../&#39;</span><span class="p">)</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </pre></div>
@@ -394,7 +395,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <p>The student dataset can be easily</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">holisticai.datasets</span> <span class="kn">import</span> <span class="n">load_student</span>
@@ -402,11 +403,11 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load data</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">load_student</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">load_student</span><span class="p">()[</span><span class="s1">&#39;frame&#39;</span><span class="p">]</span>
 
 <span class="c1"># Make data multiclass by slicing into 4 buckets</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;G3&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
@@ -426,7 +427,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -476,120 +477,120 @@ div.rendered_html tbody tr:hover {
       <th>0</th>
       <td>GP</td>
       <td>F</td>
-      <td>18</td>
+      <td>18.0</td>
       <td>U</td>
       <td>GT3</td>
       <td>A</td>
-      <td>4</td>
-      <td>4</td>
+      <td>4.0</td>
+      <td>4.0</td>
       <td>at_home</td>
       <td>teacher</td>
       <td>...</td>
       <td>no</td>
       <td>no</td>
-      <td>4</td>
-      <td>3</td>
-      <td>4</td>
-      <td>1</td>
-      <td>1</td>
-      <td>3</td>
-      <td>6</td>
+      <td>4.0</td>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>6.0</td>
       <td>very-low</td>
     </tr>
     <tr>
       <th>1</th>
       <td>GP</td>
       <td>F</td>
-      <td>17</td>
+      <td>17.0</td>
       <td>U</td>
       <td>GT3</td>
       <td>T</td>
-      <td>1</td>
-      <td>1</td>
+      <td>1.0</td>
+      <td>1.0</td>
       <td>at_home</td>
       <td>other</td>
       <td>...</td>
       <td>yes</td>
       <td>no</td>
-      <td>5</td>
-      <td>3</td>
-      <td>3</td>
-      <td>1</td>
-      <td>1</td>
-      <td>3</td>
-      <td>4</td>
+      <td>5.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>4.0</td>
       <td>very-low</td>
     </tr>
     <tr>
       <th>2</th>
       <td>GP</td>
       <td>F</td>
-      <td>15</td>
+      <td>15.0</td>
       <td>U</td>
       <td>LE3</td>
       <td>T</td>
-      <td>1</td>
-      <td>1</td>
+      <td>1.0</td>
+      <td>1.0</td>
       <td>at_home</td>
       <td>other</td>
       <td>...</td>
       <td>yes</td>
       <td>no</td>
-      <td>4</td>
-      <td>3</td>
-      <td>2</td>
-      <td>2</td>
-      <td>3</td>
-      <td>3</td>
-      <td>10</td>
+      <td>4.0</td>
+      <td>3.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>10.0</td>
       <td>low</td>
     </tr>
     <tr>
       <th>3</th>
       <td>GP</td>
       <td>F</td>
-      <td>15</td>
+      <td>15.0</td>
       <td>U</td>
       <td>GT3</td>
       <td>T</td>
-      <td>4</td>
-      <td>2</td>
+      <td>4.0</td>
+      <td>2.0</td>
       <td>health</td>
       <td>services</td>
       <td>...</td>
       <td>yes</td>
       <td>yes</td>
-      <td>3</td>
-      <td>2</td>
-      <td>2</td>
-      <td>1</td>
-      <td>1</td>
-      <td>5</td>
-      <td>2</td>
+      <td>3.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>2.0</td>
       <td>very-high</td>
     </tr>
     <tr>
       <th>4</th>
       <td>GP</td>
       <td>F</td>
-      <td>16</td>
+      <td>16.0</td>
       <td>U</td>
       <td>GT3</td>
       <td>T</td>
-      <td>3</td>
-      <td>3</td>
+      <td>3.0</td>
+      <td>3.0</td>
       <td>other</td>
       <td>other</td>
       <td>...</td>
       <td>no</td>
       <td>no</td>
-      <td>4</td>
-      <td>3</td>
-      <td>2</td>
-      <td>1</td>
-      <td>2</td>
-      <td>5</td>
-      <td>4</td>
+      <td>4.0</td>
+      <td>3.0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>5.0</td>
+      <td>4.0</td>
       <td>low</td>
     </tr>
     <tr>
@@ -620,120 +621,120 @@ div.rendered_html tbody tr:hover {
       <th>390</th>
       <td>MS</td>
       <td>M</td>
-      <td>20</td>
+      <td>20.0</td>
       <td>U</td>
       <td>LE3</td>
       <td>A</td>
-      <td>2</td>
-      <td>2</td>
+      <td>2.0</td>
+      <td>2.0</td>
       <td>services</td>
       <td>services</td>
       <td>...</td>
       <td>no</td>
       <td>no</td>
-      <td>5</td>
-      <td>5</td>
-      <td>4</td>
-      <td>4</td>
-      <td>5</td>
-      <td>4</td>
-      <td>11</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>11.0</td>
       <td>low</td>
     </tr>
     <tr>
       <th>391</th>
       <td>MS</td>
       <td>M</td>
-      <td>17</td>
+      <td>17.0</td>
       <td>U</td>
       <td>LE3</td>
       <td>T</td>
-      <td>3</td>
-      <td>1</td>
+      <td>3.0</td>
+      <td>1.0</td>
       <td>services</td>
       <td>services</td>
       <td>...</td>
       <td>yes</td>
       <td>no</td>
-      <td>2</td>
-      <td>4</td>
-      <td>5</td>
-      <td>3</td>
-      <td>4</td>
-      <td>2</td>
-      <td>3</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>5.0</td>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>2.0</td>
+      <td>3.0</td>
       <td>very-high</td>
     </tr>
     <tr>
       <th>392</th>
       <td>MS</td>
       <td>M</td>
-      <td>21</td>
+      <td>21.0</td>
       <td>R</td>
       <td>GT3</td>
       <td>T</td>
-      <td>1</td>
-      <td>1</td>
+      <td>1.0</td>
+      <td>1.0</td>
       <td>other</td>
       <td>other</td>
       <td>...</td>
       <td>no</td>
       <td>no</td>
-      <td>5</td>
-      <td>5</td>
-      <td>3</td>
-      <td>3</td>
-      <td>3</td>
-      <td>3</td>
-      <td>3</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
       <td>very-low</td>
     </tr>
     <tr>
       <th>393</th>
       <td>MS</td>
       <td>M</td>
-      <td>18</td>
+      <td>18.0</td>
       <td>R</td>
       <td>LE3</td>
       <td>T</td>
-      <td>3</td>
-      <td>2</td>
+      <td>3.0</td>
+      <td>2.0</td>
       <td>services</td>
       <td>other</td>
       <td>...</td>
       <td>yes</td>
       <td>no</td>
-      <td>4</td>
-      <td>4</td>
-      <td>1</td>
-      <td>3</td>
-      <td>4</td>
-      <td>5</td>
-      <td>0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>5.0</td>
+      <td>0.0</td>
       <td>low</td>
     </tr>
     <tr>
       <th>394</th>
       <td>MS</td>
       <td>M</td>
-      <td>19</td>
+      <td>19.0</td>
       <td>U</td>
       <td>LE3</td>
       <td>T</td>
-      <td>1</td>
-      <td>1</td>
+      <td>1.0</td>
+      <td>1.0</td>
       <td>other</td>
       <td>at_home</td>
       <td>...</td>
       <td>yes</td>
       <td>no</td>
-      <td>3</td>
-      <td>2</td>
-      <td>3</td>
-      <td>3</td>
-      <td>3</td>
-      <td>5</td>
-      <td>5</td>
+      <td>3.0</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>5.0</td>
+      <td>5.0</td>
       <td>low</td>
     </tr>
   </tbody>
@@ -745,92 +746,126 @@ div.rendered_html tbody tr:hover {
 <section id="Data-Exploration">
 <h2><strong>Data Exploration</strong><a class="headerlink" href="#Data-Exploration" title="Permalink to this heading"></a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">holisticai.bias.plots</span> <span class="kn">import</span> <span class="n">group_pie_plot</span>
 <span class="kn">from</span> <span class="nn">holisticai.bias.plots</span> <span class="kn">import</span> <span class="n">histogram_plot</span>
-<span class="kn">from</span> <span class="nn">holisticai.bias.plots</span> <span class="kn">import</span> <span class="n">success_rate_matrix_plot</span>
-<span class="kn">from</span> <span class="nn">holisticai.bias.plots</span> <span class="kn">import</span> <span class="n">success_rate_plot</span>
+<span class="kn">from</span> <span class="nn">holisticai.bias.plots</span> <span class="kn">import</span> <span class="n">frequency_matrix_plot</span>
+<span class="kn">from</span> <span class="nn">holisticai.bias.plots</span> <span class="kn">import</span> <span class="n">frequency_plot</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group_pie_plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;AxesSubplot:&gt;
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_9_0.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_9_0.png" />
+<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_9_1.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_9_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group_pie_plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Mjob&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;AxesSubplot:&gt;
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_10_0.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_10_0.png" />
+<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_10_1.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_10_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">histogram_plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_11_0.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_11_0.png" />
-</div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">success_rate_matrix_plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Mjob&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
+<div class="highlight"><pre>
+&lt;AxesSubplot:xlabel=&#39;target&#39;, ylabel=&#39;Probability&#39;&gt;
+</pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_12_0.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_12_0.png" />
+<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_11_1.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_11_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">success_rate_plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Mjob&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">],</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;very-low&#39;</span><span class="p">,</span><span class="s1">&#39;low&#39;</span><span class="p">,</span><span class="s1">&#39;high&#39;</span><span class="p">,</span><span class="s1">&#39;very-high&#39;</span><span class="p">])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frequency_matrix_plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Mjob&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">],</span> <span class="n">normalize</span><span class="o">=</span><span class="s1">&#39;group&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;AxesSubplot:xlabel=&#39;Class&#39;, ylabel=&#39;Group&#39;&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_12_1.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_12_1.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frequency_plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Mjob&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/Users/giuliofilippi/Documents/GitHub/holisticai/examples/../holisticai/bias/plots/_bias_multiclass_plots.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-  sr_list = sr_list.append(sr_tot)
-</pre></div></div>
+<div class="output_area docutils container">
+<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_13_0.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_13_0.png" />
+</div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
@@ -846,25 +881,18 @@ div.rendered_html tbody tr:hover {
 <img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_13_2.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_13_2.png" />
 </div>
 </div>
-<div class="nboutput docutils container">
+<div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
 <img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_13_3.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_13_3.png" />
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_13_4.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_13_4.png" />
-</div>
-</div>
 </section>
 <section id="Train-a-model">
 <h2><strong>Train a model</strong><a class="headerlink" href="#Train-a-model" title="Permalink to this heading"></a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
@@ -874,7 +902,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># preprocess categorical columns</span>
@@ -888,14 +916,13 @@ div.rendered_html tbody tr:hover {
     <span class="n">enc</span> <span class="o">=</span> <span class="n">cat_encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">categoricals</span><span class="p">])</span>
     <span class="n">enc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">enc</span><span class="o">.</span><span class="n">toarray</span><span class="p">())</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">data</span><span class="p">,</span><span class="n">enc</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">categoricals</span><span class="p">)</span> <span class="c1"># add encoded columns</span>
-
     <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">df</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we don&#39;t want to encode protected attributes</span>
@@ -912,7 +939,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -961,15 +988,15 @@ div.rendered_html tbody tr:hover {
     <tr>
       <th>0</th>
       <td>F</td>
-      <td>18</td>
+      <td>18.0</td>
       <td>U</td>
-      <td>4</td>
-      <td>4</td>
+      <td>4.0</td>
+      <td>4.0</td>
       <td>at_home</td>
       <td>teacher</td>
-      <td>2</td>
-      <td>2</td>
-      <td>0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
       <td>...</td>
       <td>1.0</td>
       <td>0.0</td>
@@ -985,15 +1012,15 @@ div.rendered_html tbody tr:hover {
     <tr>
       <th>1</th>
       <td>F</td>
-      <td>17</td>
+      <td>17.0</td>
       <td>U</td>
-      <td>1</td>
-      <td>1</td>
+      <td>1.0</td>
+      <td>1.0</td>
       <td>at_home</td>
       <td>other</td>
-      <td>1</td>
-      <td>2</td>
-      <td>0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
       <td>...</td>
       <td>1.0</td>
       <td>0.0</td>
@@ -1009,15 +1036,15 @@ div.rendered_html tbody tr:hover {
     <tr>
       <th>2</th>
       <td>F</td>
-      <td>15</td>
+      <td>15.0</td>
       <td>U</td>
-      <td>1</td>
-      <td>1</td>
+      <td>1.0</td>
+      <td>1.0</td>
       <td>at_home</td>
       <td>other</td>
-      <td>1</td>
-      <td>2</td>
-      <td>3</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>3.0</td>
       <td>...</td>
       <td>1.0</td>
       <td>0.0</td>
@@ -1033,15 +1060,15 @@ div.rendered_html tbody tr:hover {
     <tr>
       <th>3</th>
       <td>F</td>
-      <td>15</td>
+      <td>15.0</td>
       <td>U</td>
-      <td>4</td>
-      <td>2</td>
+      <td>4.0</td>
+      <td>2.0</td>
       <td>health</td>
       <td>services</td>
-      <td>1</td>
-      <td>3</td>
-      <td>0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>0.0</td>
       <td>...</td>
       <td>0.0</td>
       <td>1.0</td>
@@ -1057,15 +1084,15 @@ div.rendered_html tbody tr:hover {
     <tr>
       <th>4</th>
       <td>F</td>
-      <td>16</td>
+      <td>16.0</td>
       <td>U</td>
-      <td>3</td>
-      <td>3</td>
+      <td>3.0</td>
+      <td>3.0</td>
       <td>other</td>
       <td>other</td>
-      <td>1</td>
-      <td>2</td>
-      <td>0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
       <td>...</td>
       <td>1.0</td>
       <td>0.0</td>
@@ -1105,15 +1132,15 @@ div.rendered_html tbody tr:hover {
     <tr>
       <th>390</th>
       <td>M</td>
-      <td>20</td>
+      <td>20.0</td>
       <td>U</td>
-      <td>2</td>
-      <td>2</td>
+      <td>2.0</td>
+      <td>2.0</td>
       <td>services</td>
       <td>services</td>
-      <td>1</td>
-      <td>2</td>
-      <td>2</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
       <td>...</td>
       <td>1.0</td>
       <td>0.0</td>
@@ -1129,15 +1156,15 @@ div.rendered_html tbody tr:hover {
     <tr>
       <th>391</th>
       <td>M</td>
-      <td>17</td>
+      <td>17.0</td>
       <td>U</td>
-      <td>3</td>
-      <td>1</td>
+      <td>3.0</td>
+      <td>1.0</td>
       <td>services</td>
       <td>services</td>
-      <td>2</td>
-      <td>1</td>
-      <td>0</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
       <td>...</td>
       <td>1.0</td>
       <td>0.0</td>
@@ -1153,15 +1180,15 @@ div.rendered_html tbody tr:hover {
     <tr>
       <th>392</th>
       <td>M</td>
-      <td>21</td>
+      <td>21.0</td>
       <td>R</td>
-      <td>1</td>
-      <td>1</td>
+      <td>1.0</td>
+      <td>1.0</td>
       <td>other</td>
       <td>other</td>
-      <td>1</td>
-      <td>1</td>
-      <td>3</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
       <td>...</td>
       <td>1.0</td>
       <td>0.0</td>
@@ -1177,15 +1204,15 @@ div.rendered_html tbody tr:hover {
     <tr>
       <th>393</th>
       <td>M</td>
-      <td>18</td>
+      <td>18.0</td>
       <td>R</td>
-      <td>3</td>
-      <td>2</td>
+      <td>3.0</td>
+      <td>2.0</td>
       <td>services</td>
       <td>other</td>
-      <td>3</td>
-      <td>1</td>
-      <td>0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
       <td>...</td>
       <td>1.0</td>
       <td>0.0</td>
@@ -1201,15 +1228,15 @@ div.rendered_html tbody tr:hover {
     <tr>
       <th>394</th>
       <td>M</td>
-      <td>19</td>
+      <td>19.0</td>
       <td>U</td>
-      <td>1</td>
-      <td>1</td>
+      <td>1.0</td>
+      <td>1.0</td>
       <td>other</td>
       <td>at_home</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
       <td>...</td>
       <td>1.0</td>
       <td>0.0</td>
@@ -1228,7 +1255,7 @@ div.rendered_html tbody tr:hover {
 </div></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set up data for training</span>
@@ -1247,7 +1274,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">holisticai.bias.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
@@ -1256,7 +1283,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;very-low&#39;</span><span class="p">,</span><span class="s1">&#39;low&#39;</span><span class="p">,</span><span class="s1">&#39;high&#39;</span><span class="p">,</span><span class="s1">&#39;very-high&#39;</span><span class="p">])</span>
@@ -1264,7 +1291,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -1326,7 +1353,7 @@ div.rendered_html tbody tr:hover {
 </div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># evaluate</span>
@@ -1349,72 +1376,65 @@ div.rendered_html tbody tr:hover {
 </section>
 <section id="Measure-bias">
 <h2><strong>Measure bias</strong><a class="headerlink" href="#Measure-bias" title="Permalink to this heading"></a></h2>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">holisticai.bias.plots</span> <span class="kn">import</span> <span class="n">success_rate_matrix_plot</span>
-<span class="kn">from</span> <span class="nn">holisticai.bias.plots</span> <span class="kn">import</span> <span class="n">success_rate_plot</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">holisticai.bias.plots</span> <span class="kn">import</span> <span class="n">frequency_matrix_plot</span>
+<span class="kn">from</span> <span class="nn">holisticai.bias.plots</span> <span class="kn">import</span> <span class="n">frequency_plot</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ImportError</span>                               Traceback (most recent call last)
-<span class="ansi-green-intense-fg ansi-bold">/Users/giuliofilippi/Documents/GitHub/holisticai/examples/multicalss_tutorial.ipynb Cell 23</span> in <span class="ansi-cyan-fg">&lt;cell line: 1&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-fg">----&gt; &lt;a href=&#39;vscode-notebook-cell:/Users/giuliofilippi/Documents/GitHub/holisticai/examples/multicalss_tutorial.ipynb#X32sZmlsZQ%3D%3D?line=0&#39;&gt;1&lt;/a&gt;</span> from holisticai.bias.metrics import success_rate_matrix_plot
-<span class="ansi-green-intense-fg ansi-bold">      &lt;a href=&#39;vscode-notebook-cell:/Users/giuliofilippi/Documents/GitHub/holisticai/examples/multicalss_tutorial.ipynb#X32sZmlsZQ%3D%3D?line=1&#39;&gt;2&lt;/a&gt;</span> from holisticai.bias.plots import success_rate_plot
-
-<span class="ansi-red-fg">ImportError</span>: cannot import name &#39;success_rate_matrix_plot&#39; from &#39;holisticai.bias.metrics&#39; (/Users/giuliofilippi/Documents/GitHub/holisticai/examples/../holisticai/bias/metrics/__init__.py)
-</pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set up vectors</span>
-<span class="n">p_attr</span> <span class="o">=</span> <span class="n">test</span><span class="p">[</span><span class="s1">&#39;Mjob&#39;</span><span class="p">]</span>                                               <span class="c1"># protected atrribute</span>
+<span class="n">p_attr</span> <span class="o">=</span> <span class="n">test</span><span class="p">[</span><span class="s1">&#39;Mjob&#39;</span><span class="p">]</span>                                               <span class="c1"># protected attribute</span>
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">protected_attributes</span><span class="p">))</span>   <span class="c1"># multiclass prediction vector</span>
 <span class="n">y_true</span> <span class="o">=</span> <span class="n">y_test</span>                                                     <span class="c1"># multiclass label vector</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">success_rate_matrix_plot</span><span class="p">(</span><span class="n">p_attr</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;very-low&#39;</span><span class="p">,</span><span class="s1">&#39;low&#39;</span><span class="p">,</span><span class="s1">&#39;high&#39;</span><span class="p">,</span><span class="s1">&#39;very-high&#39;</span><span class="p">])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frequency_matrix_plot</span><span class="p">(</span><span class="n">p_attr</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="s1">&#39;group&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;AxesSubplot:xlabel=&#39;Class&#39;, ylabel=&#39;Group&#39;&gt;
+</pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_25_0.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_25_0.png" />
+<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_25_1.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_25_1.png" />
 </div>
 </div>
 <p>Using the above plot, we observe unfairness by looking at differences over columns. For instance we look at the ‘high’ column, and observe how the ‘health’ group has a much higher probability of being within it.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">success_rate_plot</span><span class="p">(</span><span class="n">p_attr</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;very-low&#39;</span><span class="p">,</span><span class="s1">&#39;low&#39;</span><span class="p">,</span><span class="s1">&#39;high&#39;</span><span class="p">,</span><span class="s1">&#39;very-high&#39;</span><span class="p">])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frequency_plot</span><span class="p">(</span><span class="n">p_attr</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/Users/giuliofilippi/Documents/GitHub/holisticai/examples/../holisticai/bias/plots/_bias_multiclass_plots.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-  sr_list = sr_list.append(sr_tot)
-</pre></div></div>
+<div class="output_area docutils container">
+<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_27_0.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_27_0.png" />
+</div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
@@ -1430,21 +1450,98 @@ div.rendered_html tbody tr:hover {
 <img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_27_2.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_27_2.png" />
 </div>
 </div>
-<div class="nboutput docutils container">
+<div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
 <img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_27_3.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_27_3.png" />
 </div>
 </div>
+<p>This is the same data as the previous plot, but displayed in a different way.</p>
+<p>Let’s compute a few bias metrics. We have generalised versions of ‘1d’ bias metrics. For instance multiclass statistical parity.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">holisticai.bias.metrics</span> <span class="kn">import</span> <span class="n">multiclass_statistical_parity</span>
+
+<span class="n">multiclass_statistical_parity</span><span class="p">(</span>
+    <span class="n">p_attr</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">aggregation_fun</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
 <div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_27_4.png" src="../../_images/tutorials_measuring_bias_tutorials_measuring_bias_multiclass_27_4.png" />
+<div class="highlight"><pre>
+0.14670076995444642
+</pre></div></div>
+</div>
+<p>We now compute statistical parity, generalized for the multiclass case. We aggregate by taking the average multilabel statistical parity over all possible group pairs (<code class="docutils literal notranslate"><span class="pre">aggregation_fun=&quot;mean&quot;</span></code>). As in the 1d case, the suggested accepted range is (-0.1, 0.1).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">multiclass_statistical_parity</span><span class="p">(</span>
+    <span class="n">p_attr</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">aggregation_fun</span><span class="o">=</span><span class="s2">&quot;max&quot;</span>
+<span class="p">)</span>
+</pre></div>
 </div>
 </div>
-<p>This is the same data as the previous plot, but displayed in a different way.</p>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.2780748663101605
+</pre></div></div>
+</div>
+<p>Alternatively, we could aggregate by taking the maximum (<code class="docutils literal notranslate"><span class="pre">aggregation_fun=&quot;max&quot;</span></code>) over all possible group pairs. As expected, the maximum statistical parity is higher in this case.</p>
+<p>We can try another bias metric, for instace multiclass_equality_of_opp is the multidimensional version of the 1d equal opportunity metric.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">holisticai.bias.metrics</span> <span class="kn">import</span> <span class="n">multiclass_equality_of_opp</span>
+
+<span class="n">multiclass_equality_of_opp</span><span class="p">(</span>
+    <span class="n">p_attr</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">y_true</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">aggregation_fun</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.3420002687529861
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">multiclass_equality_of_opp</span><span class="p">(</span>
+    <span class="n">p_attr</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">y_true</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">aggregation_fun</span><span class="o">=</span><span class="s2">&quot;max&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.46875
+</pre></div></div>
+</div>
 </section>
 </section>
 

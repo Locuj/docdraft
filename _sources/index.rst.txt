@@ -20,6 +20,7 @@ You can test the library by installing with `pip`:
     bias
     utils
     datasets
+    pipeline
 
 .. toctree::
     :maxdepth: 1
