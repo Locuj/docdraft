@@ -28,4 +28,3 @@ You can test the library by installing with `pip`:
 
     Measuring bias <measuring_bias>
     Mitigating bias <mitigating_bias>
-
