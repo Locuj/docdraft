@@ -1,6 +1,0 @@
-﻿holisticai.bias.metrics.success\_rate\_matrix
-=============================================
-
-.. currentmodule:: holisticai.bias.metrics
-
-.. autofunction:: success_rate_matrix

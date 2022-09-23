@@ -1,6 +1,0 @@
-﻿holisticai.utils.check\_recommender\_inputs
-===========================================
-
-.. currentmodule:: holisticai.utils
-
-.. autofunction:: check_recommender_inputs

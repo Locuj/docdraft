@@ -1,6 +1,0 @@
-﻿holisticai.bias.metrics.rmse\_ratioQ80
-======================================
-
-.. currentmodule:: holisticai.bias.metrics
-
-.. autofunction:: rmse_ratioQ80

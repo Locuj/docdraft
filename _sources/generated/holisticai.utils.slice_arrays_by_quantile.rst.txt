@@ -1,6 +1,0 @@
-﻿holisticai.utils.slice\_arrays\_by\_quantile
-============================================
-
-.. currentmodule:: holisticai.utils
-
-.. autofunction:: slice_arrays_by_quantile

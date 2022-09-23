@@ -1,6 +1,0 @@
-﻿holisticai.utils.categorical\_to\_distribution
-==============================================
-
-.. currentmodule:: holisticai.utils
-
-.. autofunction:: categorical_to_distribution

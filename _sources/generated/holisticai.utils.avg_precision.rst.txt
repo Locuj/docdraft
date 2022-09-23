@@ -1,6 +1,0 @@
-﻿holisticai.utils.avg\_precision
-===============================
-
-.. currentmodule:: holisticai.utils
-
-.. autofunction:: avg_precision

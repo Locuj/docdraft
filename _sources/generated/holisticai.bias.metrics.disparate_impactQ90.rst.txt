@@ -1,6 +1,0 @@
-﻿holisticai.bias.metrics.disparate\_impactQ90
-============================================
-
-.. currentmodule:: holisticai.bias.metrics
-
-.. autofunction:: disparate_impactQ90

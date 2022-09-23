@@ -1,6 +1,0 @@
-﻿holisticai.utils.pandas\_to\_numpy
-==================================
-
-.. currentmodule:: holisticai.utils
-
-.. autofunction:: pandas_to_numpy

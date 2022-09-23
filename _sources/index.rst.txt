@@ -1,8 +1,36 @@
-
 Holistic AI Library 
 ===================
 
-This is the holisticai library. This library includes functions for assessing AI risk. Currently we include metrics and plotting functions specifically for bias. Tools for assessing efficacy, Explainability, Privacy and Robustness will be added soon. For each of these ares we have a set of metrics as well as classes to help compute and display these metrics in a simple and seamless way.
+
+Welcome to the Holistic AI library! This is an open-source tool to assess and improve the trustworthiness of AI systems. The current version of the library offers a set of techniques to easily measure and mitigate Bias across a variety of tasks.  
+
+.. toctree::
+    :maxdepth: 2
+    :caption: Documentation
+
+    metrics
+    mitigation
+
+.. toctree::
+    :maxdepth: 1
+    :hidden:
+
+    plotting
+    datasets
+    pipeline
+    utils
+
+.. toctree::
+    :maxdepth: 1
+    :hidden:
+    :caption: Tutorials
+
+    measuring_bias
+    mitigating_bias
+
+We also provide functions for :ref:`plotting` bias-related plots. 
+
+Our long-term goal is to offer a set of techniques to easily measure and mitigate AI risks across five  areas: Bias, Efficacy, Robustness, Privacy and Explainability. This will allow a holistic assessment of AI systems. 
 
 Installation
 ------------
@@ -12,19 +40,3 @@ You can test the library by installing with `pip`:
 .. code-block::
 
   pip3 install -i https://test.pypi.org/pypi/ --extra-index-url https://pypi.org/simple holisticai
-
-.. toctree::
-    :maxdepth: 1
-    :caption: Documentation
-
-    bias
-    utils
-    datasets
-    pipeline
-
-.. toctree::
-    :maxdepth: 1
-    :caption: Tutorials
-
-    Measuring bias <measuring_bias>
-    Mitigating bias <mitigating_bias>

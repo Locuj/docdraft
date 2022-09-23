@@ -1,6 +1,0 @@
-﻿holisticai.utils.recommender\_rmse
-==================================
-
-.. currentmodule:: holisticai.utils
-
-.. autofunction:: recommender_rmse

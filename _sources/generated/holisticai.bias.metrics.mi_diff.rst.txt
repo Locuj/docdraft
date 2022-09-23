@@ -1,6 +1,0 @@
-﻿holisticai.bias.metrics.mi\_diff
-================================
-
-.. currentmodule:: holisticai.bias.metrics
-
-.. autofunction:: mi_diff
