@@ -39,4 +39,4 @@ You can test the library by installing with `pip`:
 
 .. code-block::
 
-  pip3 install -i https://test.pypi.org/pypi/ --extra-index-url https://pypi.org/simple holisticai
+  pip install holisticai
