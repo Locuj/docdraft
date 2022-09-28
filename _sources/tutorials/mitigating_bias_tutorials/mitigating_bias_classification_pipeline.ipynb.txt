@@ -4,7 +4,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Bias mitigation for binary classification, using a pipeline"
+    "# Training Model for Binary Classification Problem with Bias Mitigators "
    ]
   },
   {
@@ -395,7 +395,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "## Baseline"
+    "# Baseline"
    ]
   },
   {
@@ -605,7 +605,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "## Utils"
+    "# Utils"
    ]
   },
   {
@@ -655,7 +655,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "## Pre-processing"
+    "# Pre-processing"
    ]
   },
   {
@@ -958,7 +958,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "## Post Processing"
+    "# Post Processing"
    ]
   },
   {
@@ -1282,7 +1282,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "## Inprocessing"
+    "# Inprocessing"
    ]
   },
   {
@@ -1576,7 +1576,7 @@
  ],
  "metadata": {
   "kernelspec": {
-   "display_name": "Python 3.10.4 ('general')",
+   "display_name": "Python 3.8.13 ('giulioenv')",
    "language": "python",
    "name": "python3"
   },
@@ -1590,12 +1590,12 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.10.4"
+   "version": "3.8.13"
   },
   "orig_nbformat": 4,
   "vscode": {
    "interpreter": {
-    "hash": "c5f7e980efac4119298d1aec85268387bad780130b52e4222273977ac080e787"
+    "hash": "dc091e704185a21e8e45ff088c5e54b3afd971eee6655dfc2cf99b3b76534816"
    }
   }
  },

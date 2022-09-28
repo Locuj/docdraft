@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bias mitigation for binary classification &mdash; holisticai  documentation</title>
+  <title>Mitigation Strategies Tutorial &mdash; holisticai  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
@@ -26,7 +26,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Bias mitigation for binary classification, using a pipeline" href="mitigating_bias_classification_pipeline.html" />
+    <link rel="next" title="Training Model for Binary Classification Problem with Bias Mitigators" href="mitigating_bias_classification_pipeline.html" />
     <link rel="prev" title="Mitigating bias" href="../../mitigating_bias.html" /> 
 </head>
 
@@ -61,28 +61,31 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../measuring_bias.html">Measuring bias</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../mitigating_bias.html">Mitigating bias</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Bias mitigation for binary classification</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Load-and-preprocess-Data">Load and preprocess Data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Baseline">Baseline</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Preprocessing-Strategies">Preprocessing Strategies</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#Reweighing">Reweighing</a></li>
-</ul>
-</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Mitigation Strategies Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Load-and-preprocess-Data">Load and preprocess Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Baseline">Baseline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Preprocessing-Strategies">Preprocessing Strategies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Reweighing">Reweighing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Learning-Fair-Representations">Learning Fair Representations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Inprocessing-Strategies">Inprocessing Strategies</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#Grid-Search-Reduction">Grid Search Reduction</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#Inprocessing-Strategies">Inprocessing Strategies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Grid-Search-Reduction">Grid Search Reduction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Exponentiated-Gradient-Reduction">Exponentiated Gradient Reduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Postprocessing-Strategies">Postprocessing Strategies</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#Calibrated-Equalized-Odds-mitigation-technique">Calibrated Equalized Odds mitigation technique</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#Postprocessing-Strategies">Postprocessing Strategies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Calibrated-Equalized-Odds-mitigation-technique">Calibrated Equalized Odds mitigation technique</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Equalized-Odds-mitigation-technique">Equalized Odds mitigation technique</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Reject-Option-Classification">Reject Option Classification</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="mitigating_bias_classification_pipeline.html">Bias mitigation for binary classification, using a pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mitigating_bias_classification_pipeline.html">Training Model for Binary Classification Problem with Bias Mitigators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mitigating_bias_classification_pipeline.html#Baseline">Baseline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mitigating_bias_classification_pipeline.html#Utils">Utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mitigating_bias_classification_pipeline.html#Pre-processing">Pre-processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mitigating_bias_classification_pipeline.html#Post-Processing">Post Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mitigating_bias_classification_pipeline.html#Inprocessing">Inprocessing</a></li>
 </ul>
 </li>
 </ul>
@@ -102,7 +105,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../../mitigating_bias.html">Mitigating bias</a> &raquo;</li>
-      <li>Bias mitigation for binary classification</li>
+      <li>Mitigation Strategies Tutorial</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/tutorials/mitigating_bias_tutorials/mitigating_bias_classification.ipynb.txt" rel="nofollow"> View page source</a>
       </li>
@@ -390,8 +393,8 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<section id="Bias-mitigation-for-binary-classification">
-<h1>Bias mitigation for binary classification<a class="headerlink" href="#Bias-mitigation-for-binary-classification" title="Permalink to this heading"></a></h1>
+<section id="Mitigation-Strategies-Tutorial">
+<h1>Mitigation Strategies Tutorial<a class="headerlink" href="#Mitigation-Strategies-Tutorial" title="Permalink to this heading"></a></h1>
 <p>This tutorial shows how we can use the holisticai library to implement bias mitigation strategies.</p>
 <p>Algorithms Covered:</p>
 <ul class="simple">
@@ -403,8 +406,9 @@ div.rendered_html tbody tr:hover {
 <li><p>Equalized Odds [Postprocessing]</p></li>
 <li><p>Reject Option Classification [Postprocessing]</p></li>
 </ul>
+</section>
 <section id="Load-and-preprocess-Data">
-<h2>Load and preprocess Data<a class="headerlink" href="#Load-and-preprocess-Data" title="Permalink to this heading"></a></h2>
+<h1>Load and preprocess Data<a class="headerlink" href="#Load-and-preprocess-Data" title="Permalink to this heading"></a></h1>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -744,7 +748,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </section>
 <section id="Baseline">
-<h2>Baseline<a class="headerlink" href="#Baseline" title="Permalink to this heading"></a></h2>
+<h1>Baseline<a class="headerlink" href="#Baseline" title="Permalink to this heading"></a></h1>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
@@ -936,9 +940,9 @@ div.rendered_html tbody tr:hover {
 <p>As expected, the results are quite biased, for instance we look at a disparate impact of 0.3. We will show how we can mitigate some of this bias without losing much efficacy.</p>
 </section>
 <section id="Preprocessing-Strategies">
-<h2>Preprocessing Strategies<a class="headerlink" href="#Preprocessing-Strategies" title="Permalink to this heading"></a></h2>
+<h1>Preprocessing Strategies<a class="headerlink" href="#Preprocessing-Strategies" title="Permalink to this heading"></a></h1>
 <section id="Reweighing">
-<h3>Reweighing<a class="headerlink" href="#Reweighing" title="Permalink to this heading"></a></h3>
+<h2>Reweighing<a class="headerlink" href="#Reweighing" title="Permalink to this heading"></a></h2>
 <p>References:</p>
 <p>Kamiran, Faisal, and Toon Calders. “Data preprocessing techniques for classification without discrimination.” Knowledge and information systems 33.1 (2012): 1-33.</p>
 <p><a class="reference external" href="https://towardsdatascience.com/reweighing-the-adult-dataset-to-make-it-discrimination-free-44668c9379e8">https://towardsdatascience.com/reweighing-the-adult-dataset-to-make-it-discrimination-free-44668c9379e8</a></p>
@@ -1173,7 +1177,6 @@ array([0.85374028, 1.09231797, 0.85374028, ..., 0.78794552, 0.85374028,
 </div></div>
 </div>
 <p>The results obtained are better in terms of bias, and efficacy didn’t decrease too much.</p>
-</section>
 </section>
 <section id="Learning-Fair-Representations">
 <h2>Learning Fair Representations<a class="headerlink" href="#Learning-Fair-Representations" title="Permalink to this heading"></a></h2>
@@ -1411,10 +1414,11 @@ array([0.85374028, 1.09231797, 0.85374028, ..., 0.78794552, 0.85374028,
 </div>
 <p>This algorithm has very low recall. It seems fairness is acheived at the expense of efficacy in this case. A good example showing one must be aware of all aspects of the results and not just look at accuracy.</p>
 </section>
+</section>
 <section id="Inprocessing-Strategies">
-<h2>Inprocessing Strategies<a class="headerlink" href="#Inprocessing-Strategies" title="Permalink to this heading"></a></h2>
+<h1>Inprocessing Strategies<a class="headerlink" href="#Inprocessing-Strategies" title="Permalink to this heading"></a></h1>
 <section id="Grid-Search-Reduction">
-<h3>Grid Search Reduction<a class="headerlink" href="#Grid-Search-Reduction" title="Permalink to this heading"></a></h3>
+<h2>Grid Search Reduction<a class="headerlink" href="#Grid-Search-Reduction" title="Permalink to this heading"></a></h2>
 <p>References:</p>
 <p>Agarwal, Alekh, et al. “A reductions approach to fair classification.” International Conference on Machine Learning. PMLR, 2018.</p>
 <p>Agarwal, Alekh, Miroslav Dudík, and Zhiwei Steven Wu. “Fair regression: Quantitative definitions and reduction-based algorithms.” International Conference on Machine Learning. PMLR, 2019.</p>
@@ -1639,7 +1643,6 @@ array([0.85374028, 1.09231797, 0.85374028, ..., 0.78794552, 0.85374028,
 </div></div>
 </div>
 <p>We have solved for equal demographic parity so statistical parity and Disparate Impact are perfect. We lose some recall but overall efficacy is not impacted too much.</p>
-</section>
 </section>
 <section id="Exponentiated-Gradient-Reduction">
 <h2>Exponentiated Gradient Reduction<a class="headerlink" href="#Exponentiated-Gradient-Reduction" title="Permalink to this heading"></a></h2>
@@ -1867,10 +1870,11 @@ array([0.85374028, 1.09231797, 0.85374028, ..., 0.78794552, 0.85374028,
 </div>
 <p>Almost perfect equality of outcome. F1 score is a little bit better than grid search reduction.</p>
 </section>
+</section>
 <section id="Postprocessing-Strategies">
-<h2>Postprocessing Strategies<a class="headerlink" href="#Postprocessing-Strategies" title="Permalink to this heading"></a></h2>
+<h1>Postprocessing Strategies<a class="headerlink" href="#Postprocessing-Strategies" title="Permalink to this heading"></a></h1>
 <section id="Calibrated-Equalized-Odds-mitigation-technique">
-<h3>Calibrated Equalized Odds mitigation technique<a class="headerlink" href="#Calibrated-Equalized-Odds-mitigation-technique" title="Permalink to this heading"></a></h3>
+<h2>Calibrated Equalized Odds mitigation technique<a class="headerlink" href="#Calibrated-Equalized-Odds-mitigation-technique" title="Permalink to this heading"></a></h2>
 <p>References:</p>
 <p>Pleiss, Geoff, et al. “On fairness and calibration.” Advances in neural information processing systems 30 (2017).</p>
 <div class="nbinput nblast docutils container">
@@ -2115,7 +2119,6 @@ array([0, 0, 1, ..., 0, 0, 0])
 </div></div>
 </div>
 <p>It seems this algorithm works best with fnr as an option (on Adult dataset). Both fpr and weighted give bad results.</p>
-</section>
 </section>
 <section id="Equalized-Odds-mitigation-technique">
 <h2>Equalized Odds mitigation technique<a class="headerlink" href="#Equalized-Odds-mitigation-technique" title="Permalink to this heading"></a></h2>
@@ -2642,7 +2645,7 @@ array([0, 1, 1, ..., 1, 1, 0])
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../../mitigating_bias.html" class="btn btn-neutral float-left" title="Mitigating bias" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="mitigating_bias_classification_pipeline.html" class="btn btn-neutral float-right" title="Bias mitigation for binary classification, using a pipeline" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="mitigating_bias_classification_pipeline.html" class="btn btn-neutral float-right" title="Training Model for Binary Classification Problem with Bias Mitigators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

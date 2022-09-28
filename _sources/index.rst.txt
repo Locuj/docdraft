@@ -35,7 +35,7 @@ Our long-term goal is to offer a set of techniques to easily measure and mitigat
 Installation
 ------------
 
-You can test the library by installing with `pip`:
+You can install the library with `pip` using the following command:
 
 .. code-block::
 

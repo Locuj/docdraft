@@ -6,7 +6,7 @@ git rm -rf .
 git clean -fxd
 
 # copy new files
-cp -r ~/src/holistic/hai-test/holisticai-test/docs/_build/html/* .
+cp -r ~/src/holistic/live_library/holisticai/docs/_build/html/* .
 
 # bring back this script
 mv ./.git/deploy.sh .
